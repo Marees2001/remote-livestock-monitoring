@@ -521,6 +521,434 @@ Discarded input sections
  .debug_frame   0x00000000      0x190 build/syscalls.o
  .ARM.attributes
                 0x00000000       0x2d build/syscalls.o
+ .text          0x00000000        0x0 build/stm32f1xx_hal_adc.o
+ .data          0x00000000        0x0 build/stm32f1xx_hal_adc.o
+ .bss           0x00000000        0x0 build/stm32f1xx_hal_adc.o
+ .text.HAL_ADC_MspInit
+                0x00000000        0x2 build/stm32f1xx_hal_adc.o
+ .text.HAL_ADC_MspDeInit
+                0x00000000        0x2 build/stm32f1xx_hal_adc.o
+ .text.HAL_ADC_PollForConversion
+                0x00000000      0x184 build/stm32f1xx_hal_adc.o
+ .text.HAL_ADC_PollForEvent
+                0x00000000       0x60 build/stm32f1xx_hal_adc.o
+ .text.HAL_ADC_GetValue
+                0x00000000        0x6 build/stm32f1xx_hal_adc.o
+ .text.HAL_ADC_ConvCpltCallback
+                0x00000000        0x2 build/stm32f1xx_hal_adc.o
+ .text.ADC_DMAConvCplt
+                0x00000000       0x52 build/stm32f1xx_hal_adc.o
+ .text.HAL_ADC_ConvHalfCpltCallback
+                0x00000000        0x2 build/stm32f1xx_hal_adc.o
+ .text.ADC_DMAHalfConvCplt
+                0x00000000        0xa build/stm32f1xx_hal_adc.o
+ .text.HAL_ADC_LevelOutOfWindowCallback
+                0x00000000        0x2 build/stm32f1xx_hal_adc.o
+ .text.HAL_ADC_IRQHandler
+                0x00000000      0x102 build/stm32f1xx_hal_adc.o
+ .text.HAL_ADC_ErrorCallback
+                0x00000000        0x2 build/stm32f1xx_hal_adc.o
+ .text.ADC_DMAError
+                0x00000000       0x1a build/stm32f1xx_hal_adc.o
+ .text.HAL_ADC_ConfigChannel
+                0x00000000      0x140 build/stm32f1xx_hal_adc.o
+ .text.HAL_ADC_AnalogWDGConfig
+                0x00000000       0x60 build/stm32f1xx_hal_adc.o
+ .text.HAL_ADC_GetState
+                0x00000000        0x4 build/stm32f1xx_hal_adc.o
+ .text.HAL_ADC_GetError
+                0x00000000        0x4 build/stm32f1xx_hal_adc.o
+ .text.ADC_Enable
+                0x00000000       0x88 build/stm32f1xx_hal_adc.o
+ .text.HAL_ADC_Start
+                0x00000000       0xe8 build/stm32f1xx_hal_adc.o
+ .text.HAL_ADC_Start_IT
+                0x00000000       0xf0 build/stm32f1xx_hal_adc.o
+ .text.HAL_ADC_Start_DMA
+                0x00000000      0x130 build/stm32f1xx_hal_adc.o
+ .text.ADC_ConversionStop_Disable
+                0x00000000       0x56 build/stm32f1xx_hal_adc.o
+ .text.HAL_ADC_Init
+                0x00000000      0x108 build/stm32f1xx_hal_adc.o
+ .text.HAL_ADC_DeInit
+                0x00000000       0xe4 build/stm32f1xx_hal_adc.o
+ .text.HAL_ADC_Stop
+                0x00000000       0x34 build/stm32f1xx_hal_adc.o
+ .text.HAL_ADC_Stop_IT
+                0x00000000       0x3e build/stm32f1xx_hal_adc.o
+ .text.HAL_ADC_Stop_DMA
+                0x00000000       0x5e build/stm32f1xx_hal_adc.o
+ .debug_info    0x00000000     0x108e build/stm32f1xx_hal_adc.o
+ .debug_abbrev  0x00000000      0x282 build/stm32f1xx_hal_adc.o
+ .debug_loc     0x00000000      0xf1c build/stm32f1xx_hal_adc.o
+ .debug_aranges
+                0x00000000       0xf0 build/stm32f1xx_hal_adc.o
+ .debug_ranges  0x00000000       0xe0 build/stm32f1xx_hal_adc.o
+ .debug_line    0x00000000      0xf8a build/stm32f1xx_hal_adc.o
+ .debug_str     0x00000000      0x8c9 build/stm32f1xx_hal_adc.o
+ .comment       0x00000000       0x44 build/stm32f1xx_hal_adc.o
+ .debug_frame   0x00000000      0x2c8 build/stm32f1xx_hal_adc.o
+ .ARM.attributes
+                0x00000000       0x2d build/stm32f1xx_hal_adc.o
+ .text          0x00000000        0x0 build/stm32f1xx_hal_adc_ex.o
+ .data          0x00000000        0x0 build/stm32f1xx_hal_adc_ex.o
+ .bss           0x00000000        0x0 build/stm32f1xx_hal_adc_ex.o
+ .text.HAL_ADCEx_Calibration_Start
+                0x00000000      0x100 build/stm32f1xx_hal_adc_ex.o
+ .text.HAL_ADCEx_InjectedStart
+                0x00000000       0xb8 build/stm32f1xx_hal_adc_ex.o
+ .text.HAL_ADCEx_InjectedStop
+                0x00000000       0x54 build/stm32f1xx_hal_adc_ex.o
+ .text.HAL_ADCEx_InjectedPollForConversion
+                0x00000000      0x17c build/stm32f1xx_hal_adc_ex.o
+ .text.HAL_ADCEx_InjectedStart_IT
+                0x00000000       0xc0 build/stm32f1xx_hal_adc_ex.o
+ .text.HAL_ADCEx_InjectedStop_IT
+                0x00000000       0x5e build/stm32f1xx_hal_adc_ex.o
+ .text.HAL_ADCEx_MultiModeStart_DMA
+                0x00000000       0xfc build/stm32f1xx_hal_adc_ex.o
+ .text.HAL_ADCEx_MultiModeStop_DMA
+                0x00000000       0x84 build/stm32f1xx_hal_adc_ex.o
+ .text.HAL_ADCEx_InjectedGetValue
+                0x00000000       0x24 build/stm32f1xx_hal_adc_ex.o
+ .text.HAL_ADCEx_MultiModeGetValue
+                0x00000000       0x20 build/stm32f1xx_hal_adc_ex.o
+ .text.HAL_ADCEx_InjectedConvCpltCallback
+                0x00000000        0x2 build/stm32f1xx_hal_adc_ex.o
+ .text.HAL_ADCEx_InjectedConfigChannel
+                0x00000000      0x21c build/stm32f1xx_hal_adc_ex.o
+ .text.HAL_ADCEx_MultiModeConfigChannel
+                0x00000000       0x70 build/stm32f1xx_hal_adc_ex.o
+ .debug_info    0x00000000      0xda2 build/stm32f1xx_hal_adc_ex.o
+ .debug_abbrev  0x00000000      0x297 build/stm32f1xx_hal_adc_ex.o
+ .debug_loc     0x00000000      0xb42 build/stm32f1xx_hal_adc_ex.o
+ .debug_aranges
+                0x00000000       0x80 build/stm32f1xx_hal_adc_ex.o
+ .debug_ranges  0x00000000       0x70 build/stm32f1xx_hal_adc_ex.o
+ .debug_line    0x00000000      0xc56 build/stm32f1xx_hal_adc_ex.o
+ .debug_str     0x00000000      0x8ac build/stm32f1xx_hal_adc_ex.o
+ .comment       0x00000000       0x44 build/stm32f1xx_hal_adc_ex.o
+ .debug_frame   0x00000000      0x19c build/stm32f1xx_hal_adc_ex.o
+ .ARM.attributes
+                0x00000000       0x2d build/stm32f1xx_hal_adc_ex.o
+ .text          0x00000000        0x0 build/stm32f1xx_hal_i2c.o
+ .data          0x00000000        0x0 build/stm32f1xx_hal_i2c.o
+ .bss           0x00000000        0x0 build/stm32f1xx_hal_i2c.o
+ .text.I2C_Flush_DR
+                0x00000000       0x10 build/stm32f1xx_hal_i2c.o
+ .text.I2C_Master_SB
+                0x00000000       0xa8 build/stm32f1xx_hal_i2c.o
+ .text.I2C_Master_ADD10
+                0x00000000       0x2a build/stm32f1xx_hal_i2c.o
+ .text.I2C_Master_ADDR
+                0x00000000      0x244 build/stm32f1xx_hal_i2c.o
+ .text.I2C_SlaveTransmit_BTF
+                0x00000000       0x20 build/stm32f1xx_hal_i2c.o
+ .text.I2C_SlaveReceive_BTF
+                0x00000000       0x20 build/stm32f1xx_hal_i2c.o
+ .text.I2C_WaitOnSTOPRequestThroughIT
+                0x00000000       0x48 build/stm32f1xx_hal_i2c.o
+ .text.I2C_IsAcknowledgeFailed
+                0x00000000       0x32 build/stm32f1xx_hal_i2c.o
+ .text.I2C_ConvertOtherXferOptions
+                0x00000000       0x1e build/stm32f1xx_hal_i2c.o
+ .text.I2C_WaitOnFlagUntilTimeout
+                0x00000000       0xaa build/stm32f1xx_hal_i2c.o
+ .text.I2C_WaitOnMasterAddressFlagUntilTimeout
+                0x00000000       0xd6 build/stm32f1xx_hal_i2c.o
+ .text.I2C_MasterRequestWrite
+                0x00000000       0xb4 build/stm32f1xx_hal_i2c.o
+ .text.I2C_MasterRequestRead
+                0x00000000      0x120 build/stm32f1xx_hal_i2c.o
+ .text.I2C_WaitOnTXEFlagUntilTimeout
+                0x00000000       0x5e build/stm32f1xx_hal_i2c.o
+ .text.I2C_RequestMemoryWrite
+                0x00000000       0xd8 build/stm32f1xx_hal_i2c.o
+ .text.I2C_RequestMemoryRead
+                0x00000000      0x154 build/stm32f1xx_hal_i2c.o
+ .text.I2C_WaitOnBTFFlagUntilTimeout
+                0x00000000       0x5e build/stm32f1xx_hal_i2c.o
+ .text.I2C_WaitOnRXNEFlagUntilTimeout
+                0x00000000       0x78 build/stm32f1xx_hal_i2c.o
+ .text.I2C_WaitOnSTOPFlagUntilTimeout
+                0x00000000       0x5c build/stm32f1xx_hal_i2c.o
+ .text.HAL_I2C_MspInit
+                0x00000000        0x2 build/stm32f1xx_hal_i2c.o
+ .text.HAL_I2C_Init
+                0x00000000      0x1bc build/stm32f1xx_hal_i2c.o
+ .text.HAL_I2C_MspDeInit
+                0x00000000        0x2 build/stm32f1xx_hal_i2c.o
+ .text.HAL_I2C_DeInit
+                0x00000000       0x32 build/stm32f1xx_hal_i2c.o
+ .text.HAL_I2C_Master_Transmit
+                0x00000000      0x178 build/stm32f1xx_hal_i2c.o
+ .text.HAL_I2C_Master_Receive
+                0x00000000      0x358 build/stm32f1xx_hal_i2c.o
+ .text.HAL_I2C_Slave_Transmit
+                0x00000000      0x1a4 build/stm32f1xx_hal_i2c.o
+ .text.HAL_I2C_Slave_Receive
+                0x00000000      0x180 build/stm32f1xx_hal_i2c.o
+ .text.HAL_I2C_Master_Transmit_IT
+                0x00000000       0xd4 build/stm32f1xx_hal_i2c.o
+ .text.HAL_I2C_Master_Receive_IT
+                0x00000000       0xdc build/stm32f1xx_hal_i2c.o
+ .text.HAL_I2C_Slave_Transmit_IT
+                0x00000000       0x8c build/stm32f1xx_hal_i2c.o
+ .text.HAL_I2C_Slave_Receive_IT
+                0x00000000       0x8c build/stm32f1xx_hal_i2c.o
+ .text.HAL_I2C_Master_Transmit_DMA
+                0x00000000      0x180 build/stm32f1xx_hal_i2c.o
+ .text.HAL_I2C_Master_Receive_DMA
+                0x00000000      0x180 build/stm32f1xx_hal_i2c.o
+ .text.HAL_I2C_Slave_Transmit_DMA
+                0x00000000      0x100 build/stm32f1xx_hal_i2c.o
+ .text.HAL_I2C_Slave_Receive_DMA
+                0x00000000      0x100 build/stm32f1xx_hal_i2c.o
+ .text.HAL_I2C_Mem_Write
+                0x00000000      0x164 build/stm32f1xx_hal_i2c.o
+ .text.HAL_I2C_Mem_Read
+                0x00000000      0x35c build/stm32f1xx_hal_i2c.o
+ .text.HAL_I2C_Mem_Write_IT
+                0x00000000       0xe0 build/stm32f1xx_hal_i2c.o
+ .text.HAL_I2C_Mem_Read_IT
+                0x00000000       0xec build/stm32f1xx_hal_i2c.o
+ .text.HAL_I2C_Mem_Write_DMA
+                0x00000000      0x1c8 build/stm32f1xx_hal_i2c.o
+ .text.HAL_I2C_Mem_Read_DMA
+                0x00000000      0x208 build/stm32f1xx_hal_i2c.o
+ .text.HAL_I2C_IsDeviceReady
+                0x00000000      0x194 build/stm32f1xx_hal_i2c.o
+ .text.HAL_I2C_Master_Seq_Transmit_IT
+                0x00000000       0xfc build/stm32f1xx_hal_i2c.o
+ .text.HAL_I2C_Master_Seq_Transmit_DMA
+                0x00000000      0x1cc build/stm32f1xx_hal_i2c.o
+ .text.HAL_I2C_Master_Seq_Receive_IT
+                0x00000000      0x148 build/stm32f1xx_hal_i2c.o
+ .text.HAL_I2C_Master_Seq_Receive_DMA
+                0x00000000      0x240 build/stm32f1xx_hal_i2c.o
+ .text.HAL_I2C_Slave_Seq_Transmit_IT
+                0x00000000       0x90 build/stm32f1xx_hal_i2c.o
+ .text.HAL_I2C_Slave_Seq_Transmit_DMA
+                0x00000000      0x19c build/stm32f1xx_hal_i2c.o
+ .text.HAL_I2C_Slave_Seq_Receive_IT
+                0x00000000       0x90 build/stm32f1xx_hal_i2c.o
+ .text.HAL_I2C_Slave_Seq_Receive_DMA
+                0x00000000      0x19c build/stm32f1xx_hal_i2c.o
+ .text.HAL_I2C_EnableListen_IT
+                0x00000000       0x3e build/stm32f1xx_hal_i2c.o
+ .text.HAL_I2C_DisableListen_IT
+                0x00000000       0x42 build/stm32f1xx_hal_i2c.o
+ .text.HAL_I2C_MasterTxCpltCallback
+                0x00000000        0x2 build/stm32f1xx_hal_i2c.o
+ .text.HAL_I2C_MasterRxCpltCallback
+                0x00000000        0x2 build/stm32f1xx_hal_i2c.o
+ .text.HAL_I2C_SlaveTxCpltCallback
+                0x00000000        0x2 build/stm32f1xx_hal_i2c.o
+ .text.I2C_SlaveTransmit_TXE
+                0x00000000       0x4c build/stm32f1xx_hal_i2c.o
+ .text.HAL_I2C_SlaveRxCpltCallback
+                0x00000000        0x2 build/stm32f1xx_hal_i2c.o
+ .text.I2C_SlaveReceive_RXNE
+                0x00000000       0x4c build/stm32f1xx_hal_i2c.o
+ .text.HAL_I2C_AddrCallback
+                0x00000000        0x2 build/stm32f1xx_hal_i2c.o
+ .text.I2C_Slave_ADDR
+                0x00000000       0x5a build/stm32f1xx_hal_i2c.o
+ .text.HAL_I2C_ListenCpltCallback
+                0x00000000        0x2 build/stm32f1xx_hal_i2c.o
+ .text.I2C_Slave_AF
+                0x00000000       0xa0 build/stm32f1xx_hal_i2c.o
+ .text.HAL_I2C_MemTxCpltCallback
+                0x00000000        0x2 build/stm32f1xx_hal_i2c.o
+ .text.I2C_MasterTransmit_BTF
+                0x00000000       0x9e build/stm32f1xx_hal_i2c.o
+ .text.I2C_MemoryTransmit_TXE_BTF
+                0x00000000       0xc4 build/stm32f1xx_hal_i2c.o
+ .text.I2C_MasterTransmit_TXE
+                0x00000000       0xd4 build/stm32f1xx_hal_i2c.o
+ .text.HAL_I2C_MemRxCpltCallback
+                0x00000000        0x2 build/stm32f1xx_hal_i2c.o
+ .text.I2C_MasterReceive_BTF
+                0x00000000      0x140 build/stm32f1xx_hal_i2c.o
+ .text.HAL_I2C_ErrorCallback
+                0x00000000        0x2 build/stm32f1xx_hal_i2c.o
+ .text.I2C_DMAError
+                0x00000000       0x3a build/stm32f1xx_hal_i2c.o
+ .text.I2C_DMAXferCplt
+                0x00000000      0x130 build/stm32f1xx_hal_i2c.o
+ .text.I2C_MasterReceive_RXNE
+                0x00000000      0x106 build/stm32f1xx_hal_i2c.o
+ .text.HAL_I2C_AbortCpltCallback
+                0x00000000        0x2 build/stm32f1xx_hal_i2c.o
+ .text.I2C_DMAAbort
+                0x00000000       0xe4 build/stm32f1xx_hal_i2c.o
+ .text.I2C_ITError
+                0x00000000      0x178 build/stm32f1xx_hal_i2c.o
+ .text.HAL_I2C_Master_Abort_IT
+                0x00000000       0x68 build/stm32f1xx_hal_i2c.o
+ .text.I2C_Slave_STOPF
+                0x00000000      0x18c build/stm32f1xx_hal_i2c.o
+ .text.HAL_I2C_EV_IRQHandler
+                0x00000000      0x1a0 build/stm32f1xx_hal_i2c.o
+ .text.HAL_I2C_ER_IRQHandler
+                0x00000000       0xce build/stm32f1xx_hal_i2c.o
+ .text.HAL_I2C_GetState
+                0x00000000        0x6 build/stm32f1xx_hal_i2c.o
+ .text.HAL_I2C_GetMode
+                0x00000000        0x6 build/stm32f1xx_hal_i2c.o
+ .text.HAL_I2C_GetError
+                0x00000000        0x4 build/stm32f1xx_hal_i2c.o
+ .debug_info    0x00000000     0x3d27 build/stm32f1xx_hal_i2c.o
+ .debug_abbrev  0x00000000      0x31e build/stm32f1xx_hal_i2c.o
+ .debug_loc     0x00000000     0x54d3 build/stm32f1xx_hal_i2c.o
+ .debug_aranges
+                0x00000000      0x2a8 build/stm32f1xx_hal_i2c.o
+ .debug_ranges  0x00000000      0x2b0 build/stm32f1xx_hal_i2c.o
+ .debug_line    0x00000000     0x574e build/stm32f1xx_hal_i2c.o
+ .debug_str     0x00000000      0xfb4 build/stm32f1xx_hal_i2c.o
+ .comment       0x00000000       0x44 build/stm32f1xx_hal_i2c.o
+ .debug_frame   0x00000000      0x988 build/stm32f1xx_hal_i2c.o
+ .ARM.attributes
+                0x00000000       0x2d build/stm32f1xx_hal_i2c.o
+ .text          0x00000000        0x0 build/stm32f1xx_hal_uart.o
+ .data          0x00000000        0x0 build/stm32f1xx_hal_uart.o
+ .bss           0x00000000        0x0 build/stm32f1xx_hal_uart.o
+ .text.UART_EndTxTransfer
+                0x00000000       0x20 build/stm32f1xx_hal_uart.o
+ .text.UART_EndRxTransfer
+                0x00000000       0x5c build/stm32f1xx_hal_uart.o
+ .text.UART_Transmit_IT
+                0x00000000       0x60 build/stm32f1xx_hal_uart.o
+ .text.UART_SetConfig
+                0x00000000       0x94 build/stm32f1xx_hal_uart.o
+ .text.UART_WaitOnFlagUntilTimeout
+                0x00000000       0x86 build/stm32f1xx_hal_uart.o
+ .text.HAL_UART_MspInit
+                0x00000000        0x2 build/stm32f1xx_hal_uart.o
+ .text.HAL_UART_Init
+                0x00000000       0x60 build/stm32f1xx_hal_uart.o
+ .text.HAL_HalfDuplex_Init
+                0x00000000       0x6c build/stm32f1xx_hal_uart.o
+ .text.HAL_LIN_Init
+                0x00000000       0x82 build/stm32f1xx_hal_uart.o
+ .text.HAL_MultiProcessor_Init
+                0x00000000       0x8c build/stm32f1xx_hal_uart.o
+ .text.HAL_UART_MspDeInit
+                0x00000000        0x2 build/stm32f1xx_hal_uart.o
+ .text.HAL_UART_DeInit
+                0x00000000       0x34 build/stm32f1xx_hal_uart.o
+ .text.HAL_UART_Transmit
+                0x00000000       0xcc build/stm32f1xx_hal_uart.o
+ .text.HAL_UART_Receive
+                0x00000000       0xd2 build/stm32f1xx_hal_uart.o
+ .text.HAL_UART_Transmit_IT
+                0x00000000       0x38 build/stm32f1xx_hal_uart.o
+ .text.HAL_UART_Transmit_DMA
+                0x00000000       0x84 build/stm32f1xx_hal_uart.o
+ .text.HAL_UART_DMAPause
+                0x00000000       0x94 build/stm32f1xx_hal_uart.o
+ .text.HAL_UART_DMAResume
+                0x00000000       0x96 build/stm32f1xx_hal_uart.o
+ .text.HAL_UART_DMAStop
+                0x00000000       0x84 build/stm32f1xx_hal_uart.o
+ .text.HAL_UARTEx_ReceiveToIdle
+                0x00000000      0x120 build/stm32f1xx_hal_uart.o
+ .text.HAL_UARTEx_GetRxEventType
+                0x00000000        0x4 build/stm32f1xx_hal_uart.o
+ .text.HAL_UART_Abort
+                0x00000000       0xf2 build/stm32f1xx_hal_uart.o
+ .text.HAL_UART_AbortTransmit
+                0x00000000       0x6c build/stm32f1xx_hal_uart.o
+ .text.HAL_UART_AbortReceive
+                0x00000000       0xa6 build/stm32f1xx_hal_uart.o
+ .text.HAL_UART_TxCpltCallback
+                0x00000000        0x2 build/stm32f1xx_hal_uart.o
+ .text.UART_DMATransmitCplt
+                0x00000000       0x4c build/stm32f1xx_hal_uart.o
+ .text.UART_EndTransmit_IT
+                0x00000000       0x1a build/stm32f1xx_hal_uart.o
+ .text.HAL_UART_TxHalfCpltCallback
+                0x00000000        0x2 build/stm32f1xx_hal_uart.o
+ .text.UART_DMATxHalfCplt
+                0x00000000        0xa build/stm32f1xx_hal_uart.o
+ .text.HAL_UART_RxCpltCallback
+                0x00000000        0x2 build/stm32f1xx_hal_uart.o
+ .text.HAL_UART_RxHalfCpltCallback
+                0x00000000        0x2 build/stm32f1xx_hal_uart.o
+ .text.HAL_UART_ErrorCallback
+                0x00000000        0x2 build/stm32f1xx_hal_uart.o
+ .text.UART_DMAError
+                0x00000000       0x58 build/stm32f1xx_hal_uart.o
+ .text.UART_DMAAbortOnError
+                0x00000000       0x10 build/stm32f1xx_hal_uart.o
+ .text.HAL_UART_AbortCpltCallback
+                0x00000000        0x2 build/stm32f1xx_hal_uart.o
+ .text.HAL_UART_Abort_IT
+                0x00000000      0x124 build/stm32f1xx_hal_uart.o
+ .text.UART_DMARxAbortCallback
+                0x00000000       0x2c build/stm32f1xx_hal_uart.o
+ .text.UART_DMATxAbortCallback
+                0x00000000       0x2c build/stm32f1xx_hal_uart.o
+ .text.HAL_UART_AbortTransmitCpltCallback
+                0x00000000        0x2 build/stm32f1xx_hal_uart.o
+ .text.HAL_UART_AbortTransmit_IT
+                0x00000000       0x80 build/stm32f1xx_hal_uart.o
+ .text.UART_DMATxOnlyAbortCallback
+                0x00000000       0x14 build/stm32f1xx_hal_uart.o
+ .text.HAL_UART_AbortReceiveCpltCallback
+                0x00000000        0x2 build/stm32f1xx_hal_uart.o
+ .text.HAL_UART_AbortReceive_IT
+                0x00000000       0xbc build/stm32f1xx_hal_uart.o
+ .text.UART_DMARxOnlyAbortCallback
+                0x00000000       0x16 build/stm32f1xx_hal_uart.o
+ .text.HAL_UARTEx_RxEventCallback
+                0x00000000        0x2 build/stm32f1xx_hal_uart.o
+ .text.UART_Receive_IT
+                0x00000000       0xe6 build/stm32f1xx_hal_uart.o
+ .text.HAL_UART_IRQHandler
+                0x00000000      0x284 build/stm32f1xx_hal_uart.o
+ .text.UART_DMARxHalfCplt
+                0x00000000       0x1e build/stm32f1xx_hal_uart.o
+ .text.UART_DMAReceiveCplt
+                0x00000000       0x9a build/stm32f1xx_hal_uart.o
+ .text.HAL_LIN_SendBreak
+                0x00000000       0x40 build/stm32f1xx_hal_uart.o
+ .text.HAL_MultiProcessor_EnterMuteMode
+                0x00000000       0x42 build/stm32f1xx_hal_uart.o
+ .text.HAL_MultiProcessor_ExitMuteMode
+                0x00000000       0x42 build/stm32f1xx_hal_uart.o
+ .text.HAL_HalfDuplex_EnableTransmitter
+                0x00000000       0x36 build/stm32f1xx_hal_uart.o
+ .text.HAL_HalfDuplex_EnableReceiver
+                0x00000000       0x36 build/stm32f1xx_hal_uart.o
+ .text.HAL_UART_GetState
+                0x00000000        0xc build/stm32f1xx_hal_uart.o
+ .text.HAL_UART_GetError
+                0x00000000        0x4 build/stm32f1xx_hal_uart.o
+ .text.UART_Start_Receive_IT
+                0x00000000       0x36 build/stm32f1xx_hal_uart.o
+ .text.HAL_UART_Receive_IT
+                0x00000000       0x26 build/stm32f1xx_hal_uart.o
+ .text.HAL_UARTEx_ReceiveToIdle_IT
+                0x00000000       0x66 build/stm32f1xx_hal_uart.o
+ .text.UART_Start_Receive_DMA
+                0x00000000       0xa4 build/stm32f1xx_hal_uart.o
+ .text.HAL_UART_Receive_DMA
+                0x00000000       0x26 build/stm32f1xx_hal_uart.o
+ .text.HAL_UARTEx_ReceiveToIdle_DMA
+                0x00000000       0x62 build/stm32f1xx_hal_uart.o
+ .debug_info    0x00000000     0x430f build/stm32f1xx_hal_uart.o
+ .debug_abbrev  0x00000000      0x35f build/stm32f1xx_hal_uart.o
+ .debug_loc     0x00000000     0x4ff4 build/stm32f1xx_hal_uart.o
+ .debug_aranges
+                0x00000000      0x208 build/stm32f1xx_hal_uart.o
+ .debug_ranges  0x00000000      0x210 build/stm32f1xx_hal_uart.o
+ .debug_line    0x00000000     0x35a5 build/stm32f1xx_hal_uart.o
+ .debug_str     0x00000000      0xce3 build/stm32f1xx_hal_uart.o
+ .comment       0x00000000       0x44 build/stm32f1xx_hal_uart.o
+ .debug_frame   0x00000000      0x5dc build/stm32f1xx_hal_uart.o
+ .ARM.attributes
+                0x00000000       0x2d build/stm32f1xx_hal_uart.o
  .text          0x00000000       0x14 build/startup_stm32f103xb.o
  .data          0x00000000        0x0 build/startup_stm32f103xb.o
  .bss           0x00000000        0x0 build/startup_stm32f103xb.o
@@ -777,6 +1205,10 @@ LOAD build/stm32f1xx_hal_exti.o
 LOAD build/system_stm32f1xx.o
 LOAD build/sysmem.o
 LOAD build/syscalls.o
+LOAD build/stm32f1xx_hal_adc.o
+LOAD build/stm32f1xx_hal_adc_ex.o
+LOAD build/stm32f1xx_hal_i2c.o
+LOAD build/stm32f1xx_hal_uart.o
 LOAD build/startup_stm32f103xb.o
 LOAD C:/ST/STM32CubeIDE_2.0.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.100.202509120712/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc_nano.a
 LOAD C:/ST/STM32CubeIDE_2.0.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.100.202509120712/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libm.a
@@ -1227,6 +1659,16 @@ Cross Reference Table
 
 Symbol                                            File
 ADC1_2_IRQHandler                                 build/startup_stm32f103xb.o
+ADC_ConversionStop_Disable                        build/stm32f1xx_hal_adc.o
+                                                  build/stm32f1xx_hal_adc_ex.o
+ADC_DMAConvCplt                                   build/stm32f1xx_hal_adc.o
+                                                  build/stm32f1xx_hal_adc_ex.o
+ADC_DMAError                                      build/stm32f1xx_hal_adc.o
+                                                  build/stm32f1xx_hal_adc_ex.o
+ADC_DMAHalfConvCplt                               build/stm32f1xx_hal_adc.o
+                                                  build/stm32f1xx_hal_adc_ex.o
+ADC_Enable                                        build/stm32f1xx_hal_adc.o
+                                                  build/stm32f1xx_hal_adc_ex.o
 AHBPrescTable                                     build/system_stm32f1xx.o
                                                   build/stm32f1xx_hal_rcc.o
 APBPrescTable                                     build/system_stm32f1xx.o
@@ -1256,6 +1698,42 @@ FLASH_PageErase                                   build/stm32f1xx_hal_flash_ex.o
                                                   build/stm32f1xx_hal_flash.o
 FLASH_WaitForLastOperation                        build/stm32f1xx_hal_flash.o
                                                   build/stm32f1xx_hal_flash_ex.o
+HAL_ADCEx_Calibration_Start                       build/stm32f1xx_hal_adc_ex.o
+HAL_ADCEx_InjectedConfigChannel                   build/stm32f1xx_hal_adc_ex.o
+HAL_ADCEx_InjectedConvCpltCallback                build/stm32f1xx_hal_adc_ex.o
+                                                  build/stm32f1xx_hal_adc.o
+HAL_ADCEx_InjectedGetValue                        build/stm32f1xx_hal_adc_ex.o
+HAL_ADCEx_InjectedPollForConversion               build/stm32f1xx_hal_adc_ex.o
+HAL_ADCEx_InjectedStart                           build/stm32f1xx_hal_adc_ex.o
+HAL_ADCEx_InjectedStart_IT                        build/stm32f1xx_hal_adc_ex.o
+HAL_ADCEx_InjectedStop                            build/stm32f1xx_hal_adc_ex.o
+HAL_ADCEx_InjectedStop_IT                         build/stm32f1xx_hal_adc_ex.o
+HAL_ADCEx_MultiModeConfigChannel                  build/stm32f1xx_hal_adc_ex.o
+HAL_ADCEx_MultiModeGetValue                       build/stm32f1xx_hal_adc_ex.o
+HAL_ADCEx_MultiModeStart_DMA                      build/stm32f1xx_hal_adc_ex.o
+HAL_ADCEx_MultiModeStop_DMA                       build/stm32f1xx_hal_adc_ex.o
+HAL_ADC_AnalogWDGConfig                           build/stm32f1xx_hal_adc.o
+HAL_ADC_ConfigChannel                             build/stm32f1xx_hal_adc.o
+HAL_ADC_ConvCpltCallback                          build/stm32f1xx_hal_adc.o
+HAL_ADC_ConvHalfCpltCallback                      build/stm32f1xx_hal_adc.o
+HAL_ADC_DeInit                                    build/stm32f1xx_hal_adc.o
+HAL_ADC_ErrorCallback                             build/stm32f1xx_hal_adc.o
+HAL_ADC_GetError                                  build/stm32f1xx_hal_adc.o
+HAL_ADC_GetState                                  build/stm32f1xx_hal_adc.o
+HAL_ADC_GetValue                                  build/stm32f1xx_hal_adc.o
+HAL_ADC_IRQHandler                                build/stm32f1xx_hal_adc.o
+HAL_ADC_Init                                      build/stm32f1xx_hal_adc.o
+HAL_ADC_LevelOutOfWindowCallback                  build/stm32f1xx_hal_adc.o
+HAL_ADC_MspDeInit                                 build/stm32f1xx_hal_adc.o
+HAL_ADC_MspInit                                   build/stm32f1xx_hal_adc.o
+HAL_ADC_PollForConversion                         build/stm32f1xx_hal_adc.o
+HAL_ADC_PollForEvent                              build/stm32f1xx_hal_adc.o
+HAL_ADC_Start                                     build/stm32f1xx_hal_adc.o
+HAL_ADC_Start_DMA                                 build/stm32f1xx_hal_adc.o
+HAL_ADC_Start_IT                                  build/stm32f1xx_hal_adc.o
+HAL_ADC_Stop                                      build/stm32f1xx_hal_adc.o
+HAL_ADC_Stop_DMA                                  build/stm32f1xx_hal_adc.o
+HAL_ADC_Stop_IT                                   build/stm32f1xx_hal_adc.o
 HAL_DBGMCU_DisableDBGSleepMode                    build/stm32f1xx_hal.o
 HAL_DBGMCU_DisableDBGStandbyMode                  build/stm32f1xx_hal.o
 HAL_DBGMCU_DisableDBGStopMode                     build/stm32f1xx_hal.o
@@ -1263,16 +1741,27 @@ HAL_DBGMCU_EnableDBGSleepMode                     build/stm32f1xx_hal.o
 HAL_DBGMCU_EnableDBGStandbyMode                   build/stm32f1xx_hal.o
 HAL_DBGMCU_EnableDBGStopMode                      build/stm32f1xx_hal.o
 HAL_DMA_Abort                                     build/stm32f1xx_hal_dma.o
+                                                  build/stm32f1xx_hal_uart.o
+                                                  build/stm32f1xx_hal_adc_ex.o
+                                                  build/stm32f1xx_hal_adc.o
 HAL_DMA_Abort_IT                                  build/stm32f1xx_hal_dma.o
+                                                  build/stm32f1xx_hal_uart.o
+                                                  build/stm32f1xx_hal_i2c.o
 HAL_DMA_DeInit                                    build/stm32f1xx_hal_dma.o
 HAL_DMA_GetError                                  build/stm32f1xx_hal_dma.o
+                                                  build/stm32f1xx_hal_uart.o
 HAL_DMA_GetState                                  build/stm32f1xx_hal_dma.o
+                                                  build/stm32f1xx_hal_i2c.o
 HAL_DMA_IRQHandler                                build/stm32f1xx_hal_dma.o
 HAL_DMA_Init                                      build/stm32f1xx_hal_dma.o
 HAL_DMA_PollForTransfer                           build/stm32f1xx_hal_dma.o
 HAL_DMA_RegisterCallback                          build/stm32f1xx_hal_dma.o
 HAL_DMA_Start                                     build/stm32f1xx_hal_dma.o
 HAL_DMA_Start_IT                                  build/stm32f1xx_hal_dma.o
+                                                  build/stm32f1xx_hal_uart.o
+                                                  build/stm32f1xx_hal_i2c.o
+                                                  build/stm32f1xx_hal_adc_ex.o
+                                                  build/stm32f1xx_hal_adc.o
 HAL_DMA_UnRegisterCallback                        build/stm32f1xx_hal_dma.o
 HAL_DeInit                                        build/stm32f1xx_hal.o
 HAL_Delay                                         build/stm32f1xx_hal.o
@@ -1318,6 +1807,10 @@ HAL_GetDEVID                                      build/stm32f1xx_hal.o
 HAL_GetHalVersion                                 build/stm32f1xx_hal.o
 HAL_GetREVID                                      build/stm32f1xx_hal.o
 HAL_GetTick                                       build/stm32f1xx_hal.o
+                                                  build/stm32f1xx_hal_uart.o
+                                                  build/stm32f1xx_hal_i2c.o
+                                                  build/stm32f1xx_hal_adc_ex.o
+                                                  build/stm32f1xx_hal_adc.o
                                                   build/stm32f1xx_hal_flash.o
                                                   build/stm32f1xx_hal_dma.o
                                                   build/stm32f1xx_hal_rcc_ex.o
@@ -1327,14 +1820,71 @@ HAL_GetTickPrio                                   build/stm32f1xx_hal.o
 HAL_GetUIDw0                                      build/stm32f1xx_hal.o
 HAL_GetUIDw1                                      build/stm32f1xx_hal.o
 HAL_GetUIDw2                                      build/stm32f1xx_hal.o
+HAL_HalfDuplex_EnableReceiver                     build/stm32f1xx_hal_uart.o
+HAL_HalfDuplex_EnableTransmitter                  build/stm32f1xx_hal_uart.o
+HAL_HalfDuplex_Init                               build/stm32f1xx_hal_uart.o
+HAL_I2C_AbortCpltCallback                         build/stm32f1xx_hal_i2c.o
+HAL_I2C_AddrCallback                              build/stm32f1xx_hal_i2c.o
+HAL_I2C_DeInit                                    build/stm32f1xx_hal_i2c.o
+HAL_I2C_DisableListen_IT                          build/stm32f1xx_hal_i2c.o
+HAL_I2C_ER_IRQHandler                             build/stm32f1xx_hal_i2c.o
+HAL_I2C_EV_IRQHandler                             build/stm32f1xx_hal_i2c.o
+HAL_I2C_EnableListen_IT                           build/stm32f1xx_hal_i2c.o
+HAL_I2C_ErrorCallback                             build/stm32f1xx_hal_i2c.o
+HAL_I2C_GetError                                  build/stm32f1xx_hal_i2c.o
+HAL_I2C_GetMode                                   build/stm32f1xx_hal_i2c.o
+HAL_I2C_GetState                                  build/stm32f1xx_hal_i2c.o
+HAL_I2C_Init                                      build/stm32f1xx_hal_i2c.o
+HAL_I2C_IsDeviceReady                             build/stm32f1xx_hal_i2c.o
+HAL_I2C_ListenCpltCallback                        build/stm32f1xx_hal_i2c.o
+HAL_I2C_MasterRxCpltCallback                      build/stm32f1xx_hal_i2c.o
+HAL_I2C_MasterTxCpltCallback                      build/stm32f1xx_hal_i2c.o
+HAL_I2C_Master_Abort_IT                           build/stm32f1xx_hal_i2c.o
+HAL_I2C_Master_Receive                            build/stm32f1xx_hal_i2c.o
+HAL_I2C_Master_Receive_DMA                        build/stm32f1xx_hal_i2c.o
+HAL_I2C_Master_Receive_IT                         build/stm32f1xx_hal_i2c.o
+HAL_I2C_Master_Seq_Receive_DMA                    build/stm32f1xx_hal_i2c.o
+HAL_I2C_Master_Seq_Receive_IT                     build/stm32f1xx_hal_i2c.o
+HAL_I2C_Master_Seq_Transmit_DMA                   build/stm32f1xx_hal_i2c.o
+HAL_I2C_Master_Seq_Transmit_IT                    build/stm32f1xx_hal_i2c.o
+HAL_I2C_Master_Transmit                           build/stm32f1xx_hal_i2c.o
+HAL_I2C_Master_Transmit_DMA                       build/stm32f1xx_hal_i2c.o
+HAL_I2C_Master_Transmit_IT                        build/stm32f1xx_hal_i2c.o
+HAL_I2C_MemRxCpltCallback                         build/stm32f1xx_hal_i2c.o
+HAL_I2C_MemTxCpltCallback                         build/stm32f1xx_hal_i2c.o
+HAL_I2C_Mem_Read                                  build/stm32f1xx_hal_i2c.o
+HAL_I2C_Mem_Read_DMA                              build/stm32f1xx_hal_i2c.o
+HAL_I2C_Mem_Read_IT                               build/stm32f1xx_hal_i2c.o
+HAL_I2C_Mem_Write                                 build/stm32f1xx_hal_i2c.o
+HAL_I2C_Mem_Write_DMA                             build/stm32f1xx_hal_i2c.o
+HAL_I2C_Mem_Write_IT                              build/stm32f1xx_hal_i2c.o
+HAL_I2C_MspDeInit                                 build/stm32f1xx_hal_i2c.o
+HAL_I2C_MspInit                                   build/stm32f1xx_hal_i2c.o
+HAL_I2C_SlaveRxCpltCallback                       build/stm32f1xx_hal_i2c.o
+HAL_I2C_SlaveTxCpltCallback                       build/stm32f1xx_hal_i2c.o
+HAL_I2C_Slave_Receive                             build/stm32f1xx_hal_i2c.o
+HAL_I2C_Slave_Receive_DMA                         build/stm32f1xx_hal_i2c.o
+HAL_I2C_Slave_Receive_IT                          build/stm32f1xx_hal_i2c.o
+HAL_I2C_Slave_Seq_Receive_DMA                     build/stm32f1xx_hal_i2c.o
+HAL_I2C_Slave_Seq_Receive_IT                      build/stm32f1xx_hal_i2c.o
+HAL_I2C_Slave_Seq_Transmit_DMA                    build/stm32f1xx_hal_i2c.o
+HAL_I2C_Slave_Seq_Transmit_IT                     build/stm32f1xx_hal_i2c.o
+HAL_I2C_Slave_Transmit                            build/stm32f1xx_hal_i2c.o
+HAL_I2C_Slave_Transmit_DMA                        build/stm32f1xx_hal_i2c.o
+HAL_I2C_Slave_Transmit_IT                         build/stm32f1xx_hal_i2c.o
 HAL_IncTick                                       build/stm32f1xx_hal.o
                                                   build/stm32f1xx_it.o
 HAL_Init                                          build/stm32f1xx_hal.o
                                                   build/main.o
 HAL_InitTick                                      build/stm32f1xx_hal.o
                                                   build/stm32f1xx_hal_rcc.o
+HAL_LIN_Init                                      build/stm32f1xx_hal_uart.o
+HAL_LIN_SendBreak                                 build/stm32f1xx_hal_uart.o
 HAL_MspDeInit                                     build/stm32f1xx_hal.o
 HAL_MspInit                                       build/stm32f1xx_hal_msp.o
+HAL_MultiProcessor_EnterMuteMode                  build/stm32f1xx_hal_uart.o
+HAL_MultiProcessor_ExitMuteMode                   build/stm32f1xx_hal_uart.o
+HAL_MultiProcessor_Init                           build/stm32f1xx_hal_uart.o
 HAL_NVIC_ClearPendingIRQ                          build/stm32f1xx_hal_cortex.o
 HAL_NVIC_DisableIRQ                               build/stm32f1xx_hal_cortex.o
 HAL_NVIC_EnableIRQ                                build/stm32f1xx_hal_cortex.o
@@ -1368,6 +1918,8 @@ HAL_PWR_PVDCallback                               build/stm32f1xx_hal_pwr.o
 HAL_PWR_PVD_IRQHandler                            build/stm32f1xx_hal_pwr.o
 HAL_RCCEx_GetPeriphCLKConfig                      build/stm32f1xx_hal_rcc_ex.o
 HAL_RCCEx_GetPeriphCLKFreq                        build/stm32f1xx_hal_rcc_ex.o
+                                                  build/stm32f1xx_hal_adc_ex.o
+                                                  build/stm32f1xx_hal_adc.o
 HAL_RCCEx_PeriphCLKConfig                         build/stm32f1xx_hal_rcc_ex.o
 HAL_RCC_CSSCallback                               build/stm32f1xx_hal_rcc.o
 HAL_RCC_ClockConfig                               build/stm32f1xx_hal_rcc.o
@@ -1379,7 +1931,10 @@ HAL_RCC_GetClockConfig                            build/stm32f1xx_hal_rcc.o
 HAL_RCC_GetHCLKFreq                               build/stm32f1xx_hal_rcc.o
 HAL_RCC_GetOscConfig                              build/stm32f1xx_hal_rcc.o
 HAL_RCC_GetPCLK1Freq                              build/stm32f1xx_hal_rcc.o
+                                                  build/stm32f1xx_hal_uart.o
+                                                  build/stm32f1xx_hal_i2c.o
 HAL_RCC_GetPCLK2Freq                              build/stm32f1xx_hal_rcc.o
+                                                  build/stm32f1xx_hal_uart.o
                                                   build/stm32f1xx_hal_rcc_ex.o
 HAL_RCC_GetSysClockFreq                           build/stm32f1xx_hal_rcc.o
 HAL_RCC_MCOConfig                                 build/stm32f1xx_hal_rcc.o
@@ -1394,6 +1949,41 @@ HAL_SYSTICK_Config                                build/stm32f1xx_hal_cortex.o
 HAL_SYSTICK_IRQHandler                            build/stm32f1xx_hal_cortex.o
 HAL_SetTickFreq                                   build/stm32f1xx_hal.o
 HAL_SuspendTick                                   build/stm32f1xx_hal.o
+HAL_UARTEx_GetRxEventType                         build/stm32f1xx_hal_uart.o
+HAL_UARTEx_ReceiveToIdle                          build/stm32f1xx_hal_uart.o
+HAL_UARTEx_ReceiveToIdle_DMA                      build/stm32f1xx_hal_uart.o
+HAL_UARTEx_ReceiveToIdle_IT                       build/stm32f1xx_hal_uart.o
+HAL_UARTEx_RxEventCallback                        build/stm32f1xx_hal_uart.o
+HAL_UART_Abort                                    build/stm32f1xx_hal_uart.o
+HAL_UART_AbortCpltCallback                        build/stm32f1xx_hal_uart.o
+HAL_UART_AbortReceive                             build/stm32f1xx_hal_uart.o
+HAL_UART_AbortReceiveCpltCallback                 build/stm32f1xx_hal_uart.o
+HAL_UART_AbortReceive_IT                          build/stm32f1xx_hal_uart.o
+HAL_UART_AbortTransmit                            build/stm32f1xx_hal_uart.o
+HAL_UART_AbortTransmitCpltCallback                build/stm32f1xx_hal_uart.o
+HAL_UART_AbortTransmit_IT                         build/stm32f1xx_hal_uart.o
+HAL_UART_Abort_IT                                 build/stm32f1xx_hal_uart.o
+HAL_UART_DMAPause                                 build/stm32f1xx_hal_uart.o
+HAL_UART_DMAResume                                build/stm32f1xx_hal_uart.o
+HAL_UART_DMAStop                                  build/stm32f1xx_hal_uart.o
+HAL_UART_DeInit                                   build/stm32f1xx_hal_uart.o
+HAL_UART_ErrorCallback                            build/stm32f1xx_hal_uart.o
+HAL_UART_GetError                                 build/stm32f1xx_hal_uart.o
+HAL_UART_GetState                                 build/stm32f1xx_hal_uart.o
+HAL_UART_IRQHandler                               build/stm32f1xx_hal_uart.o
+HAL_UART_Init                                     build/stm32f1xx_hal_uart.o
+HAL_UART_MspDeInit                                build/stm32f1xx_hal_uart.o
+HAL_UART_MspInit                                  build/stm32f1xx_hal_uart.o
+HAL_UART_Receive                                  build/stm32f1xx_hal_uart.o
+HAL_UART_Receive_DMA                              build/stm32f1xx_hal_uart.o
+HAL_UART_Receive_IT                               build/stm32f1xx_hal_uart.o
+HAL_UART_RxCpltCallback                           build/stm32f1xx_hal_uart.o
+HAL_UART_RxHalfCpltCallback                       build/stm32f1xx_hal_uart.o
+HAL_UART_Transmit                                 build/stm32f1xx_hal_uart.o
+HAL_UART_Transmit_DMA                             build/stm32f1xx_hal_uart.o
+HAL_UART_Transmit_IT                              build/stm32f1xx_hal_uart.o
+HAL_UART_TxCpltCallback                           build/stm32f1xx_hal_uart.o
+HAL_UART_TxHalfCpltCallback                       build/stm32f1xx_hal_uart.o
 HardFault_Handler                                 build/stm32f1xx_it.o
 I2C1_ER_IRQHandler                                build/startup_stm32f103xb.o
 I2C1_EV_IRQHandler                                build/startup_stm32f103xb.o
@@ -1413,6 +2003,9 @@ SVC_Handler                                       build/stm32f1xx_it.o
 SysTick_Handler                                   build/stm32f1xx_it.o
 SystemClock_Config                                build/main.o
 SystemCoreClock                                   build/system_stm32f1xx.o
+                                                  build/stm32f1xx_hal_i2c.o
+                                                  build/stm32f1xx_hal_adc_ex.o
+                                                  build/stm32f1xx_hal_adc.o
                                                   build/stm32f1xx_hal_rcc.o
                                                   build/stm32f1xx_hal.o
 SystemCoreClockUpdate                             build/system_stm32f1xx.o
@@ -1426,6 +2019,8 @@ TIM1_UP_IRQHandler                                build/startup_stm32f103xb.o
 TIM2_IRQHandler                                   build/startup_stm32f103xb.o
 TIM3_IRQHandler                                   build/startup_stm32f103xb.o
 TIM4_IRQHandler                                   build/startup_stm32f103xb.o
+UART_Start_Receive_DMA                            build/stm32f1xx_hal_uart.o
+UART_Start_Receive_IT                             build/stm32f1xx_hal_uart.o
 USART1_IRQHandler                                 build/startup_stm32f103xb.o
 USART2_IRQHandler                                 build/startup_stm32f103xb.o
 USART3_IRQHandler                                 build/startup_stm32f103xb.o
@@ -1600,6 +2195,7 @@ main                                              build/main.o
                                                   C:/ST/STM32CubeIDE_2.0.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.100.202509120712/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/crt0.o
 memset                                            C:/ST/STM32CubeIDE_2.0.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.100.202509120712/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc_nano.a(libc_a-memset.o)
                                                   C:/ST/STM32CubeIDE_2.0.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.100.202509120712/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc_nano.a(libc_a-findfp.o)
+                                                  build/stm32f1xx_hal_adc_ex.o
                                                   build/main.o
                                                   C:/ST/STM32CubeIDE_2.0.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.100.202509120712/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/crt0.o
 pFlash                                            build/stm32f1xx_hal_flash.o
