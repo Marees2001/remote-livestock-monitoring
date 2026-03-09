@@ -57,6 +57,24 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define RELAY_FENCE_Pin GPIO_PIN_5
+#define RELAY_FENCE_GPIO_Port GPIOA
+#define RELAY_LAMP_Pin GPIO_PIN_6
+#define RELAY_LAMP_GPIO_Port GPIOA
+#define RELAY_FAN_Pin GPIO_PIN_7
+#define RELAY_FAN_GPIO_Port GPIOA
+#define TDS_SENSOR_Pin GPIO_PIN_0
+#define TDS_SENSOR_GPIO_Port GPIOB
+#define TH_SENSOR_Pin GPIO_PIN_1
+#define TH_SENSOR_GPIO_Port GPIOB
+#define GSM_RX_Pin GPIO_PIN_9
+#define GSM_RX_GPIO_Port GPIOA
+#define GSM_TX_Pin GPIO_PIN_10
+#define GSM_TX_GPIO_Port GPIOA
+#define MCU_SCL_Pin GPIO_PIN_6
+#define MCU_SCL_GPIO_Port GPIOB
+#define MCU_SDA_Pin GPIO_PIN_7
+#define MCU_SDA_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
 
