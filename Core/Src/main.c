@@ -112,7 +112,7 @@ int main(void)
 	HAL_GPIO_WritePin(RELAY_LAMP_GPIO_Port,RELAY_LAMP_Pin,GPIO_PIN_SET);
 	HAL_Delay(2000);
 	HAL_GPIO_WritePin(RELAY_FENCE_GPIO_Port,RELAY_FENCE_Pin,GPIO_PIN_SET);
-	HAL_Delay(1000);
+	//HAL_Delay(1000);
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
