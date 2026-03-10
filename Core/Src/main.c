@@ -106,6 +106,13 @@ int main(void)
 
   /* USER CODE BEGIN 1 */
 	HAL_GPIO_WritePin(STATUS_LED_GPIO_Port,STATUS_LED_Pin,GPIO_PIN_SET);
+	HAL_Delay(1000);
+	HAL_GPIO_WritePin(RELAY_FAN_GPIO_Port,RELAY_FAN_Pin,GPIO_PIN_SET);
+	HAL_Delay(2000);
+	HAL_GPIO_WritePin(RELAY_LAMP_GPIO_Port,RELAY_LAMP_Pin,GPIO_PIN_SET);
+	HAL_Delay(2000);
+	HAL_GPIO_WritePin(RELAY_FENCE_GPIO_Port,RELAY_FENCE_Pin,GPIO_PIN_SET);
+	HAL_Delay(1000);
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -131,13 +138,7 @@ int main(void)
   MX_USART1_UART_Init();
   MX_USB_DEVICE_Init();
   /* USER CODE BEGIN 2 */
-//  ssd1306_Init();
-//  ssd1306_Fill(Black);
-//  ssd1306_UpdateScreen();
-//
-//  ssd1306_SetCursor(0,0);
-//  ssd1306_WriteString("STM32 OLED", Font_7x10, White);
-//  ssd1306_UpdateScreen();
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
