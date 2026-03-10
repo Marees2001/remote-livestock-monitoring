@@ -18,12 +18,15 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "usb_device.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "controller.h"
+#include "ssd1306.h"
+#include "ssd1306_fonts.h"
 #include "stdio.h"
 #include "string.h"
-#include "controller.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -69,13 +72,28 @@ static void MX_USART1_UART_Init(void);
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){
     if(huart->Instance == USART1){
       // Restart UART reception for the next data
+      memset(gsm_rx_buffer, 0, sizeof(gsm_rx_buffer)); // Clear the buffer before receiving new data
       HAL_UART_Receive_IT(&huart1, (uint8_t*)gsm_rx_buffer, sizeof(gsm_rx_buffer));
       receive_bytes = strlen(gsm_rx_buffer); // Update the number of bytes received
       if(!receive_bytes) return; // Update the number of bytes received
       // Process the received data as needed
       if(!gsmInit.init && !strcmp(gsm_rx_buffer, "OK")) gsmInit.init = 1; // Basic command to check communication
-      else if(!gsmInit.sim_sta && !strcmp(gsm_rx_buffer, "+CCID:READY")) gsmInit.sim_sta = 1; // Check SIM card status
+      else if(!gsmInit.sim_sta) sscanf(gsm_rx_buffer, "+CSMINS: %*d,%d", &gsmInit.sim_sta); // Check SIM card status
+      else if(!gsmInit.req_rssi) {
+        sscanf(gsm_rx_buffer, "+CSQ: %d,%*d", &rlm.sta.rssi); // Check signal quality
+        gsmInit.req_rssi = 1; // Mark RSSI as received
+      }
+      // else if(!gsmInit.req_time) {
+      //   sscanf(gsm_rx_buffer, "+CCLK: \"%[^\"]\"", gsm_rx_buffer); // Request network time
+      //   gsmInit.req_time = 1; // Mark time as received
+      // }
     }
+}
+
+
+int _write(int file, char *ptr, int len){
+  CDC_Transmit_FS((uint8_t*)ptr, len);
+  return len;
 }
 /* USER CODE END 0 */
 
@@ -111,8 +129,15 @@ int main(void)
   MX_ADC1_Init();
   MX_I2C1_Init();
   MX_USART1_UART_Init();
+  MX_USB_DEVICE_Init();
   /* USER CODE BEGIN 2 */
-
+//  ssd1306_Init();
+//  ssd1306_Fill(Black);
+//  ssd1306_UpdateScreen();
+//
+//  ssd1306_SetCursor(0,0);
+//  ssd1306_WriteString("STM32 OLED", Font_7x10, White);
+//  ssd1306_UpdateScreen();
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -122,7 +147,9 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-    gsm_init(); // Initialize GSM module
+    printf("Welcome STM32\n\r");
+    HAL_Delay(1000);
+    //gsm_init(); // Initialize GSM module
   }
   /* USER CODE END 3 */
 }
@@ -140,10 +167,13 @@ void SystemClock_Config(void)
   /** Initializes the RCC Oscillators according to the specified parameters
   * in the RCC_OscInitTypeDef structure.
   */
-  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
+  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
+  RCC_OscInitStruct.HSEState = RCC_HSE_ON;
+  RCC_OscInitStruct.HSEPredivValue = RCC_HSE_PREDIV_DIV1;
   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
-  RCC_OscInitStruct.HSICalibrationValue = RCC_HSICALIBRATION_DEFAULT;
-  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_NONE;
+  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
+  RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
+  RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL6;
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
   {
     Error_Handler();
@@ -153,17 +183,18 @@ void SystemClock_Config(void)
   */
   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
-  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_HSI;
+  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
-  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
+  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
 
-  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_0) != HAL_OK)
+  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_1) != HAL_OK)
   {
     Error_Handler();
   }
-  PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_ADC;
-  PeriphClkInit.AdcClockSelection = RCC_ADCPCLK2_DIV2;
+  PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_ADC|RCC_PERIPHCLK_USB;
+  PeriphClkInit.AdcClockSelection = RCC_ADCPCLK2_DIV4;
+  PeriphClkInit.UsbClockSelection = RCC_USBCLKSOURCE_PLL;
   if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
   {
     Error_Handler();
@@ -297,6 +328,7 @@ static void MX_GPIO_Init(void)
   /* USER CODE END MX_GPIO_Init_1 */
 
   /* GPIO Ports Clock Enable */
+  __HAL_RCC_GPIOD_CLK_ENABLE();
   __HAL_RCC_GPIOA_CLK_ENABLE();
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
