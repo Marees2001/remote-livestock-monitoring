@@ -57,6 +57,8 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define STATUS_LED_Pin GPIO_PIN_13
+#define STATUS_LED_GPIO_Port GPIOC
 #define RELAY_FENCE_Pin GPIO_PIN_5
 #define RELAY_FENCE_GPIO_Port GPIOA
 #define RELAY_LAMP_Pin GPIO_PIN_6
