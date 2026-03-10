@@ -24,7 +24,6 @@
 #include "stdio.h"
 #include "string.h"
 #include "controller.h"
-#include "define.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -51,7 +50,7 @@ UART_HandleTypeDef huart1;
 
 /* USER CODE BEGIN PV */
 char gsm_rx_buffer[300]; // Buffer for receiving data from GSM module
-uint8_t received_bytes = 0; // Variable to store the number of bytes received
+uint8_t receive_bytes = 0; // Variable to store the number of bytes received
 
 /* USER CODE END PV */
 
@@ -74,9 +73,8 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){
       receive_bytes = strlen(gsm_rx_buffer); // Update the number of bytes received
       if(!receive_bytes) return; // Update the number of bytes received
       // Process the received data as needed
-      if(!gsmSta.init && !strcmp(gsm_rx_buffer, "OK")) gsm_send_data("AT\r\n"); // Basic command to check communication
-      else if(!gsmSta.rssi) gsmSta.rssi = atoi(strstr(gsm_rx_buffer, "+CSQ: ") + 6); // Extract RSSI value
-      else if(!gsmSta.sim_status) gsm_send_data("AT+CCID?\r\n"); // Check SIM card status
+      if(!gsmInit.init && !strcmp(gsm_rx_buffer, "OK")) gsmInit.init = 1; // Basic command to check communication
+      else if(!gsmInit.sim_sta && !strcmp(gsm_rx_buffer, "+CCID:READY")) gsmInit.sim_sta = 1; // Check SIM card status
     }
 }
 /* USER CODE END 0 */
