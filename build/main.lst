@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 1
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 1
   31:Core/Src/main.c **** /* USER CODE END Includes */
   32:Core/Src/main.c **** 
   33:Core/Src/main.c **** /* Private typedef -----------------------------------------------------------*/
-ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 2
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s 			page 2
 
 
   34:Core/Src/main.c **** /* USER CODE BEGIN PTD */
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 1
   88:Core/Src/main.c ****     else if(!BITREAD(rlm.sta.init_gsm, 3)) {
   89:Core/Src/main.c ****       sscanf(gsm_rx_buffer, "+CSQ: %d,%*d", &rlm.sta.rssi); // Check signal quality
   90:Core/Src/main.c ****       BITSET(rlm.sta.init_gsm, 3); // Mark RSSI as received
-ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 3
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s 			page 3
 
 
   91:Core/Src/main.c ****     }
@@ -143,11 +143,11 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 1
  110:Core/Src/main.c ****   /* USER CODE BEGIN 1 */
  111:Core/Src/main.c **** 	HAL_GPIO_WritePin(STATUS_LED_GPIO_Port,STATUS_LED_Pin,GPIO_PIN_SET);
  112:Core/Src/main.c **** 	HAL_Delay(1000);
- 113:Core/Src/main.c **** 	HAL_GPIO_WritePin(RELAY_FAN_GPIO_Port,RELAY_FAN_Pin,GPIO_PIN_RESET);
+ 113:Core/Src/main.c **** 	HAL_GPIO_WritePin(RELAY_FAN_GPIO_Port,RELAY_FAN_Pin,GPIO_PIN_SET);
  114:Core/Src/main.c **** 	HAL_Delay(2000);
- 115:Core/Src/main.c **** 	HAL_GPIO_WritePin(RELAY_LAMP_GPIO_Port,RELAY_LAMP_Pin,GPIO_PIN_RESET);
+ 115:Core/Src/main.c **** 	HAL_GPIO_WritePin(RELAY_LAMP_GPIO_Port,RELAY_LAMP_Pin,GPIO_PIN_SET);
  116:Core/Src/main.c **** 	HAL_Delay(2000);
- 117:Core/Src/main.c **** 	HAL_GPIO_WritePin(RELAY_FENCE_GPIO_Port,RELAY_FENCE_Pin,GPIO_PIN_RESET);
+ 117:Core/Src/main.c **** 	HAL_GPIO_WritePin(RELAY_FENCE_GPIO_Port,RELAY_FENCE_Pin,GPIO_PIN_SET);
  118:Core/Src/main.c **** 	//HAL_Delay(1000);
  119:Core/Src/main.c **** 
  120:Core/Src/main.c ****   static unsigned long gsm_sync_timeout = 0; // Variable to track GSM synchronization timing
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 1
  145:Core/Src/main.c ****   MX_USART1_UART_Init();
  146:Core/Src/main.c ****   MX_USB_DEVICE_Init();
  147:Core/Src/main.c ****   /* USER CODE BEGIN 2 */
-ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 4
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s 			page 4
 
 
  148:Core/Src/main.c ****   OLED_init(&oled, &hi2c1, 128, 64, OLED_ADDR_DEFAULT); // Initialize OLED display
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 1
  202:Core/Src/main.c ****   */
  203:Core/Src/main.c **** void SystemClock_Config(void)
  204:Core/Src/main.c **** {
-ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 5
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s 			page 5
 
 
  205:Core/Src/main.c ****   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 1
  259:Core/Src/main.c **** 
  260:Core/Src/main.c ****   /* USER CODE BEGIN ADC1_Init 1 */
  261:Core/Src/main.c **** 
-ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 6
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s 			page 6
 
 
  262:Core/Src/main.c ****   /* USER CODE END ADC1_Init 1 */
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 1
  316:Core/Src/main.c ****   hi2c1.Init.NoStretchMode = I2C_NOSTRETCH_DISABLE;
  317:Core/Src/main.c ****   if (HAL_I2C_Init(&hi2c1) != HAL_OK)
  318:Core/Src/main.c ****   {
-ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 7
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s 			page 7
 
 
  319:Core/Src/main.c ****     Error_Handler();
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 1
   32              		.cfi_def_cfa_offset 24
   33              		.cfi_offset 4, -24
   34              		.cfi_offset 5, -20
-ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 8
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s 			page 8
 
 
   35              		.cfi_offset 6, -16
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 1
   80              		.loc 1 375 3 view .LVU15
   81              	.LBB6:
   82              		.loc 1 375 3 view .LVU16
-ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 9
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s 			page 9
 
 
   83              		.loc 1 375 3 view .LVU17
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 1
  127 007a 0493     		str	r3, [sp, #16]
  386:Core/Src/main.c ****   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
  128              		.loc 1 386 3 is_stmt 1 view .LVU31
-ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 10
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s 			page 10
 
 
  129              		.loc 1 386 24 is_stmt 0 view .LVU32
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 1
  401:Core/Src/main.c ****   GPIO_InitStruct.Pull = GPIO_NOPULL;
  169              		.loc 1 401 3 is_stmt 1 view .LVU51
  170              		.loc 1 401 24 is_stmt 0 view .LVU52
-ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 11
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s 			page 11
 
 
  171 00a6 0694     		str	r4, [sp, #24]
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 1
  412:Core/Src/main.c ****   ADC_ChannelConfTypeDef sConfig = {0};
  217              		.loc 1 412 3 is_stmt 1 view .LVU57
  218              		.loc 1 412 26 is_stmt 0 view .LVU58
-ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 12
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s 			page 12
 
 
  219 0004 0023     		movs	r3, #0
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 1
  263              		.loc 1 422 3 is_stmt 1 view .LVU73
  423:Core/Src/main.c **** }
  264              		.loc 1 423 1 is_stmt 0 view .LVU74
-ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 13
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s 			page 13
 
 
  265 003a 2846     		mov	r0, r5
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 1
   31:Core/Inc/controller.h ****     //range 0-1000 ppm, where 0-300 ppm is considered good, 300-600 ppm is fair, and above 600 ppm 
   32:Core/Inc/controller.h ****     uint8_t mn_tds; // Min threshold for TDS
   33:Core/Inc/controller.h **** };
-ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 14
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s 			page 14
 
 
   34:Core/Inc/controller.h **** 
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 1
  324              		.section	.text.gsm_receive_data,"ax",%progbits
  325              		.align	1
  326              		.global	gsm_receive_data
-ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 15
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s 			page 15
 
 
  327              		.syntax unified
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 1
  373      53510D0A 
  373      00
  374 0021 000000   		.align	2
-ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 16
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s 			page 16
 
 
  375              	.LC3:
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 1
   68:Core/Inc/controller.h ****     else if(!BITREAD(rlm.sta.init_gsm, 5)) gsm_send_data("AT+CMGS=\"+917639297586\"\r\n"); // Set S
  417              		.loc 2 68 10 is_stmt 1 view .LVU99
  418              		.loc 2 68 12 is_stmt 0 view .LVU100
-ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 17
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s 			page 17
 
 
  419 001e 13F0200F 		tst	r3, #32
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 1
  468      69766564 
  468      2047534D 
  468      20646174 
-ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 18
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s 			page 18
 
 
  468      613A2025 
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 1
  512              	.LCFI10:
  513              		.cfi_def_cfa_offset 24
   76:Core/Src/main.c ****     HAL_UART_Receive_IT(&huart1, (uint8_t*)gsm_rx_buffer, sizeof(gsm_rx_buffer));
-ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 19
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s 			page 19
 
 
  514              		.loc 1 76 5 is_stmt 1 view .LVU113
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 1
  555              		.loc 1 82 42 discriminator 1 view .LVU126
  556 0048 2B49     		ldr	r1, .L44+24
  557 004a 2648     		ldr	r0, .L44+4
-ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 20
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s 			page 20
 
 
  558 004c FFF7FEFF 		bl	strcmp
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 1
   92:Core/Src/main.c ****     else if(!BITREAD(rlm.sta.init_gsm, 5) && !strcmp(gsm_rx_buffer, "> ")) BITSET(rlm.sta.init_gsm,
  600              		.loc 1 92 76 is_stmt 0 view .LVU139
  601 0082 EAE7     		b	.L30
-ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 21
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s 			page 21
 
 
  602              	.L42:
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 1
   93:Core/Src/main.c ****   }
  645              		.loc 1 93 47 discriminator 1 view .LVU151
  646 00ca 0F49     		ldr	r1, .L44+40
-ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 22
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s 			page 22
 
 
  647 00cc 0548     		ldr	r0, .L44+4
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 1
  698 0004 1446     		mov	r4, r2
   99:Core/Src/main.c ****   return len;
  699              		.loc 1 99 3 is_stmt 1 view .LVU157
-ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 23
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s 			page 23
 
 
  700 0006 1146     		mov	r1, r2
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 1
   10:Drivers/CMSIS/Include/cmsis_gcc.h ****  * SPDX-License-Identifier: Apache-2.0
   11:Drivers/CMSIS/Include/cmsis_gcc.h ****  *
   12:Drivers/CMSIS/Include/cmsis_gcc.h ****  * Licensed under the Apache License, Version 2.0 (the License); you may
-ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 24
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s 			page 24
 
 
   13:Drivers/CMSIS/Include/cmsis_gcc.h ****  * not use this file except in compliance with the License.
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 1
   67:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __PACKED_UNION
   68:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __PACKED_UNION                         union __attribute__((packed, aligned(1)))
   69:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
-ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 25
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s 			page 25
 
 
   70:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __UNALIGNED_UINT32        /* deprecated */
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 1
  124:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
  125:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Enable IRQ Interrupts
  126:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Enables IRQ interrupts by clearing the I-bit in the CPSR.
-ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 26
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s 			page 26
 
 
  127:Drivers/CMSIS/Include/cmsis_gcc.h ****            Can only be executed in Privileged modes.
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 1
  767 0002 85B0     		sub	sp, sp, #20
  768              	.LCFI15:
  769              		.cfi_def_cfa_offset 24
-ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 27
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s 			page 27
 
 
  258:Core/Src/main.c **** 
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 1
  805              		.loc 1 273 6 discriminator 1 view .LVU188
  806 0028 68B9     		cbnz	r0, .L54
  280:Core/Src/main.c ****   sConfig.Rank = ADC_REGULAR_RANK_1;
-ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 28
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s 			page 28
 
 
  807              		.loc 1 280 3 is_stmt 1 view .LVU189
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 1
  850              	.LFE75:
  852              		.section	.text.MX_I2C1_Init,"ax",%progbits
  853              		.align	1
-ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 29
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s 			page 29
 
 
  854              		.syntax unified
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 1
  894 001a 8361     		str	r3, [r0, #24]
  315:Core/Src/main.c ****   hi2c1.Init.NoStretchMode = I2C_NOSTRETCH_DISABLE;
  895              		.loc 1 315 3 is_stmt 1 view .LVU216
-ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 30
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s 			page 30
 
 
  315:Core/Src/main.c ****   hi2c1.Init.NoStretchMode = I2C_NOSTRETCH_DISABLE;
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 1
  941 0002 0A48     		ldr	r0, .L68
  942 0004 0A4B     		ldr	r3, .L68+4
  943 0006 0360     		str	r3, [r0]
-ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 31
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s 			page 31
 
 
  343:Core/Src/main.c ****   huart1.Init.WordLength = UART_WORDLENGTH_8B;
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 1
  979              	.LVL50:
  980              	.L69:
  981 002a 00BF     		.align	2
-ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 32
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s 			page 32
 
 
  982              	.L68:
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 1
  212:Core/Src/main.c ****   RCC_OscInitStruct.HSEState = RCC_HSE_ON;
  1030              		.loc 1 212 36 is_stmt 0 view .LVU255
  1031 0024 0122     		movs	r2, #1
-ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 33
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s 			page 33
 
 
  1032 0026 0A92     		str	r2, [sp, #40]
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 1
  1067              		.loc 1 229 3 is_stmt 1 view .LVU274
  229:Core/Src/main.c ****   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
  1068              		.loc 1 229 35 is_stmt 0 view .LVU275
-ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 34
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s 			page 34
 
 
  1069 004c 0023     		movs	r3, #0
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 1
  1106 007a 15B0     		add	sp, sp, #84
  1107              	.LCFI22:
  1108              		.cfi_remember_state
-ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 35
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s 			page 35
 
 
  1109              		.cfi_def_cfa_offset 4
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 1
  1149      72653A25 
  1149      2E32660D 
  1149      0A00
-ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 36
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s 			page 36
 
 
  1150 004a 0000     		.align	2
@@ -2148,7 +2148,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 1
  1186 000c 8248     		ldr	r0, .L85+48
  1187 000e FFF7FEFF 		bl	HAL_GPIO_WritePin
  1188              	.LVL58:
- 112:Core/Src/main.c **** 	HAL_GPIO_WritePin(RELAY_FAN_GPIO_Port,RELAY_FAN_Pin,GPIO_PIN_RESET);
+ 112:Core/Src/main.c **** 	HAL_GPIO_WritePin(RELAY_FAN_GPIO_Port,RELAY_FAN_Pin,GPIO_PIN_SET);
  1189              		.loc 1 112 2 view .LVU298
  1190 0012 4FF47A70 		mov	r0, #1000
  1191 0016 FFF7FEFF 		bl	HAL_Delay
@@ -2156,34 +2156,34 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 1
  113:Core/Src/main.c **** 	HAL_Delay(2000);
  1193              		.loc 1 113 2 view .LVU299
  1194 001a 804C     		ldr	r4, .L85+52
- 1195 001c 0022     		movs	r2, #0
+ 1195 001c 0122     		movs	r2, #1
  1196 001e 8021     		movs	r1, #128
-ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 37
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s 			page 37
 
 
  1197 0020 2046     		mov	r0, r4
  1198 0022 FFF7FEFF 		bl	HAL_GPIO_WritePin
  1199              	.LVL60:
- 114:Core/Src/main.c **** 	HAL_GPIO_WritePin(RELAY_LAMP_GPIO_Port,RELAY_LAMP_Pin,GPIO_PIN_RESET);
+ 114:Core/Src/main.c **** 	HAL_GPIO_WritePin(RELAY_LAMP_GPIO_Port,RELAY_LAMP_Pin,GPIO_PIN_SET);
  1200              		.loc 1 114 2 view .LVU300
  1201 0026 4FF4FA60 		mov	r0, #2000
  1202 002a FFF7FEFF 		bl	HAL_Delay
  1203              	.LVL61:
  115:Core/Src/main.c **** 	HAL_Delay(2000);
  1204              		.loc 1 115 2 view .LVU301
- 1205 002e 0022     		movs	r2, #0
+ 1205 002e 0122     		movs	r2, #1
  1206 0030 4021     		movs	r1, #64
  1207 0032 2046     		mov	r0, r4
  1208 0034 FFF7FEFF 		bl	HAL_GPIO_WritePin
  1209              	.LVL62:
- 116:Core/Src/main.c **** 	HAL_GPIO_WritePin(RELAY_FENCE_GPIO_Port,RELAY_FENCE_Pin,GPIO_PIN_RESET);
+ 116:Core/Src/main.c **** 	HAL_GPIO_WritePin(RELAY_FENCE_GPIO_Port,RELAY_FENCE_Pin,GPIO_PIN_SET);
  1210              		.loc 1 116 2 view .LVU302
  1211 0038 4FF4FA60 		mov	r0, #2000
  1212 003c FFF7FEFF 		bl	HAL_Delay
  1213              	.LVL63:
  117:Core/Src/main.c **** 	//HAL_Delay(1000);
  1214              		.loc 1 117 2 view .LVU303
- 1215 0040 0022     		movs	r2, #0
+ 1215 0040 0122     		movs	r2, #1
  1216 0042 2021     		movs	r1, #32
  1217 0044 2046     		mov	r0, r4
  1218 0046 FFF7FEFF 		bl	HAL_GPIO_WritePin
@@ -2218,7 +2218,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 1
  1238              		.loc 1 145 3 view .LVU312
  1239 005e FFF7FEFF 		bl	MX_USART1_UART_Init
  1240              	.LVL70:
-ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 38
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s 			page 38
 
 
  146:Core/Src/main.c ****   /* USER CODE BEGIN 2 */
@@ -2278,7 +2278,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 1
  162:Core/Src/main.c ****       gsm_sync_timeout = HAL_GetTick();
  1285              		.loc 1 162 7 discriminator 1 view .LVU323
  1286 00a4 B0F5FA7F 		cmp	r0, #500
-ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 39
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s 			page 39
 
 
  1287 00a8 00F28D80 		bhi	.L84
@@ -2338,7 +2338,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 1
  1327              		.loc 1 178 13 view .LVU337
  1328 00e2 FFF7FEFF 		bl	__aeabi_d2f
  1329              	.LVL83:
-ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 40
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s 			page 40
 
 
  1330 00e6 0446     		mov	r4, r0
@@ -2398,7 +2398,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 1
  1372              	.LVL94:
  185:Core/Src/main.c ****                   - 255.86 * compensatedVoltage * compensatedVoltage
  1373              		.loc 1 185 35 view .LVU350
-ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 41
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s 			page 41
 
 
  1374 011e 0446     		mov	r4, r0
@@ -2458,7 +2458,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 1
  1421              		.loc 1 187 28 view .LVU357
  1422 0172 27A3     		adr	r3, .L85+40
  1423 0174 D3E90023 		ldrd	r2, [r3]
-ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 42
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s 			page 42
 
 
  1424 0178 2046     		mov	r0, r4
@@ -2518,7 +2518,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 1
  1471              		.loc 1 191 7 is_stmt 0 view .LVU364
  1472              	.LBE11:
  163:Core/Src/main.c ****       if(rlm.sta.init_gsm != 0x3F) { // Sync GSM every 0.1 seconds
-ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 43
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s 			page 43
 
 
  1473              		.loc 1 163 7 is_stmt 1 view .LVU365
@@ -2578,7 +2578,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 1
  1519 0230 10000000 		.word	.LC11
  1520 0234 00000000 		.word	gsm_sync_timeout.1
  1521 0238 00000000 		.word	sensor_read_timeout.0
-ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 44
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s 			page 44
 
 
  1522 023c 00003940 		.word	1077477376
@@ -2638,7 +2638,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 1
  1573              		.section	.bss.receive_bytes,"aw",%nobits
  1576              	receive_bytes:
  1577 0000 00       		.space	1
-ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 45
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s 			page 45
 
 
  1578              		.global	gsm_rx_buffer
@@ -2680,71 +2680,71 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 1
  1610              		.file 20 "C:\\ST\\STM32CubeIDE_2.0.0\\STM32CubeIDE\\plugins\\com.st.stm32cube.ide.mcu.externaltool
  1611              		.file 21 "USB_DEVICE/App/usb_device.h"
  1612              		.file 22 "<built-in>"
-ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 46
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s 			page 46
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 main.c
-C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s:19     .text.MX_GPIO_Init:00000000 $t
-C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s:24     .text.MX_GPIO_Init:00000000 MX_GPIO_Init
-C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s:186    .text.MX_GPIO_Init:000000b8 $d
-C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s:195    .text.read_adc_channel:00000000 $t
-C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s:200    .text.read_adc_channel:00000000 read_adc_channel
-C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s:276    .text.read_adc_channel:00000040 $d
-C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s:1570   .bss.hadc1:00000000 hadc1
-C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s:281    .text.gsm_send_data:00000000 $t
-C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s:287    .text.gsm_send_data:00000000 gsm_send_data
-C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s:320    .text.gsm_send_data:00000018 $d
-C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s:1556   .bss.huart1:00000000 huart1
-C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s:325    .text.gsm_receive_data:00000000 $t
-C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s:331    .text.gsm_receive_data:00000000 gsm_receive_data
-C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s:360    .text.gsm_receive_data:00000014 $d
-C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s:365    .rodata.sync_gsm.str1.4:00000000 $d
-C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s:381    .text.sync_gsm:00000000 $t
-C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s:387    .text.sync_gsm:00000000 sync_gsm
-C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s:456    .text.sync_gsm:0000004c $d
-C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s:1590   .bss.rlm:00000000 rlm
-C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s:466    .rodata.HAL_UART_RxCpltCallback.str1.4:00000000 $d
-C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s:482    .text.HAL_UART_RxCpltCallback:00000000 $t
-C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s:488    .text.HAL_UART_RxCpltCallback:00000000 HAL_UART_RxCpltCallback
-C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s:661    .text.HAL_UART_RxCpltCallback:000000e0 $d
-C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s:1583   .bss.gsm_rx_buffer:00000000 gsm_rx_buffer
-C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s:1576   .bss.receive_bytes:00000000 receive_bytes
-C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s:676    .text._write:00000000 $t
-C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s:682    .text._write:00000000 _write
-C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s:714    .text.Error_Handler:00000000 $t
-C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s:720    .text.Error_Handler:00000000 Error_Handler
-C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s:752    .text.MX_ADC1_Init:00000000 $t
-C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s:757    .text.MX_ADC1_Init:00000000 MX_ADC1_Init
-C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s:847    .text.MX_ADC1_Init:00000050 $d
-C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s:853    .text.MX_I2C1_Init:00000000 $t
-C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s:858    .text.MX_I2C1_Init:00000000 MX_I2C1_Init
-C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s:916    .text.MX_I2C1_Init:0000002c $d
-C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s:1563   .bss.hi2c1:00000000 hi2c1
-C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s:923    .text.MX_USART1_UART_Init:00000000 $t
-C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s:928    .text.MX_USART1_UART_Init:00000000 MX_USART1_UART_Init
-C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s:983    .text.MX_USART1_UART_Init:0000002c $d
-C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s:989    .text.SystemClock_Config:00000000 $t
-C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s:995    .text.SystemClock_Config:00000000 SystemClock_Config
-C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s:1130   .rodata.main.str1.4:00000000 $d
-C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s:1157   .text.main:00000000 $t
-C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s:1163   .text.main:00000000 main
-C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s:1501   .text.main:000001e8 $d
-C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s:1549   .bss.oled:00000000 oled
-C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s:1542   .bss.gsm_sync_timeout.1:00000000 gsm_sync_timeout.1
-C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s:1536   .bss.sensor_read_timeout.0:00000000 sensor_read_timeout.0
-C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s:1533   .bss.sensor_read_timeout.0:00000000 $d
-C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s:1539   .bss.gsm_sync_timeout.1:00000000 $d
-C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s:1546   .bss.oled:00000000 $d
-C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s:1553   .bss.huart1:00000000 $d
-C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s:1560   .bss.hi2c1:00000000 $d
-C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s:1567   .bss.hadc1:00000000 $d
-C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s:1577   .bss.receive_bytes:00000000 $d
-ARM GAS  C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s 			page 47
+C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s:19     .text.MX_GPIO_Init:00000000 $t
+C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s:24     .text.MX_GPIO_Init:00000000 MX_GPIO_Init
+C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s:186    .text.MX_GPIO_Init:000000b8 $d
+C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s:195    .text.read_adc_channel:00000000 $t
+C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s:200    .text.read_adc_channel:00000000 read_adc_channel
+C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s:276    .text.read_adc_channel:00000040 $d
+C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s:1570   .bss.hadc1:00000000 hadc1
+C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s:281    .text.gsm_send_data:00000000 $t
+C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s:287    .text.gsm_send_data:00000000 gsm_send_data
+C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s:320    .text.gsm_send_data:00000018 $d
+C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s:1556   .bss.huart1:00000000 huart1
+C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s:325    .text.gsm_receive_data:00000000 $t
+C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s:331    .text.gsm_receive_data:00000000 gsm_receive_data
+C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s:360    .text.gsm_receive_data:00000014 $d
+C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s:365    .rodata.sync_gsm.str1.4:00000000 $d
+C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s:381    .text.sync_gsm:00000000 $t
+C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s:387    .text.sync_gsm:00000000 sync_gsm
+C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s:456    .text.sync_gsm:0000004c $d
+C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s:1590   .bss.rlm:00000000 rlm
+C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s:466    .rodata.HAL_UART_RxCpltCallback.str1.4:00000000 $d
+C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s:482    .text.HAL_UART_RxCpltCallback:00000000 $t
+C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s:488    .text.HAL_UART_RxCpltCallback:00000000 HAL_UART_RxCpltCallback
+C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s:661    .text.HAL_UART_RxCpltCallback:000000e0 $d
+C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s:1583   .bss.gsm_rx_buffer:00000000 gsm_rx_buffer
+C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s:1576   .bss.receive_bytes:00000000 receive_bytes
+C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s:676    .text._write:00000000 $t
+C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s:682    .text._write:00000000 _write
+C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s:714    .text.Error_Handler:00000000 $t
+C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s:720    .text.Error_Handler:00000000 Error_Handler
+C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s:752    .text.MX_ADC1_Init:00000000 $t
+C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s:757    .text.MX_ADC1_Init:00000000 MX_ADC1_Init
+C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s:847    .text.MX_ADC1_Init:00000050 $d
+C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s:853    .text.MX_I2C1_Init:00000000 $t
+C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s:858    .text.MX_I2C1_Init:00000000 MX_I2C1_Init
+C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s:916    .text.MX_I2C1_Init:0000002c $d
+C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s:1563   .bss.hi2c1:00000000 hi2c1
+C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s:923    .text.MX_USART1_UART_Init:00000000 $t
+C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s:928    .text.MX_USART1_UART_Init:00000000 MX_USART1_UART_Init
+C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s:983    .text.MX_USART1_UART_Init:0000002c $d
+C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s:989    .text.SystemClock_Config:00000000 $t
+C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s:995    .text.SystemClock_Config:00000000 SystemClock_Config
+C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s:1130   .rodata.main.str1.4:00000000 $d
+C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s:1157   .text.main:00000000 $t
+C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s:1163   .text.main:00000000 main
+C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s:1501   .text.main:000001e8 $d
+C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s:1549   .bss.oled:00000000 oled
+C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s:1542   .bss.gsm_sync_timeout.1:00000000 gsm_sync_timeout.1
+C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s:1536   .bss.sensor_read_timeout.0:00000000 sensor_read_timeout.0
+C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s:1533   .bss.sensor_read_timeout.0:00000000 $d
+C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s:1539   .bss.gsm_sync_timeout.1:00000000 $d
+C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s:1546   .bss.oled:00000000 $d
+C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s:1553   .bss.huart1:00000000 $d
+C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s:1560   .bss.hi2c1:00000000 $d
+C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s:1567   .bss.hadc1:00000000 $d
+C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s:1577   .bss.receive_bytes:00000000 $d
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s 			page 47
 
 
-C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s:1580   .bss.gsm_rx_buffer:00000000 $d
-C:\Users\maree\AppData\Local\Temp\ccu1EIAe.s:1587   .bss.rlm:00000000 $d
+C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s:1580   .bss.gsm_rx_buffer:00000000 $d
+C:\Users\maree\AppData\Local\Temp\ccQwMFKI.s:1587   .bss.rlm:00000000 $d
 
 UNDEFINED SYMBOLS
 HAL_GPIO_WritePin
