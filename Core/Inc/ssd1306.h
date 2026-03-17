@@ -1,157 +1,237 @@
+#ifndef SSD1306_H
+#define SSD1306_H
+
 /**
- * This Library was originally written by Olivier Van den Eede (4ilo) in 2016.
- * Some refactoring was done and SPI support was added by Aleksander Alekseev (afiskon) in 2018.
+ * @file    SSD1306.h
+ * @brief   STM32 HAL C port of the SSD1306 OLED driver.
+ * @author  Ported from Saurav Sajeev's Arduino C++ library.
  *
- * https://github.com/afiskon/stm32-ssd1306
+ * Usage:
+ *   1. Declare an OLED_t struct and call OLED_init().
+ *   2. Draw shapes/text into the internal buffer.
+ *   3. Call OLED_inflate() to push the buffer to the display.
+ *
+ * Replace `&hi2c1` with your actual I2C handle.
  */
 
-#ifndef __SSD1306_H__
-#define __SSD1306_H__
-
-#include <stddef.h>
+#include "stm32f1xx_hal.h"   /* <-- Change to match your MCU family */
 #include <stdint.h>
-#include <_ansi.h>
+#include <stdbool.h>
+#include <string.h>
+#include <stdlib.h>
+#include <math.h>
 
-_BEGIN_STD_C
+/* ------------------------------------------------------------------ */
+/*  I2C default address                                                 */
+/* ------------------------------------------------------------------ */
+#define OLED_ADDR_DEFAULT  0x3C   /* Shift left by 1 for HAL: 0x78   */
 
-//#include "ssd1306_conf.h" 
+/* ------------------------------------------------------------------ */
+/*  Display register addresses                                          */
+/* ------------------------------------------------------------------ */
+#define OLED_OFF               0xAE
+#define OLED_ON                0xAF
+#define OLED_INVERT            0xA7
+#define OLED_REVERT            0xA6
+#define OLED_ENTIRE_DISP_ON    0xA5
+#define OLED_RESUME_FROM_VRAM  0xA4
+#define OLED_DISP_CLOCK_DIV    0xD5
+#define OLED_MULTIPLEX         0xA8
+#define OLED_CHRG_PUMP         0x8D
+#define OLED_DISP_OFFSET       0xD3
+#define OLED_MEM_ADDR_MODE     0x20
+#define OLED_COM_CONFIG        0xDA
+#define OLED_CONTRAST          0x81
+#define OLED_PRE_CHRG          0xD9
+#define OLED_VCOMH_DESEL       0xDB
+#define OLED_TURN_ON_ALL       0xA4
+#define OLED_SET_DISP_NORMAL   0xA6
+#define OLED_SET_COL_ADDR      0x21
+#define OLED_SET_PG_ADDR       0x22
 
+/* ------------------------------------------------------------------ */
+/*  Register command values                                             */
+/* ------------------------------------------------------------------ */
+#define OLED_CLK_RATIO_RST     0x80
+#define OLED_CLK_RATIO_HIGH    0x80
+#define OLED_CLK_RATIO_MED     0xB0
+#define OLED_CLK_RATIO_LOW     0xF0
+#define OLED_OFFSET_NO         0x00
+#define OLED_START_LINE        0x40
+#define OLED_CHRG_PUMP_75      0x24
+#define OLED_CHRG_PUMP_85      0x27
+#define OLED_CHRG_PUMP_90      0x4F
+#define OLED_CHRG_PUMP_OFF     0x10
+#define OLED_HORIZONTAL        0x00
+#define OLED_SEG_REMAP_127     0xA1
+#define OLED_COM_SCAN_REMAP    0xC8
+#define OLED_COM_ALT           0x12
+#define OLED_CONTRAST_MAX      0xFF
+#define OLED_PRE_CHRG_RST      0x22
+#define OLED_PRE_CHRG_MAX      0xAA
+#define OLED_VCOMH_65          0x00
+#define OLED_VCOMH_71          0x10
+#define OLED_VCOMH_77          0x20
+#define OLED_VCOMH_83          0x30
 
-#include "stm32f1xx_hal.h"
-
-
-
-#ifdef SSD1306_X_OFFSET
-#define SSD1306_X_OFFSET_LOWER (SSD1306_X_OFFSET & 0x0F)
-#define SSD1306_X_OFFSET_UPPER ((SSD1306_X_OFFSET >> 4) & 0x07)
-#else
-#define SSD1306_X_OFFSET_LOWER 0
-#define SSD1306_X_OFFSET_UPPER 0
-#endif
-
-/* vvv I2C config vvv */
-
-#ifndef SSD1306_I2C_PORT
-#define SSD1306_I2C_PORT        hi2c1
-#endif
-
-#ifndef SSD1306_I2C_ADDR
-#define SSD1306_I2C_ADDR        (0x3C << 1)
-#endif
-
-/* ^^^ I2C config ^^^ */
-
-
-
-/* ^^^ SPI config ^^^ */
-
-
-extern I2C_HandleTypeDef SSD1306_I2C_PORT;
-
-
-// SSD1306 OLED height in pixels
-#ifndef SSD1306_HEIGHT
-#define SSD1306_HEIGHT          64
-#endif
-
-// SSD1306 width in pixels
-#ifndef SSD1306_WIDTH
-#define SSD1306_WIDTH           128
-#endif
-
-#ifndef SSD1306_BUFFER_SIZE
-#define SSD1306_BUFFER_SIZE   SSD1306_WIDTH * SSD1306_HEIGHT / 8
-#endif
-
-// Enumeration for screen colors
+/* ------------------------------------------------------------------ */
+/*  Power modes                                                         */
+/* ------------------------------------------------------------------ */
 typedef enum {
-    Black = 0x00, // Black color, no pixel
-    White = 0x01  // Pixel is set. Color depends on OLED
-} SSD1306_COLOR;
+    OLED_LOW_POWER_MODE   = 0x01,
+    OLED_BALANCED_MODE    = 0x02,
+    OLED_PERFORMANCE_MODE = 0x03,
+    OLED_TURBO_MODE       = 0x04
+} OLED_PowerMode;
 
-typedef enum {
-    SSD1306_OK = 0x00,
-    SSD1306_ERR = 0x01  // Generic error.
-} SSD1306_Error_t;
-
-// Struct to store transformations
-typedef struct {
-    uint16_t CurrentX;
-    uint16_t CurrentY;
-    uint8_t Initialized;
-    uint8_t DisplayOn;
-} SSD1306_t;
+/* ------------------------------------------------------------------ */
+/*  OLED handle struct  (equivalent to the C++ OLED class)             */
+/* ------------------------------------------------------------------ */
+#define OLED_BUFFER_SIZE  (128 * 64 / 8)   /* 1024 bytes              */
 
 typedef struct {
-    uint8_t x;
-    uint8_t y;
-} SSD1306_VERTEX;
+    I2C_HandleTypeDef *hi2c;        /* HAL I2C handle pointer          */
+    uint8_t  address;               /* 7-bit I2C address (e.g. 0x3C)   */
+    uint8_t  width;                 /* Display width  in pixels         */
+    uint8_t  height;                /* Display height in pixels         */
+    uint8_t  buffer[OLED_BUFFER_SIZE];
+    const uint8_t (*fontSet)[5];    /* Active font table               */
+    uint8_t  fontWidth;
+    uint8_t  charWidth;
+    uint8_t  stepVal;
+    bool     isSetup;
+    bool     pixelState;            /* true = set pixel, false = clear  */
+    bool     clearOnClr;
+    uint8_t  invertState;
+    uint8_t  currentPowerMode;
+} OLED_t;
 
-/** Font */
-typedef struct {
-	const uint8_t width;                /**< Font width in pixels */
-	const uint8_t height;               /**< Font height in pixels */
-	const uint16_t *const data;         /**< Pointer to font data array */
-    const uint8_t *const char_width;    /**< Proportional character width in pixels (NULL for monospaced) */
-} SSD1306_Font_t;
-
-// Procedure definitions
-void ssd1306_Init(void);
-void ssd1306_Fill(SSD1306_COLOR color);
-void ssd1306_UpdateScreen(void);
-void ssd1306_DrawPixel(uint8_t x, uint8_t y, SSD1306_COLOR color);
-char ssd1306_WriteChar(char ch, SSD1306_Font_t Font, SSD1306_COLOR color);
-char ssd1306_WriteString(char* str, SSD1306_Font_t Font, SSD1306_COLOR color);
-void ssd1306_SetCursor(uint8_t x, uint8_t y);
-void ssd1306_Line(uint8_t x1, uint8_t y1, uint8_t x2, uint8_t y2, SSD1306_COLOR color);
-void ssd1306_DrawArc(uint8_t x, uint8_t y, uint8_t radius, uint16_t start_angle, uint16_t sweep, SSD1306_COLOR color);
-void ssd1306_DrawArcWithRadiusLine(uint8_t x, uint8_t y, uint8_t radius, uint16_t start_angle, uint16_t sweep, SSD1306_COLOR color);
-void ssd1306_DrawCircle(uint8_t par_x, uint8_t par_y, uint8_t par_r, SSD1306_COLOR color);
-void ssd1306_FillCircle(uint8_t par_x,uint8_t par_y,uint8_t par_r,SSD1306_COLOR par_color);
-void ssd1306_Polyline(const SSD1306_VERTEX *par_vertex, uint16_t par_size, SSD1306_COLOR color);
-void ssd1306_DrawRectangle(uint8_t x1, uint8_t y1, uint8_t x2, uint8_t y2, SSD1306_COLOR color);
-void ssd1306_FillRectangle(uint8_t x1, uint8_t y1, uint8_t x2, uint8_t y2, SSD1306_COLOR color);
+/* ------------------------------------------------------------------ */
+/*  Initialisation                                                      */
+/* ------------------------------------------------------------------ */
 
 /**
- * @brief Invert color of pixels in rectangle (include border)
- * 
- * @param x1 X Coordinate of top left corner
- * @param y1 Y Coordinate of top left corner
- * @param x2 X Coordinate of bottom right corner
- * @param y2 Y Coordinate of bottom right corner
- * @return SSD1306_Error_t status
+ * @brief  Initialise the OLED handle and run the auto-setup sequence.
+ * @param  oled     Pointer to an OLED_t struct.
+ * @param  hi2c     Pointer to the HAL I2C handle (e.g. &hi2c1).
+ * @param  width    Display width  (e.g. 128).
+ * @param  height   Display height (e.g. 64).
+ * @param  address  7-bit I2C address (e.g. OLED_ADDR_DEFAULT = 0x3C).
  */
-SSD1306_Error_t ssd1306_InvertRectangle(uint8_t x1, uint8_t y1, uint8_t x2, uint8_t y2);
+void OLED_init(OLED_t *oled, I2C_HandleTypeDef *hi2c,
+               uint8_t width, uint8_t height, uint8_t address);
 
-void ssd1306_DrawBitmap(uint8_t x, uint8_t y, const unsigned char* bitmap, uint8_t w, uint8_t h, SSD1306_COLOR color);
+/* ------------------------------------------------------------------ */
+/*  Text                                                                */
+/* ------------------------------------------------------------------ */
+
+/** @brief Print text at (x, y). */
+void OLED_print(OLED_t *oled, const char *str, uint8_t x, uint8_t y);
+
+/** @brief Print inverted (highlighted) text at (x, y). */
+void OLED_printHighlighted(OLED_t *oled, const char *str, uint8_t x, uint8_t y);
+
+/** @brief Print text with a typewriter animation (delayMs between chars). */
+void OLED_printAnimated(OLED_t *oled, const char *str, uint8_t x, uint8_t y,
+                        uint32_t delayMs, bool highlight);
+
+/** @brief Clear screen then print text at (x, y). */
+void OLED_printClear(OLED_t *oled, const char *str, uint8_t x, uint8_t y);
+
+/* ------------------------------------------------------------------ */
+/*  Drawing primitives                                                  */
+/* ------------------------------------------------------------------ */
+
+/** @brief Draw a straight line between two points with given thickness. */
+void OLED_line(OLED_t *oled, uint8_t startX, uint8_t startY,
+               uint8_t endX, uint8_t endY, uint8_t thickness);
+
+/** @brief Draw a rectangle.  cornerRadius=0 for sharp corners. */
+void OLED_rectangle(OLED_t *oled, uint8_t startX, uint8_t startY,
+                    uint8_t width, uint8_t height,
+                    uint8_t cornerRadius, uint8_t thickness, bool fill);
+
+/** @brief Draw a circle. */
+void OLED_circle(OLED_t *oled, uint8_t centerX, uint8_t centerY,
+                 uint8_t radius, uint8_t thickness);
+
+/** @brief Draw a bitmap image. */
+void OLED_draw(OLED_t *oled, const uint8_t *dataSet,
+               uint8_t x, uint8_t y, uint8_t width, uint8_t height);
+
+/** @brief Draw a progress bar (style 1–15). */
+void OLED_progressBar(OLED_t *oled, uint8_t progress,
+                      uint8_t x, uint8_t y, int style);
+
+/* ------------------------------------------------------------------ */
+/*  Data plots                                                          */
+/* ------------------------------------------------------------------ */
+
+void OLED_pulsePlot    (OLED_t *oled, uint8_t x, uint8_t y,
+                        uint8_t w, uint8_t h, int *data, uint8_t size,
+                        int maxVal, int median, uint8_t axisThickness);
+
+void OLED_bitBarPlot   (OLED_t *oled, uint8_t x, uint8_t y,
+                        uint8_t w, uint8_t h, int *data, uint8_t size,
+                        int maxVal, int median, uint8_t axisThickness);
+
+void OLED_scatterPlot  (OLED_t *oled, uint8_t x, uint8_t y,
+                        uint8_t w, uint8_t h, int *data, uint8_t size,
+                        int maxVal, int median, uint8_t axisThickness);
+
+void OLED_histogramPlot(OLED_t *oled, uint8_t x, uint8_t y,
+                        uint8_t w, uint8_t h, int *data, uint8_t size,
+                        int maxVal);
+
+void OLED_barPlot      (OLED_t *oled, uint8_t x, uint8_t y,
+                        uint8_t w, uint8_t h, int *data, uint8_t size,
+                        int maxVal);
+
+/* ------------------------------------------------------------------ */
+/*  Display control                                                     */
+/* ------------------------------------------------------------------ */
+
+/** @brief Push the internal buffer to the physical display. */
+void OLED_inflate(OLED_t *oled);
+
+/** @brief Clear buffer. If refresh=true, immediately push blank frame. */
+void OLED_clearScr(OLED_t *oled, bool refresh);
+
+/** @brief Clear a horizontal segment on the given page (row). */
+void OLED_clearArea(OLED_t *oled, uint8_t startX, uint8_t endX, uint8_t page);
+
+/** @brief Set brightness 0–100 %. */
+void OLED_setBrightness(OLED_t *oled, uint8_t brightness);
+
+/** @brief Toggle invert mode. */
+void OLED_invertDisplay(OLED_t *oled);
+
+/** @brief Force all pixels ON (ignores VRAM). */
+void OLED_entireDisplayON(OLED_t *oled);
+
+/** @brief Return to normal VRAM-driven display. */
+void OLED_entireDisplayOFF(OLED_t *oled);
+
+/** @brief Choose power / speed trade-off. */
+void OLED_setPowerMode(OLED_t *oled, OLED_PowerMode mode);
+
+/** @brief Enable or disable super-brightness (unstable on some panels). */
+void OLED_superBrightness(OLED_t *oled, bool enable);
+
+/** @brief Turn off display when clearScr is called. */
+void OLED_turnOffOnClr(OLED_t *oled, bool mode);
 
 /**
- * @brief Sets the contrast of the display.
- * @param[in] value contrast to set.
- * @note Contrast increases as the value increases.
- * @note RESET = 7Fh.
+ * @brief  Set the pixel drawing state.
+ * @param  state  true  = subsequent draw calls SET  pixels (default).
+ *                false = subsequent draw calls CLEAR pixels (erase).
  */
-void ssd1306_SetContrast(const uint8_t value);
+void OLED_invertPixelState(OLED_t *oled, bool state);
 
-/**
- * @brief Set Display ON/OFF.
- * @param[in] on 0 for OFF, any for ON.
- */
-void ssd1306_SetDisplayOn(const uint8_t on);
+/** @brief Set a custom 5-column font table. */
+void OLED_setFont(OLED_t *oled, const uint8_t (*fontArray)[5]);
 
-/**
- * @brief Reads DisplayOn state.
- * @return  0: OFF.
- *          1: ON.
- */
-uint8_t ssd1306_GetDisplayOn();
+/** @brief Restore the built-in default font. */
+void OLED_clearCustomFont(OLED_t *oled);
 
-// Low-level procedures
-void ssd1306_Reset(void);
-void ssd1306_WriteCommand(uint8_t byte);
-void ssd1306_WriteData(uint8_t* buffer, size_t buff_size);
-SSD1306_Error_t ssd1306_FillBuffer(uint8_t* buf, uint32_t len);
-
-_END_STD_C
-
-#endif // __SSD1306_H__
+#endif /* SSD1306_H */

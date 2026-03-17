@@ -23,11 +23,11 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "controller.h"
-#include "usbd_cdc_if.h"
-#include "ssd1306.h"
-#include "ssd1306_fonts.h"
 #include "stdio.h"
 #include "string.h"
+
+#include "../Inc/SSD1306.h"
+#include "define.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -37,7 +37,8 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-
+char gsm_rx_buffer[300]; // Buffer for receiving data from GSM module
+uint8_t receive_bytes = 0; // Variable to store the number of bytes received
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -53,8 +54,7 @@ I2C_HandleTypeDef hi2c1;
 UART_HandleTypeDef huart1;
 
 /* USER CODE BEGIN PV */
-char gsm_rx_buffer[300]; // Buffer for receiving data from GSM module
-uint8_t receive_bytes = 0; // Variable to store the number of bytes received
+OLED_t oled; // OLED display handle
 
 /* USER CODE END PV */
 
@@ -65,30 +65,33 @@ static void MX_ADC1_Init(void);
 static void MX_I2C1_Init(void);
 static void MX_USART1_UART_Init(void);
 /* USER CODE BEGIN PFP */
-
+static uint32_t read_adc_channel(uint32_t channel);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){
-    if(huart->Instance == USART1){
-      // Restart UART reception for the next data
-      memset(gsm_rx_buffer, 0, sizeof(gsm_rx_buffer)); // Clear the buffer before receiving new data
-      HAL_UART_Receive_IT(&huart1, (uint8_t*)gsm_rx_buffer, sizeof(gsm_rx_buffer));
-      receive_bytes = strlen(gsm_rx_buffer); // Update the number of bytes received
-      if(!receive_bytes) return; // Update the number of bytes received
-      // Process the received data as needed
-      if(!gsmInit.init && !strcmp(gsm_rx_buffer, "OK")) gsmInit.init = 1; // Basic command to check communication
-      else if(!gsmInit.sim_sta) sscanf(gsm_rx_buffer, "+CSMINS: %*d,%d", &gsmInit.sim_sta); // Check SIM card status
-      else if(!gsmInit.req_rssi) {
-        sscanf(gsm_rx_buffer, "+CSQ: %d,%*d", &rlm.sta.rssi); // Check signal quality
-        gsmInit.req_rssi = 1; // Mark RSSI as received
-      }
-      // else if(!gsmInit.req_time) {
-      //   sscanf(gsm_rx_buffer, "+CCLK: \"%[^\"]\"", gsm_rx_buffer); // Request network time
-      //   gsmInit.req_time = 1; // Mark time as received
-      // }
+  if(huart->Instance == USART1){
+    // Restart UART reception for the next data
+    memset(gsm_rx_buffer, 0, sizeof(gsm_rx_buffer)); // Clear the buffer before receiving new data
+    HAL_UART_Receive_IT(&huart1, (uint8_t*)gsm_rx_buffer, sizeof(gsm_rx_buffer));
+    receive_bytes = strlen(gsm_rx_buffer); // Update the number of bytes received
+    printf("Received GSM data: %s\n\r", gsm_rx_buffer); // Print the received data for debugging
+    if(!receive_bytes) return; // Update the number of bytes received
+    // Process the received data as needed
+    if(!BITREAD(rlm.sta.init_gsm, 0) && !strcmp(gsm_rx_buffer, "OK")) BITSET(rlm.sta.init_gsm, 0); // Basic command to check communication
+    else if(!BITREAD(rlm.sta.init_gsm, 1)) {
+      uint8_t sim_status = 0;
+      sscanf(gsm_rx_buffer, "+CSMINS: %*d,%d", &sim_status); // Check SIM card status
+      if(sim_status) BITSET(rlm.sta.init_gsm, 1); // Mark SIM card status as received
     }
+    else if(!BITREAD(rlm.sta.init_gsm, 3)) {
+      sscanf(gsm_rx_buffer, "+CSQ: %d,%*d", &rlm.sta.rssi); // Check signal quality
+      BITSET(rlm.sta.init_gsm, 3); // Mark RSSI as received
+    }
+    else if(!BITREAD(rlm.sta.init_gsm, 4) && !strcmp(gsm_rx_buffer, "OK")) BITSET(rlm.sta.init_gsm, 5); // Mark SMS mode set as done
+    else if(!BITREAD(rlm.sta.init_gsm, 5) && !strcmp(gsm_rx_buffer, "> ")) BITSET(rlm.sta.init_gsm, 6); // Mark SMS recipient set as done
+  }
 }
 
 
@@ -102,15 +105,21 @@ int _write(int file, char *ptr, int len){
   * @brief  The application entry point.
   * @retval int
   */
-int main(void)
-{
+int main(void) {
 
   /* USER CODE BEGIN 1 */
 	HAL_GPIO_WritePin(STATUS_LED_GPIO_Port,STATUS_LED_Pin,GPIO_PIN_SET);
+	HAL_Delay(1000);
 	HAL_GPIO_WritePin(RELAY_FAN_GPIO_Port,RELAY_FAN_Pin,GPIO_PIN_RESET);
+	HAL_Delay(2000);
 	HAL_GPIO_WritePin(RELAY_LAMP_GPIO_Port,RELAY_LAMP_Pin,GPIO_PIN_RESET);
+	HAL_Delay(2000);
 	HAL_GPIO_WritePin(RELAY_FENCE_GPIO_Port,RELAY_FENCE_Pin,GPIO_PIN_RESET);
 	//HAL_Delay(1000);
+
+  static unsigned long gsm_sync_timeout = 0; // Variable to track GSM synchronization timing
+  static unsigned long sensor_read_timeout = 0; // Variable to track sensor reading timing
+  static unsigned long display_update_timeout = 0; // Variable to track display update timing
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -136,7 +145,11 @@ int main(void)
   MX_USART1_UART_Init();
   MX_USB_DEVICE_Init();
   /* USER CODE BEGIN 2 */
-
+  OLED_init(&oled, &hi2c1, 128, 64, OLED_ADDR_DEFAULT); // Initialize OLED display
+  memset(&rlm, 0, sizeof(rlm)); // Clear the controller status
+  BITSET(rlm.sta.init_gsm, 2); // Mark GSM UART configuration as done since UART is initialized
+  printf("Welcome STM32\n\r");
+  OLED_print(&oled,"Welcome STM32",0,0);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -146,8 +159,38 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-    printf("Welcome STM32\n\r");
-    HAL_Delay(1000);
+    if(HAL_GetTick() - gsm_sync_timeout > 500) { // Check if 0.5 seconds have passed since the last GSM synchronization
+      gsm_sync_timeout = HAL_GetTick();
+      if(rlm.sta.init_gsm != 0x3F) { // Sync GSM every 0.1 seconds
+        sync_gsm();
+      }else if(rlm.sta.init_gsm == 0x3F) { // If GSM is fully initialized, perform main operations
+        // Main operations here (e.g., read sensors, update display, control actuators)
+        printf("GSM fully initialized\n\r");
+      }
+    }
+
+    /*Function block for read sensors*/
+    if(HAL_GetTick() - sensor_read_timeout > 1000) { // Check if 1 second has passed since the last sensor reading
+      sensor_read_timeout = HAL_GetTick();
+      // Read sensor values here
+      uint32_t adc_value = read_adc_channel(ADC_CHANNEL_8);
+      // Step 1: ADC to Voltage
+      float voltage = (adc_value / 4095.0) * 3.3f;
+
+      // Step 2: Temperature Compensation
+      float compensationCoefficient = 1.0 + 0.02 * (rlm.sta.temp_value - 25.0);
+      float compensatedVoltage = voltage / compensationCoefficient;
+
+      // Step 3: Convert to TDS
+      rlm.sta.tds_value = (133.42 * compensatedVoltage * compensatedVoltage * compensatedVoltage
+                  - 255.86 * compensatedVoltage * compensatedVoltage
+                  + 857.39 * compensatedVoltage) * 0.5;
+      
+      printf("Temprature:%.2f\r\n", rlm.sta.temp_value);
+      printf("Humidity:%.2f\r\n", rlm.sta.hum_value);
+      printf("TDS value:%.2f\r\n", rlm.sta.tds_value);
+    }
+
     //gsm_init(); // Initialize GSM module
   }
   /* USER CODE END 3 */
@@ -364,7 +407,20 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+/* Read a configured ADC channel once and return value (12-bit assumed) */
+static uint32_t read_adc_channel(uint32_t channel) {
+  ADC_ChannelConfTypeDef sConfig = {0};
+  sConfig.Channel = channel;
+  sConfig.Rank = ADC_REGULAR_RANK_1;
+  sConfig.SamplingTime = ADC_SAMPLETIME_7CYCLES_5;
+  HAL_ADC_ConfigChannel(&hadc1, &sConfig);
 
+  HAL_ADC_Start(&hadc1);
+  HAL_ADC_PollForConversion(&hadc1, 10);
+  uint32_t val = HAL_ADC_GetValue(&hadc1);
+  HAL_ADC_Stop(&hadc1);
+  return val;
+}
 /* USER CODE END 4 */
 
 /**

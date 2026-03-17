@@ -2,23 +2,15 @@
 #ifndef CONTROLLER_H
 #define CONTROLLER_H
 
+#include "define.h"
 
 
 extern UART_HandleTypeDef huart1;
 
-/*structure for GSM communication*/
-struct GSMS_INITIALIZATION {
-    uint8_t init; // command:AT ,Initialization status (0 or 1)
-    uint8_t sim_sta; //command: AT-CSPIN? ,SIM card status (0-3). 0: Not checked, 1: Ready, 2: Not ready, 3: Error
-    uint8_t set_uart_conf; // command: AT+ICF?,UART configuration status.
-    // Bit read operations: 0: NOT SET, 1:Baud rate 2: Word length, 3: Stop bits, 4: Parity
-    uint8_t req_rssi; // command: AT+CSQ?, Request signal quality in dbm.
-    uint8_t req_time; // command: AT+CCLK?, Request network time.
-}gsmInit;
-
 /*Structure for controller status*/
 struct CONTROLLER_STATUS {
-    uint8_t init_gsm; // GSM initialization status (0 or 1)
+    uint8_t init_gsm; // GSM initialization status by bitread operations: 0: GSM module initialized,
+    //1: SIM card ready, 2: UART configured, 3: RSSI received,4: set SMS mode, 5: set SMS recipient
     float tds_value; // TDS sensor value
     float temp_value; // Temperature sensor value
     float hum_value; // Humidity sensor value
@@ -69,9 +61,10 @@ void gsm_receive_data(char* buffer, size_t buffer_size){
 
 void sync_gsm() {
     // Send initialization commands to GSM module
-    if(!gsmInit.init) gsm_send_data("AT\r\n"); // Basic command to check communication
-    else if(!gsmInit.sim_sta) gsm_send_data("AT+CSMINS?\r\n"); // Check SIM card status
-    else if(!gsmInit.req_rssi) gsm_send_data("AT+CSQ\r\n"); // Check signal quality
-    // else if(!gsmInit.req_time) gsm_send_data("AT+CCLK?\r\n"); // Request network time
+    if(!BITREAD(rlm.sta.init_gsm, 0)) gsm_send_data("AT\r\n"); // Basic command to check communication
+    else if(!BITREAD(rlm.sta.init_gsm, 1)) gsm_send_data("AT+CSMINS?\r\n"); // Check SIM card status
+    else if(!BITREAD(rlm.sta.init_gsm, 3)) gsm_send_data("AT+CSQ\r\n"); // Check signal quality
+    else if(!BITREAD(rlm.sta.init_gsm, 4)) gsm_send_data("AT+CMGF=1\r\n"); // Set SMS mode
+    else if(!BITREAD(rlm.sta.init_gsm, 5)) gsm_send_data("AT+CMGS=\"+917639297586\"\r\n"); // Set SMS recipient
 }
 #endif // CONTROLLER_H
