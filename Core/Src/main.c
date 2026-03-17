@@ -109,15 +109,6 @@ int main(void)
 {
 
   /* USER CODE BEGIN 1 */
-	HAL_GPIO_WritePin(STATUS_LED_GPIO_Port,STATUS_LED_Pin,GPIO_PIN_SET);
-	HAL_Delay(1000);
-	HAL_GPIO_WritePin(RELAY_FAN_GPIO_Port,RELAY_FAN_Pin,GPIO_PIN_SET);
-	HAL_Delay(2000);
-	HAL_GPIO_WritePin(RELAY_LAMP_GPIO_Port,RELAY_LAMP_Pin,GPIO_PIN_SET);
-	HAL_Delay(2000);
-	HAL_GPIO_WritePin(RELAY_FENCE_GPIO_Port,RELAY_FENCE_Pin,GPIO_PIN_SET);
-	//HAL_Delay(1000);
-
   static unsigned long gsm_sync_timeout = 0; // Variable to track GSM synchronization timing
   static unsigned long sensor_read_timeout = 0; // Variable to track sensor reading timing
   static unsigned long display_update_timeout = 0; // Variable to track display update timing
@@ -146,6 +137,15 @@ int main(void)
   MX_USART1_UART_Init();
   MX_USB_DEVICE_Init();
   /* USER CODE BEGIN 2 */
+	HAL_GPIO_WritePin(STATUS_LED_GPIO_Port,STATUS_LED_Pin,GPIO_PIN_SET);
+	HAL_Delay(1000);
+	HAL_GPIO_WritePin(RELAY_FAN_GPIO_Port,RELAY_FAN_Pin,GPIO_PIN_SET);
+	HAL_Delay(2000);
+	HAL_GPIO_WritePin(RELAY_LAMP_GPIO_Port,RELAY_LAMP_Pin,GPIO_PIN_SET);
+	HAL_Delay(2000);
+	HAL_GPIO_WritePin(RELAY_FENCE_GPIO_Port,RELAY_FENCE_Pin,GPIO_PIN_SET);
+	//HAL_Delay(1000);
+
   OLED_init(&oled, &hi2c1, 128, 64, OLED_ADDR_DEFAULT); // Initialize OLED display
   memset(&rlm, 0, sizeof(rlm)); // Clear the controller status
   BITSET(rlm.sta.init_gsm, 2); // Mark GSM UART configuration as done since UART is initialized

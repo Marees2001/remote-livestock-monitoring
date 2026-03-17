@@ -2877,34 +2877,34 @@ LOAD C:/ST/STM32CubeIDE_2.0.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.exte
  .debug_ranges  0x00001628       0x80 build/usbd_cdc.o
  .debug_ranges  0x000016a8       0x20 build/startup_stm32f103xb.o
 
-.debug_line     0x00000000    0x16ad2
- .debug_line    0x00000000      0xb74 build/main.o
- .debug_line    0x00000b74      0x3b6 build/stm32f1xx_it.o
- .debug_line    0x00000f2a      0x4f4 build/stm32f1xx_hal_msp.o
- .debug_line    0x0000141e     0x1c84 build/SSD1306.o
- .debug_line    0x000030a2      0x634 build/stm32f1xx_hal.o
- .debug_line    0x000036d6      0xdb0 build/stm32f1xx_hal_rcc.o
- .debug_line    0x00004486      0x5b0 build/stm32f1xx_hal_rcc_ex.o
- .debug_line    0x00004a36      0x6d6 build/stm32f1xx_hal_gpio.o
- .debug_line    0x0000510c      0x7ad build/stm32f1xx_hal_cortex.o
- .debug_line    0x000058b9      0x34b build/system_stm32f1xx.o
- .debug_line    0x00005c04      0x350 build/sysmem.o
- .debug_line    0x00005f54      0x4fe build/syscalls.o
- .debug_line    0x00006452      0xf8a build/stm32f1xx_hal_adc.o
- .debug_line    0x000073dc     0x574e build/stm32f1xx_hal_i2c.o
- .debug_line    0x0000cb2a     0x35a5 build/stm32f1xx_hal_uart.o
- .debug_line    0x000100cf      0x33f build/usb_device.o
- .debug_line    0x0001040e      0x45a build/usbd_desc.o
- .debug_line    0x00010868      0x36d build/usbd_cdc_if.o
- .debug_line    0x00010bd5      0x8c3 build/usbd_conf.o
- .debug_line    0x00011498     0x193a build/stm32f1xx_hal_pcd.o
- .debug_line    0x00012dd2      0x399 build/stm32f1xx_hal_pcd_ex.o
- .debug_line    0x0001316b     0x187c build/stm32f1xx_ll_usb.o
- .debug_line    0x000149e7      0x81f build/usbd_core.o
- .debug_line    0x00015206      0xbea build/usbd_ctlreq.o
- .debug_line    0x00015df0      0x3aa build/usbd_ioreq.o
- .debug_line    0x0001619a      0x8c7 build/usbd_cdc.o
- .debug_line    0x00016a61       0x71 build/startup_stm32f103xb.o
+.debug_line     0x00000000    0x16ad4
+ .debug_line    0x00000000      0xb76 build/main.o
+ .debug_line    0x00000b76      0x3b6 build/stm32f1xx_it.o
+ .debug_line    0x00000f2c      0x4f4 build/stm32f1xx_hal_msp.o
+ .debug_line    0x00001420     0x1c84 build/SSD1306.o
+ .debug_line    0x000030a4      0x634 build/stm32f1xx_hal.o
+ .debug_line    0x000036d8      0xdb0 build/stm32f1xx_hal_rcc.o
+ .debug_line    0x00004488      0x5b0 build/stm32f1xx_hal_rcc_ex.o
+ .debug_line    0x00004a38      0x6d6 build/stm32f1xx_hal_gpio.o
+ .debug_line    0x0000510e      0x7ad build/stm32f1xx_hal_cortex.o
+ .debug_line    0x000058bb      0x34b build/system_stm32f1xx.o
+ .debug_line    0x00005c06      0x350 build/sysmem.o
+ .debug_line    0x00005f56      0x4fe build/syscalls.o
+ .debug_line    0x00006454      0xf8a build/stm32f1xx_hal_adc.o
+ .debug_line    0x000073de     0x574e build/stm32f1xx_hal_i2c.o
+ .debug_line    0x0000cb2c     0x35a5 build/stm32f1xx_hal_uart.o
+ .debug_line    0x000100d1      0x33f build/usb_device.o
+ .debug_line    0x00010410      0x45a build/usbd_desc.o
+ .debug_line    0x0001086a      0x36d build/usbd_cdc_if.o
+ .debug_line    0x00010bd7      0x8c3 build/usbd_conf.o
+ .debug_line    0x0001149a     0x193a build/stm32f1xx_hal_pcd.o
+ .debug_line    0x00012dd4      0x399 build/stm32f1xx_hal_pcd_ex.o
+ .debug_line    0x0001316d     0x187c build/stm32f1xx_ll_usb.o
+ .debug_line    0x000149e9      0x81f build/usbd_core.o
+ .debug_line    0x00015208      0xbea build/usbd_ctlreq.o
+ .debug_line    0x00015df2      0x3aa build/usbd_ioreq.o
+ .debug_line    0x0001619c      0x8c7 build/usbd_cdc.o
+ .debug_line    0x00016a63       0x71 build/startup_stm32f103xb.o
 
 .debug_str      0x00000000     0x4f9b
  .debug_str     0x00000000     0x4f9b build/main.o
