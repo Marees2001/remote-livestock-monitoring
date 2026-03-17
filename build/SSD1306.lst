@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
   30:Core/Src/SSD1306.c ****     {0x00,0x1C,0x22,0x41,0x00}, /* '(' */
   31:Core/Src/SSD1306.c ****     {0x00,0x41,0x22,0x1C,0x00}, /* ')' */
   32:Core/Src/SSD1306.c ****     {0x14,0x08,0x3E,0x08,0x14}, /* '*' */
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 2
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 2
 
 
   33:Core/Src/SSD1306.c ****     {0x08,0x08,0x3E,0x08,0x08}, /* '+' */
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
   87:Core/Src/SSD1306.c ****     {0x20,0x54,0x54,0x54,0x78}, /* 'a' */
   88:Core/Src/SSD1306.c ****     {0x7F,0x48,0x44,0x44,0x38}, /* 'b' */
   89:Core/Src/SSD1306.c ****     {0x38,0x44,0x44,0x44,0x20}, /* 'c' */
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 3
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 3
 
 
   90:Core/Src/SSD1306.c ****     {0x38,0x44,0x44,0x48,0x7F}, /* 'd' */
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  144:Core/Src/SSD1306.c ****       {0x3E,0x7F,0x7F,0x7F,0x3E},{0x7F,0x7F,0x7F,0x7F,0x7F},{0x7F,0x7F,0x7F,0x7F,0x3E} }
  145:Core/Src/SSD1306.c **** };
  146:Core/Src/SSD1306.c **** 
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 4
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 4
 
 
  147:Core/Src/SSD1306.c **** static const uint8_t progressBarSet1[2][20] = {
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
   49              	.LFE67:
   51              		.section	.text.s_checkY,"ax",%progbits
   52              		.align	1
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 5
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 5
 
 
   53              		.syntax unified
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  196:Core/Src/SSD1306.c **** 
  197:Core/Src/SSD1306.c **** /** Write one pixel into the buffer. */
  198:Core/Src/SSD1306.c **** static void s_drawPixel(OLED_t *oled, uint8_t x, uint8_t y)
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 6
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 6
 
 
  199:Core/Src/SSD1306.c **** {
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  205:Core/Src/SSD1306.c ****     else
  206:Core/Src/SSD1306.c ****         oled->buffer[x + page * 128] &= ~(1 << bit);
  141              		.loc 1 206 9 is_stmt 1 view .LVU33
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 7
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 7
 
 
  142              		.loc 1 206 21 is_stmt 0 view .LVU34
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  175              		.cfi_startproc
  176              		@ args = 0, pretend = 0, frame = 0
  177              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 8
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 8
 
 
  230:Core/Src/SSD1306.c ****     if (x >= oled->width || y >= oled->height) return;
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  242:Core/Src/SSD1306.c ****             oled->buffer[x + (page + 1) * oled->width] = nextData | (data >> (8 - bitPos));
  243:Core/Src/SSD1306.c ****         } else {
  244:Core/Src/SSD1306.c ****             oled->buffer[x + page       * oled->width] = prevData & ~(data << bitPos);
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 9
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 9
 
 
  245:Core/Src/SSD1306.c ****             oled->buffer[x + (page + 1) * oled->width] = nextData & ~(data >> (8 - bitPos));
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  239:Core/Src/SSD1306.c ****         if (oled->pixelState) {
  256              		.loc 1 239 18 view .LVU71
  257 0054 0CEA060C 		and	ip, ip, r6
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 10
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 10
 
 
  258 0058 4FFA8CFC 		sxtb	ip, ip
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  245:Core/Src/SSD1306.c ****         }
  295              		.loc 1 245 76 is_stmt 0 view .LVU89
  296 0088 41FA0EF1 		asr	r1, r1, lr
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 11
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 11
 
 
  297              	.LVL31:
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  345              		.cfi_offset 14, -4
  346 0004 0446     		mov	r4, r0
  347 0006 0E46     		mov	r6, r1
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 12
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 12
 
 
  348 0008 9046     		mov	r8, r2
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  394              	.LVL41:
  395              		.loc 1 260 17 discriminator 4 view .LVU115
  396 0036 DBB2     		uxtb	r3, r3
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 13
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 13
 
 
  397 0038 94F80D24 		ldrb	r2, [r4, #1037]	@ zero_extendqisi2
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  439              		.loc 1 260 17 discriminator 1 view .LVU130
  440 006e C9B2     		uxtb	r1, r1
  441              	.LVL48:
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 14
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 14
 
 
  260:Core/Src/SSD1306.c ****                 oled->charWidth++;
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  276:Core/Src/SSD1306.c ****         s_drawFontPixel(oled, highlight ? 0xFF : 0x00, oled->charWidth, y);
  277:Core/Src/SSD1306.c ****     }
  278:Core/Src/SSD1306.c **** }
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 15
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 15
 
 
  480              		.loc 1 278 1 view .LVU144
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  521              		.loc 1 272 41 view .LVU157
  522 00ca A6F12003 		sub	r3, r6, #32
  523 00ce DBB2     		uxtb	r3, r3
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 16
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 16
 
 
  272:Core/Src/SSD1306.c ****             s_drawFontPixel(oled, highlight ? ~col : col, oled->charWidth, y);
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  564              	.L26:
  276:Core/Src/SSD1306.c ****     }
  565              		.loc 1 276 9 discriminator 4 view .LVU172
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 17
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 17
 
 
  566 00fc 3B46     		mov	r3, r7
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  599              		.cfi_offset 7, -24
  600              		.cfi_offset 8, -20
  601              		.cfi_offset 9, -16
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 18
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 18
 
 
  602              		.cfi_offset 10, -12
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  307:Core/Src/SSD1306.c ****         case 3: s_drawPixel(oled, cx-x, cy+y); s_drawPixel(oled, cx-y, cy+x); break;
  308:Core/Src/SSD1306.c ****         case 4: s_drawPixel(oled, cx+x, cy+y); s_drawPixel(oled, cx+y, cy+x); break;
  309:Core/Src/SSD1306.c ****         }
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 19
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 19
 
 
  310:Core/Src/SSD1306.c ****         y++;
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  697 0090 A7EB0A02 		sub	r2, r7, r10
  698 0094 019B     		ldr	r3, [sp, #4]
  699 0096 03EB0801 		add	r1, r3, r8
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 20
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 20
 
 
  700 009a D2B2     		uxtb	r2, r2
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  746 00f0 019B     		ldr	r3, [sp, #4]
  747 00f2 03EB0801 		add	r1, r3, r8
  748 00f6 D2B2     		uxtb	r2, r2
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 21
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 21
 
 
  749 00f8 C9B2     		uxtb	r1, r1
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  798              	.LVL82:
  212:Core/Src/SSD1306.c **** }
  799              		.loc 1 212 5 is_stmt 0 view .LVU216
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 22
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 22
 
 
  800 000a FFF7FEFF 		bl	memset
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  847              	.LVL87:
  164:Core/Src/SSD1306.c **** 
  848              		.loc 1 164 1 view .LVU226
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 23
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 23
 
 
  849 0022 05B0     		add	sp, sp, #20
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  894 001e FFF7FEFF 		bl	s_execute
  895              	.LVL92:
  325:Core/Src/SSD1306.c ****     s_execute(oled, OLED_PRE_CHRG);       s_execute(oled, OLED_PRE_CHRG_RST);
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 24
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 24
 
 
  896              		.loc 1 325 5 view .LVU233
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  189:Core/Src/SSD1306.c ****     s_execute(oled, OLED_SET_PG_ADDR);
  948              		.loc 1 189 5 is_stmt 1 view .LVU241
  189:Core/Src/SSD1306.c ****     s_execute(oled, OLED_SET_PG_ADDR);
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 25
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 25
 
 
  949              		.loc 1 189 28 is_stmt 0 view .LVU242
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  991 003e 2046     		mov	r0, r4
  992 0040 FFF7FEFF 		bl	s_execute
  993              	.LVL105:
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 26
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 26
 
 
  195:Core/Src/SSD1306.c **** 
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  1044              		.loc 1 331 43 discriminator 1 view .LVU264
  1045 002a F121     		movs	r1, #241
  1046 002c 2046     		mov	r0, r4
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 27
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 27
 
 
  1047 002e FFF7FEFF 		bl	s_execute
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  1096 0014 2046     		mov	r0, r4
  1097 0016 FFF7FEFF 		bl	s_execute
  1098              	.LVL118:
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 28
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 28
 
 
  318:Core/Src/SSD1306.c ****     s_execute(oled, OLED_PRE_CHRG);       s_execute(oled, OLED_PRE_CHRG_RST);
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  1146              		.cfi_def_cfa_offset 4
  1147              		.cfi_offset 14, -4
  1148 0002 85B0     		sub	sp, sp, #20
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 29
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 29
 
 
  1149              	.LCFI15:
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  1196              		.cfi_def_cfa_offset 16
  1197              		.cfi_offset 4, -16
  1198              		.cfi_offset 5, -12
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 30
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 30
 
 
  1199              		.cfi_offset 6, -8
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  1240              		.loc 1 218 33 is_stmt 1 discriminator 1 view .LVU304
  1241 0024 072E     		cmp	r6, #7
  1242 0026 0FD8     		bhi	.L70
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 31
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 31
 
 
  219:Core/Src/SSD1306.c ****         s_execute(oled, 0x00);
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  336:Core/Src/SSD1306.c **** /*  Public API                                                          */
  337:Core/Src/SSD1306.c **** /* ================================================================== */
  338:Core/Src/SSD1306.c **** 
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 32
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 32
 
 
  339:Core/Src/SSD1306.c **** void OLED_init(OLED_t *oled, I2C_HandleTypeDef *hi2c,
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  1332 0024 85F81034 		strb	r3, [r5, #1040]
  348:Core/Src/SSD1306.c ****     oled->fontWidth     = 5;
  1333              		.loc 1 348 5 is_stmt 1 view .LVU330
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 33
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 33
 
 
  1334              		.loc 1 348 25 is_stmt 0 view .LVU331
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  1379 0092 8122     		movs	r2, #129
  1380 0094 8DF81420 		strb	r2, [sp, #20]
  1381 0098 FF22     		movs	r2, #255
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 34
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 34
 
 
  1382 009a 8DF81520 		strb	r2, [sp, #21]
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  1418              	.LBE12:
  372:Core/Src/SSD1306.c **** 
  373:Core/Src/SSD1306.c ****     oled->isSetup = true;
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 35
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 35
 
 
  1419              		.loc 1 373 5 view .LVU345
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  385:Core/Src/SSD1306.c **** void OLED_print(OLED_t *oled, const char *str, uint8_t x, uint8_t y)
  386:Core/Src/SSD1306.c **** {
  1464              		.loc 1 386 1 is_stmt 1 view -0
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 36
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 36
 
 
  1465              		.cfi_startproc
@@ -2158,7 +2158,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  1513              		.loc 1 392 12 view .LVU371
  1514 002e 7E2B     		cmp	r3, #126
  1515 0030 F3D9     		bls	.L79
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 37
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 37
 
 
  393:Core/Src/SSD1306.c ****             oled->charWidth -= oled->width;
@@ -2218,7 +2218,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  1563 0004 90F80F34 		ldrb	r3, [r0, #1039]	@ zero_extendqisi2
  1564              	.LVL163:
  1565              		.loc 1 401 8 view .LVU384
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 38
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 38
 
 
  1566 0008 D3B1     		cbz	r3, .L83
@@ -2278,7 +2278,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  1613              		.loc 1 408 15 view .LVU404
  1614 003e ECE7     		b	.L85
  1615              	.LVL169:
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 39
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 39
 
 
  1616              	.L83:
@@ -2338,7 +2338,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  418:Core/Src/SSD1306.c ****     oled->charWidth = x;
  1663              		.loc 1 418 5 is_stmt 1 view .LVU414
  1664              		.loc 1 418 21 is_stmt 0 view .LVU415
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 40
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 40
 
 
  1665 001e 80F80D24 		strb	r2, [r0, #1037]
@@ -2398,7 +2398,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  422:Core/Src/SSD1306.c ****             y += 8;
  1702              		.loc 1 422 29 view .LVU429
  1703 004a 9B1A     		subs	r3, r3, r2
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 41
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 41
 
 
  1704 004c 84F80D34 		strb	r3, [r4, #1037]
@@ -2458,7 +2458,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  1740              		.cfi_offset 4, -36
  1741              		.cfi_offset 5, -32
  1742              		.cfi_offset 6, -28
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 42
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 42
 
 
  1743              		.cfi_offset 7, -24
@@ -2518,7 +2518,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  1791              		.loc 1 448 5 is_stmt 1 view .LVU448
  1792              		.loc 1 448 25 is_stmt 0 view .LVU449
  1793 003c EA1B     		subs	r2, r5, r7
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 43
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 43
 
 
  1794              		.loc 1 448 9 view .LVU450
@@ -2578,7 +2578,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  1844 0078 0023     		movs	r3, #0
  1845 007a 0293     		str	r3, [sp, #8]
  1846              	.L97:
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 44
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 44
 
 
  1847              	.LVL194:
@@ -2638,7 +2638,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  455:Core/Src/SSD1306.c ****         int ox = i * sy,  oy = -i * sx;
  1889              		.loc 1 455 54 is_stmt 1 discriminator 2 view .LVU479
  1890 00a4 049B     		ldr	r3, [sp, #16]
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 45
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 45
 
 
  1891 00a6 0133     		adds	r3, r3, #1
@@ -2698,7 +2698,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  458:Core/Src/SSD1306.c ****         int e2, tx = x0, ty = y0, er = err;
  1932              		.loc 1 458 31 view .LVU493
  1933 00da 0B9B     		ldr	r3, [sp, #44]
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 46
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 46
 
 
  1934 00dc 9A44     		add	r10, r10, r3
@@ -2758,7 +2758,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  1981 0104 029B     		ldr	r3, [sp, #8]
  1982              	.LVL213:
  1983              		.loc 1 465 42 discriminator 1 view .LVU513
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 47
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 47
 
 
  1984 0106 1E44     		add	r6, r6, r3
@@ -2818,7 +2818,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  2033 0006 8346     		mov	fp, r0
  2034 0008 8A46     		mov	r10, r1
  2035 000a 9046     		mov	r8, r2
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 48
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 48
 
 
  2036 000c 1D46     		mov	r5, r3
@@ -2878,7 +2878,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  2079 0034 9DF80040 		ldrb	r4, [sp]	@ zero_extendqisi2
  2080 0038 04EB0807 		add	r7, r4, r8
  2081 003c FFB2     		uxtb	r7, r7
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 49
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 49
 
 
  2082 003e 3A46     		mov	r2, r7
@@ -2938,7 +2938,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  2133 00a0 2A46     		mov	r2, r5
  2134 00a2 3146     		mov	r1, r6
  2135 00a4 5846     		mov	r0, fp
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 50
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 50
 
 
  2136 00a6 FFF7FEFF 		bl	s_drawPixel
@@ -2998,7 +2998,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  2177 00d2 059E     		ldr	r6, [sp, #20]
  2178 00d4 069F     		ldr	r7, [sp, #24]
  2179              		.loc 1 488 9 is_stmt 1 view .LVU555
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 51
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 51
 
 
  2180              		.loc 1 488 15 is_stmt 0 view .LVU556
@@ -3058,7 +3058,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  2225 0112 4246     		mov	r2, r8
  2226 0114 C9B2     		uxtb	r1, r1
  2227 0116 5846     		mov	r0, fp
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 52
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 52
 
 
  2228 0118 FFF7FEFF 		bl	s_drawPixel
@@ -3118,7 +3118,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  494:Core/Src/SSD1306.c ****                     uint8_t cornerRadius, uint8_t thickness, bool fill)
  495:Core/Src/SSD1306.c **** {
  2273              		.loc 1 495 1 is_stmt 1 view -0
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 53
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 53
 
 
  2274              		.cfi_startproc
@@ -3178,7 +3178,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  498:Core/Src/SSD1306.c ****     startX = s_checkX(oled, startX);
  2326              		.loc 1 498 5 is_stmt 1 view .LVU586
  2327              		.loc 1 498 14 is_stmt 0 view .LVU587
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 54
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 54
 
 
  2328 0038 2846     		mov	r0, r5
@@ -3238,7 +3238,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  2378              		.loc 1 502 27 is_stmt 1 discriminator 1 view .LVU603
  2379 006c 069B     		ldr	r3, [sp, #24]
  2380 006e 4B45     		cmp	r3, r9
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 55
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 55
 
 
  2381 0070 69D9     		bls	.L147
@@ -3298,7 +3298,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  2431              		.loc 1 506 9 is_stmt 0 view .LVU616
  2432 00bc E4B2     		uxtb	r4, r4
  2433 00be CDF804B0 		str	fp, [sp, #4]
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 56
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 56
 
 
  2434 00c2 0094     		str	r4, [sp]
@@ -3358,7 +3358,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  2483 011a 049E     		ldr	r6, [sp, #16]
  2484 011c 3146     		mov	r1, r6
  2485 011e 5046     		mov	r0, r10
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 57
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 57
 
 
  2486 0120 FFF7FEFF 		bl	s_drawCircleQuarter
@@ -3418,7 +3418,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  2533 0160 DDF81490 		ldr	r9, [sp, #20]
  2534              	.LVL282:
  2535              		.loc 1 518 9 view .LVU635
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 58
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 58
 
 
  2536 0164 0CE0     		b	.L131
@@ -3478,7 +3478,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  2576 018c 03DA     		bge	.L148
  519:Core/Src/SSD1306.c ****             for (uint8_t j = startY + 1; j < startY + height; j++)
  2577              		.loc 1 519 13 is_stmt 1 view .LVU649
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 59
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 59
 
 
  2578              	.LBB24:
@@ -3538,7 +3538,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  522:Core/Src/SSD1306.c ****             for (uint8_t j = startY + cornerRadius; j < startY + height - cornerRadius; j++)
  2622              		.loc 1 522 64 is_stmt 0 discriminator 1 view .LVU663
  2623 01b2 0AEB0703 		add	r3, r10, r7
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 60
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 60
 
 
  522:Core/Src/SSD1306.c ****             for (uint8_t j = startY + cornerRadius; j < startY + height - cornerRadius; j++)
@@ -3598,7 +3598,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  2663              		.loc 1 527 9 is_stmt 1 view .LVU678
  2664              	.LBB29:
  2665              		.loc 1 527 14 view .LVU679
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 61
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 61
 
 
  2666              		.loc 1 527 22 is_stmt 0 view .LVU680
@@ -3658,7 +3658,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  2717              		.loc 1 530 21 view .LVU696
  2718 0228 5FFA84F8 		uxtb	r8, r4
  2719 022c 4644     		add	r6, r6, r8
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 62
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 62
 
 
  2720 022e F6B2     		uxtb	r6, r6
@@ -3718,7 +3718,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  2771              	.LBE30:
  527:Core/Src/SSD1306.c ****             for (int16_t y = -(int16_t)cornerRadius; y <= (int16_t)cornerRadius; y++) {
  2772              		.loc 1 527 79 discriminator 2 view .LVU707
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 63
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 63
 
 
  2773 0284 0799     		ldr	r1, [sp, #28]
@@ -3778,7 +3778,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  541:Core/Src/SSD1306.c ****                uint8_t x, uint8_t y, uint8_t width, uint8_t height)
  542:Core/Src/SSD1306.c **** {
  2816              		.loc 1 542 1 is_stmt 1 view -0
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 64
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 64
 
 
  2817              		.cfi_startproc
@@ -3838,7 +3838,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  2866              	.L153:
  2867              	.LBB33:
  2868              	.LBB34:
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 65
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 65
 
 
  2869              	.LBB35:
@@ -3898,7 +3898,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  555:Core/Src/SSD1306.c ****                 }
  556:Core/Src/SSD1306.c ****                 oled->buffer[oled->charWidth + vPos * oled->width] = byte;
  2913              		.loc 1 556 17 view .LVU746
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 66
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 66
 
 
  2914              		.loc 1 556 34 is_stmt 0 view .LVU747
@@ -3958,7 +3958,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  2959 008a 002B     		cmp	r3, #0
  2960 008c 0ADB     		blt	.L156
  549:Core/Src/SSD1306.c ****             for (uint8_t b = 0; b < 8; b++) {
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 67
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 67
 
 
  2961              		.loc 1 549 51 is_stmt 1 discriminator 2 view .LVU763
@@ -4018,7 +4018,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  3005              		.loc 1 547 31 is_stmt 1 discriminator 1 view .LVU776
  3006 00be B4EBDA0F 		cmp	r4, r10, lsr #3
  3007 00c2 04D2     		bcs	.L150
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 68
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 68
 
 
  548:Core/Src/SSD1306.c ****         for (uint8_t row = 0; row < width / 8; row++) {
@@ -4078,7 +4078,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  3047              		.loc 1 574 1 is_stmt 0 view .LVU787
  3048 0000 2DE9F843 		push	{r3, r4, r5, r6, r7, r8, r9, lr}
  3049              	.LCFI34:
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 69
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 69
 
 
  3050              		.cfi_def_cfa_offset 32
@@ -4138,7 +4138,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  583:Core/Src/SSD1306.c ****                     if      (i == 1)                          s_sendData(oled, progressBarSet[style
  584:Core/Src/SSD1306.c ****                     else if (i == 16)                         s_sendData(oled, progressBarSet[style
  585:Core/Src/SSD1306.c ****                     else if (i == progress && style == 2)     s_sendData(oled, progressBarSet[style
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 70
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 70
 
 
  586:Core/Src/SSD1306.c ****                     else                                      s_sendData(oled, progressBarSet[style
@@ -4198,7 +4198,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  3135              	.L206:
  584:Core/Src/SSD1306.c ****                     else if (i == progress && style == 2)     s_sendData(oled, progressBarSet[style
  3136              		.loc 1 584 63 is_stmt 1 discriminator 1 view .LVU813
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 71
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 71
 
 
  584:Core/Src/SSD1306.c ****                     else if (i == progress && style == 2)     s_sendData(oled, progressBarSet[style
@@ -4258,7 +4258,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  3178 00a2 32D0     		beq	.L203
  590:Core/Src/SSD1306.c ****                 }
  3179              		.loc 1 590 39 is_stmt 1 view .LVU827
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 72
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 72
 
 
  590:Core/Src/SSD1306.c ****                 }
@@ -4318,7 +4318,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  3219              		.loc 1 585 29 is_stmt 0 view .LVU842
  3220 00d4 BD42     		cmp	r5, r7
  3221 00d6 D1D0     		beq	.L207
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 73
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 73
 
 
  3222              	.L172:
@@ -4378,7 +4378,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  3264              	.LVL353:
  3265 0122 CBE7     		b	.L170
  3266              	.L204:
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 74
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 74
 
 
  589:Core/Src/SSD1306.c ****                     else              s_sendData(oled, progressBarSet[style-1][2][j]);
@@ -4438,7 +4438,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  3309 014a 0134     		adds	r4, r4, #1
  3310              	.LVL359:
  598:Core/Src/SSD1306.c ****                     s_sendData(oled, progressBarSet1[style - 14][j]);
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 75
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 75
 
 
  3311              		.loc 1 598 46 is_stmt 0 discriminator 3 view .LVU868
@@ -4498,7 +4498,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  3353              	.LVL368:
  3354              	.L179:
  596:Core/Src/SSD1306.c ****             if (i == progress)
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 76
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 76
 
 
  3355              		.loc 1 596 31 is_stmt 1 discriminator 1 view .LVU879
@@ -4558,7 +4558,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  3399 0192 4FF00009 		mov	r9, #0
  3400 0196 FAE7     		b	.L186
  3401              	.LVL372:
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 77
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 77
 
 
  3402              	.L209:
@@ -4618,7 +4618,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  3445 01c6 7B1C     		adds	r3, r7, #1
  610:Core/Src/SSD1306.c ****                     else if (i == progress + 1 && i < 16 && style==11) s_sendData(oled, progressBar
  3446              		.loc 1 610 29 view .LVU909
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 78
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 78
 
 
  3447 01c8 9D42     		cmp	r5, r3
@@ -4678,7 +4678,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  608:Core/Src/SSD1306.c ****                     if      (i == progress     && i < 15)              s_sendData(oled, progressBar
  3489              		.loc 1 608 30 view .LVU922
  3490              	.LBE53:
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 79
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 79
 
 
  3491              	.LBE54:
@@ -4738,7 +4738,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  3532              		.cfi_offset 6, -28
  3533              		.cfi_offset 7, -24
  3534              		.cfi_offset 8, -20
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 80
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 80
 
 
  3535              		.cfi_offset 9, -16
@@ -4798,7 +4798,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  3586              		.loc 1 629 5 is_stmt 1 view .LVU939
  3587              		.loc 1 629 8 is_stmt 0 view .LVU940
  3588 004e A345     		cmp	fp, r4
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 81
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 81
 
 
  3589 0050 00D9     		bls	.L214
@@ -4858,7 +4858,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  634:Core/Src/SSD1306.c **** 
  635:Core/Src/SSD1306.c ****     uint8_t step = w / size;
  3639              		.loc 1 635 5 is_stmt 1 view .LVU953
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 82
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 82
 
 
  3640              		.loc 1 635 13 is_stmt 0 view .LVU954
@@ -4918,7 +4918,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  3688 00d6 3346     		mov	r3, r6
  3689 00d8 039A     		ldr	r2, [sp, #12]
  3690 00da 3946     		mov	r1, r7
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 83
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 83
 
 
  3691 00dc 0498     		ldr	r0, [sp, #16]
@@ -4978,7 +4978,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  3731              		.loc 1 639 27 view .LVU983
  3732 0100 0AFB03F2 		mul	r2, r10, r3
  639:Core/Src/SSD1306.c ****         uint8_t ny = axis - (uint8_t)(sf * (data[i] + off));
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 84
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 84
 
 
  3733              		.loc 1 639 51 view .LVU984
@@ -5038,7 +5038,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  3780              		.cfi_offset 11, -8
  3781              		.cfi_offset 14, -4
  3782 0004 8BB0     		sub	sp, sp, #44
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 85
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 85
 
 
  3783              	.LCFI39:
@@ -5098,7 +5098,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  3834              	.LVL421:
  654:Core/Src/SSD1306.c ****     uint8_t axis = y + h / 2;
  3835              		.loc 1 654 5 is_stmt 1 view .LVU1004
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 86
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 86
 
 
  3836              		.loc 1 654 13 is_stmt 0 view .LVU1005
@@ -5158,7 +5158,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  3884              		.loc 1 660 13 view .LVU1018
  3885 0098 0133     		adds	r3, r3, #1
  3886 009a DBB2     		uxtb	r3, r3
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 87
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 87
 
 
  3887 009c 0993     		str	r3, [sp, #36]
@@ -5218,7 +5218,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  3928 00b0 EDB2     		uxtb	r5, r5
  3929              	.LVL438:
  3930              	.L228:
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 88
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 88
 
 
  662:Core/Src/SSD1306.c ****         int bh = (int)(sf * abs(data[i]));
@@ -5278,7 +5278,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  666:Core/Src/SSD1306.c ****                 OLED_line(oled, cx+bw, axis,    cx+bw, (uint8_t)by,        1);
  3973              		.loc 1 666 16 view .LVU1047
  3974 00ee 4B45     		cmp	r3, r9
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 89
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 89
 
 
  3975 00f0 0EDB     		blt	.L232
@@ -5338,7 +5338,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  4021              	.LCFI40:
  4022              		.cfi_def_cfa_offset 36
  4023              		@ sp needed
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 90
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 90
 
 
  4024 012e BDE8F08F 		pop	{r4, r5, r6, r7, r8, r9, r10, fp, pc}
@@ -5398,7 +5398,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  4074 0022 1846     		mov	r0, r3
  4075              	.LVL451:
  4076              		.loc 1 679 15 discriminator 2 view .LVU1061
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 91
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 91
 
 
  4077 0024 BBF1000F 		cmp	fp, #0
@@ -5458,7 +5458,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  4127 0064 FFF7FEFF 		bl	__aeabi_fmul
  4128              	.LVL461:
  4129 0068 FFF7FEFF 		bl	roundf
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 92
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 92
 
 
  4130              	.LVL462:
@@ -5518,7 +5518,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  4179              	.LVL471:
  4180              		.loc 1 688 5 view .LVU1092
  4181 00ac 16E0     		b	.L242
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 93
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 93
 
 
  4182              	.LVL472:
@@ -5578,7 +5578,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  4229              	.LVL482:
  4230              	.L242:
  688:Core/Src/SSD1306.c ****         uint8_t px = x + i * step;
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 94
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 94
 
 
  4231              		.loc 1 688 34 is_stmt 1 discriminator 1 view .LVU1107
@@ -5638,7 +5638,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  4270 010e BA42     		cmp	r2, r7
  4271 0110 02DB     		blt	.L250
  691:Core/Src/SSD1306.c ****         int py = axis - (int)roundf(sf * (data[i] + off));
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 95
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 95
 
 
  4272              		.loc 1 691 68 discriminator 4 view .LVU1123
@@ -5698,7 +5698,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  4319              		@ frame_needed = 0, uses_anonymous_args = 0
  4320              		.loc 1 701 1 is_stmt 0 view .LVU1131
  4321 0000 2DE9F04F 		push	{r4, r5, r6, r7, r8, r9, r10, fp, lr}
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 96
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 96
 
 
  4322              	.LCFI44:
@@ -5758,7 +5758,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  4373 003e BB46     		mov	fp, r7
  4374              	.L255:
  4375              	.LVL494:
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 97
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 97
 
 
  705:Core/Src/SSD1306.c ****     uint8_t step     = w / size;
@@ -5818,7 +5818,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  4424 007a 0299     		ldr	r1, [sp, #8]	@ float
  4425 007c FFF7FEFF 		bl	__aeabi_fmul
  4426              	.LVL505:
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 98
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 98
 
 
  4427              		.loc 1 710 13 view .LVU1158
@@ -5878,7 +5878,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  4469 00b0 C0B2     		uxtb	r0, r0
  4470 00b2 0090     		str	r0, [sp]
  4471 00b4 2B46     		mov	r3, r5
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 99
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 99
 
 
  4472 00b6 5246     		mov	r2, r10
@@ -5938,7 +5938,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  4520              	.LCFI48:
  4521              		.cfi_def_cfa_offset 64
  4522 0006 0490     		str	r0, [sp, #16]
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 100
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 100
 
 
  4523 0008 0592     		str	r2, [sp, #20]
@@ -5998,7 +5998,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  4572 004c 0AF10309 		add	r9, r10, #3
  4573 0050 5FFA89F9 		uxtb	r9, r9
  4574              	.LVL521:
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 101
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 101
 
 
  725:Core/Src/SSD1306.c ****     OLED_line(oled, x, y + h, x + w, y + h, 1);
@@ -6058,7 +6058,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  729:Core/Src/SSD1306.c ****             OLED_line(oled, x, y+h, x, (uint8_t)(y + h - (int)(data[i]*sf)), barWidth);
  730:Core/Src/SSD1306.c ****         x += barWidth + step;
  4625              		.loc 1 730 9 is_stmt 1 view .LVU1207
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 102
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 102
 
 
  4626              		.loc 1 730 23 is_stmt 0 view .LVU1208
@@ -6118,7 +6118,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  4670              	.LVL535:
  4671              	.L263:
  729:Core/Src/SSD1306.c ****             OLED_line(oled, x, y+h, x, (uint8_t)(y + h - (int)(data[i]*sf)), barWidth);
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 103
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 103
 
 
  4672              		.loc 1 729 13 is_stmt 0 view .LVU1220
@@ -6178,7 +6178,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  4719              	OLED_clearScr:
  4720              	.LVL538:
  4721              	.LFB96:
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 104
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 104
 
 
  742:Core/Src/SSD1306.c **** 
@@ -6238,7 +6238,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  4766              	.LVL543:
  745:Core/Src/SSD1306.c ****     s_clearBuffer(oled);
  4767              		.loc 1 745 27 discriminator 1 view .LVU1241
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 105
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 105
 
 
  4768 0022 F3E7     		b	.L276
@@ -6298,7 +6298,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  4818 000c FFF7FEFF 		bl	OLED_clearScr
  4819              	.LVL548:
  433:Core/Src/SSD1306.c **** }
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 106
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 106
 
 
  4820              		.loc 1 433 5 is_stmt 1 view .LVU1249
@@ -6358,7 +6358,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  4869 0010 8242     		cmp	r2, r0
  4870 0012 1BD9     		bls	.L285
  754:Core/Src/SSD1306.c ****         || page >= oled->height / 8) return;
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 107
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 107
 
 
  4871              		.loc 1 754 24 view .LVU1259
@@ -6418,7 +6418,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  4921 0044 0134     		adds	r4, r4, #1
  4922              	.LVL560:
  4923              		.loc 1 757 36 is_stmt 0 discriminator 3 view .LVU1275
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 108
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 108
 
 
  4924 0046 E4B2     		uxtb	r4, r4
@@ -6478,7 +6478,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  4975              	.LVL565:
  4976              		.loc 1 762 5 is_stmt 0 view .LVU1283
  4977 0008 FFF7FEFF 		bl	s_execute
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 109
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 109
 
 
  4978              	.LVL566:
@@ -6538,7 +6538,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  5028              		.loc 1 768 5 view .LVU1294
  5029 0008 53B1     		cbz	r3, .L301
  5030              		.loc 1 768 5 discriminator 1 view .LVU1295
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 110
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 110
 
 
  5031 000a A621     		movs	r1, #166
@@ -6598,7 +6598,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  5082              	.LFE100:
  5084              		.section	.text.OLED_entireDisplayOFF,"ax",%progbits
  5085              		.align	1
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 111
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 111
 
 
  5086              		.global	OLED_entireDisplayOFF
@@ -6658,7 +6658,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  5138 0006 032B     		cmp	r3, #3
  5139 0008 0FD8     		bhi	.L307
  778:Core/Src/SSD1306.c ****     oled->currentPowerMode = mode;
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 112
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 112
 
 
  5140              		.loc 1 778 5 is_stmt 1 view .LVU1316
@@ -6718,7 +6718,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  5179              		.cfi_endproc
  5180              	.LFE102:
  5182              		.section	.text.OLED_superBrightness,"ax",%progbits
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 113
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 113
 
 
  5183              		.align	1
@@ -6778,7 +6778,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  5231              	.LVL591:
  794:Core/Src/SSD1306.c ****         s_execute(oled, OLED_PRE_CHRG);       s_execute(oled, OLED_PRE_CHRG_MAX);
  5232              		.loc 1 794 9 view .LVU1340
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 114
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 114
 
 
  5233 002c D921     		movs	r1, #217
@@ -6838,7 +6838,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  5280              		@ args = 0, pretend = 0, frame = 0
  5281              		@ frame_needed = 0, uses_anonymous_args = 0
  5282              		@ link register save eliminated.
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 115
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 115
 
 
  5283              		.loc 1 801 52 view .LVU1349
@@ -6898,7 +6898,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  5335 0006 80F80C34 		strb	r3, [r0, #1036]
  808:Core/Src/SSD1306.c **** }
  5336              		.loc 1 808 1 view .LVU1361
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 116
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 116
 
 
  5337 000a 7047     		bx	lr
@@ -6958,7 +6958,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  5382              		.align	2
  5385              	progressBarSet:
  5386 0000 3E414141 		.ascii	">AAAA"
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 117
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 117
 
 
  5386      41
@@ -7018,7 +7018,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  5413      1C
  5414 008c 1C1C1C1C 		.ascii	"\034\034\034\034\034"
  5414      1C
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 118
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 118
 
 
  5415 0091 1C1C1C1C 		.ascii	"\034\034\034\034\034"
@@ -7078,7 +7078,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  5442 0118 38444444 		.ascii	"8DDD8"
  5442      38
  5443 011d 387C7C7C 		.ascii	"8|||8"
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 119
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 119
 
 
  5443      38
@@ -7138,7 +7138,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  5474 0055 00427F40 		.ascii	"\000B\177@\000"
  5474      00
  5475 005a 42615149 		.ascii	"BaQIF"
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 120
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 120
 
 
  5475      46
@@ -7198,7 +7198,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  5502      7F
  5503 00e6 7F040810 		.ascii	"\177\004\010\020\177"
  5503      7F
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 121
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 121
 
 
  5504 00eb 3E414141 		.ascii	">AAA>"
@@ -7258,7 +7258,7 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  5531 0172 2040443D 		.ascii	" @D=\000"
  5531      00
  5532 0177 7F102844 		.ascii	"\177\020(D\000"
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 122
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 122
 
 
  5532      00
@@ -7316,110 +7316,110 @@ ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 1
  5564              		.file 11 "C:\\ST\\STM32CubeIDE_2.0.0\\STM32CubeIDE\\plugins\\com.st.stm32cube.ide.mcu.externaltool
  5565              		.file 12 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h"
  5566              		.file 13 "<built-in>"
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 123
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 123
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 SSD1306.c
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:19     .text.s_checkX:00000000 $t
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:24     .text.s_checkX:00000000 s_checkX
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:52     .text.s_checkY:00000000 $t
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:57     .text.s_checkY:00000000 s_checkY
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:85     .text.s_drawPixel:00000000 $t
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:90     .text.s_drawPixel:00000000 s_drawPixel
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:166    .text.s_drawFontPixel:00000000 $t
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:171    .text.s_drawFontPixel:00000000 s_drawFontPixel
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:322    .text.s_getFont:00000000 $t
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:327    .text.s_getFont:00000000 s_getFont
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:580    .text.s_drawCircleQuarter:00000000 $t
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:585    .text.s_drawCircleQuarter:00000000 s_drawCircleQuarter
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:679    .text.s_drawCircleQuarter:00000068 $d
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:683    .text.s_drawCircleQuarter:00000078 $t
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:776    .text.s_clearBuffer:00000000 $t
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:781    .text.s_clearBuffer:00000000 s_clearBuffer
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:808    .text.s_execute:00000000 $t
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:813    .text.s_execute:00000000 s_execute
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:858    .text.s_balancedPowerMode:00000000 $t
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:863    .text.s_balancedPowerMode:00000000 s_balancedPowerMode
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:923    .text.s_setPosition:00000000 $t
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:928    .text.s_setPosition:00000000 s_setPosition
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:1001   .text.s_performancePowerMode:00000000 $t
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:1006   .text.s_performancePowerMode:00000000 s_performancePowerMode
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:1066   .text.s_lowPowerMode:00000000 $t
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:1071   .text.s_lowPowerMode:00000000 s_lowPowerMode
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:1131   .text.s_sendData:00000000 $t
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:1136   .text.s_sendData:00000000 s_sendData
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:1181   .text.s_displayBuffer:00000000 $t
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:1186   .text.s_displayBuffer:00000000 s_displayBuffer
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:1278   .text.OLED_init:00000000 $t
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:1284   .text.OLED_init:00000000 OLED_init
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:1450   .text.OLED_init:00000100 $d
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:5456   .rodata.fonts:00000000 fonts
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:1455   .text.OLED_print:00000000 $t
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:1461   .text.OLED_print:00000000 OLED_print
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:1539   .text.OLED_printHighlighted:00000000 $t
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:1545   .text.OLED_printHighlighted:00000000 OLED_printHighlighted
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:1623   .text.OLED_printAnimated:00000000 $t
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:1629   .text.OLED_printAnimated:00000000 OLED_printAnimated
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:1723   .text.OLED_line:00000000 $t
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:1729   .text.OLED_line:00000000 OLED_line
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:2004   .text.OLED_circle:00000000 $t
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:2010   .text.OLED_circle:00000000 OLED_circle
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:2264   .text.OLED_rectangle:00000000 $t
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:2270   .text.OLED_rectangle:00000000 OLED_rectangle
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:2807   .text.OLED_draw:00000000 $t
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:2813   .text.OLED_draw:00000000 OLED_draw
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:3034   .text.OLED_progressBar:00000000 $t
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:3040   .text.OLED_progressBar:00000000 OLED_progressBar
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:3504   .text.OLED_progressBar:00000208 $d
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:5385   .rodata.progressBarSet:00000000 progressBarSet
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:5377   .rodata.progressBarSet1:00000000 progressBarSet1
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:3513   .text.OLED_pulsePlot:00000000 $t
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:3519   .text.OLED_pulsePlot:00000000 OLED_pulsePlot
-ARM GAS  C:\Users\maree\AppData\Local\Temp\cchwFGW0.s 			page 124
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:19     .text.s_checkX:00000000 $t
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:24     .text.s_checkX:00000000 s_checkX
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:52     .text.s_checkY:00000000 $t
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:57     .text.s_checkY:00000000 s_checkY
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:85     .text.s_drawPixel:00000000 $t
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:90     .text.s_drawPixel:00000000 s_drawPixel
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:166    .text.s_drawFontPixel:00000000 $t
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:171    .text.s_drawFontPixel:00000000 s_drawFontPixel
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:322    .text.s_getFont:00000000 $t
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:327    .text.s_getFont:00000000 s_getFont
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:580    .text.s_drawCircleQuarter:00000000 $t
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:585    .text.s_drawCircleQuarter:00000000 s_drawCircleQuarter
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:679    .text.s_drawCircleQuarter:00000068 $d
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:683    .text.s_drawCircleQuarter:00000078 $t
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:776    .text.s_clearBuffer:00000000 $t
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:781    .text.s_clearBuffer:00000000 s_clearBuffer
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:808    .text.s_execute:00000000 $t
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:813    .text.s_execute:00000000 s_execute
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:858    .text.s_balancedPowerMode:00000000 $t
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:863    .text.s_balancedPowerMode:00000000 s_balancedPowerMode
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:923    .text.s_setPosition:00000000 $t
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:928    .text.s_setPosition:00000000 s_setPosition
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:1001   .text.s_performancePowerMode:00000000 $t
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:1006   .text.s_performancePowerMode:00000000 s_performancePowerMode
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:1066   .text.s_lowPowerMode:00000000 $t
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:1071   .text.s_lowPowerMode:00000000 s_lowPowerMode
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:1131   .text.s_sendData:00000000 $t
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:1136   .text.s_sendData:00000000 s_sendData
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:1181   .text.s_displayBuffer:00000000 $t
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:1186   .text.s_displayBuffer:00000000 s_displayBuffer
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:1278   .text.OLED_init:00000000 $t
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:1284   .text.OLED_init:00000000 OLED_init
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:1450   .text.OLED_init:00000100 $d
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:5456   .rodata.fonts:00000000 fonts
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:1455   .text.OLED_print:00000000 $t
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:1461   .text.OLED_print:00000000 OLED_print
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:1539   .text.OLED_printHighlighted:00000000 $t
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:1545   .text.OLED_printHighlighted:00000000 OLED_printHighlighted
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:1623   .text.OLED_printAnimated:00000000 $t
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:1629   .text.OLED_printAnimated:00000000 OLED_printAnimated
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:1723   .text.OLED_line:00000000 $t
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:1729   .text.OLED_line:00000000 OLED_line
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:2004   .text.OLED_circle:00000000 $t
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:2010   .text.OLED_circle:00000000 OLED_circle
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:2264   .text.OLED_rectangle:00000000 $t
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:2270   .text.OLED_rectangle:00000000 OLED_rectangle
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:2807   .text.OLED_draw:00000000 $t
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:2813   .text.OLED_draw:00000000 OLED_draw
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:3034   .text.OLED_progressBar:00000000 $t
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:3040   .text.OLED_progressBar:00000000 OLED_progressBar
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:3504   .text.OLED_progressBar:00000208 $d
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:5385   .rodata.progressBarSet:00000000 progressBarSet
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:5377   .rodata.progressBarSet1:00000000 progressBarSet1
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:3513   .text.OLED_pulsePlot:00000000 $t
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:3519   .text.OLED_pulsePlot:00000000 OLED_pulsePlot
+ARM GAS  C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s 			page 124
 
 
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:3756   .text.OLED_bitBarPlot:00000000 $t
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:3762   .text.OLED_bitBarPlot:00000000 OLED_bitBarPlot
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:4030   .text.OLED_scatterPlot:00000000 $t
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:4036   .text.OLED_scatterPlot:00000000 OLED_scatterPlot
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:4307   .text.OLED_histogramPlot:00000000 $t
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:4313   .text.OLED_histogramPlot:00000000 OLED_histogramPlot
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:4493   .text.OLED_barPlot:00000000 $t
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:4499   .text.OLED_barPlot:00000000 OLED_barPlot
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:4685   .text.OLED_inflate:00000000 $t
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:4691   .text.OLED_inflate:00000000 OLED_inflate
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:4713   .text.OLED_clearScr:00000000 $t
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:4719   .text.OLED_clearScr:00000000 OLED_clearScr
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:4787   .text.OLED_printClear:00000000 $t
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:4793   .text.OLED_printClear:00000000 OLED_printClear
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:4834   .text.OLED_clearArea:00000000 $t
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:4840   .text.OLED_clearArea:00000000 OLED_clearArea
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:4950   .text.OLED_setBrightness:00000000 $t
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:4956   .text.OLED_setBrightness:00000000 OLED_setBrightness
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:5000   .text.OLED_setBrightness:00000028 $d
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:5005   .text.OLED_invertDisplay:00000000 $t
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:5011   .text.OLED_invertDisplay:00000000 OLED_invertDisplay
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:5056   .text.OLED_entireDisplayON:00000000 $t
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:5062   .text.OLED_entireDisplayON:00000000 OLED_entireDisplayON
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:5085   .text.OLED_entireDisplayOFF:00000000 $t
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:5091   .text.OLED_entireDisplayOFF:00000000 OLED_entireDisplayOFF
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:5114   .text.OLED_setPowerMode:00000000 $t
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:5120   .text.OLED_setPowerMode:00000000 OLED_setPowerMode
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:5183   .text.OLED_superBrightness:00000000 $t
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:5189   .text.OLED_superBrightness:00000000 OLED_superBrightness
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:5269   .text.OLED_turnOffOnClr:00000000 $t
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:5275   .text.OLED_turnOffOnClr:00000000 OLED_turnOffOnClr
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:5292   .text.OLED_invertPixelState:00000000 $t
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:5298   .text.OLED_invertPixelState:00000000 OLED_invertPixelState
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:5315   .text.OLED_setFont:00000000 $t
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:5321   .text.OLED_setFont:00000000 OLED_setFont
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:5342   .text.OLED_clearCustomFont:00000000 $t
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:5348   .text.OLED_clearCustomFont:00000000 OLED_clearCustomFont
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:5369   .text.OLED_clearCustomFont:00000010 $d
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:5374   .rodata.progressBarSet1:00000000 $d
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:5382   .rodata.progressBarSet:00000000 $d
-C:\Users\maree\AppData\Local\Temp\cchwFGW0.s:5453   .rodata.fonts:00000000 $d
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:3756   .text.OLED_bitBarPlot:00000000 $t
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:3762   .text.OLED_bitBarPlot:00000000 OLED_bitBarPlot
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:4030   .text.OLED_scatterPlot:00000000 $t
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:4036   .text.OLED_scatterPlot:00000000 OLED_scatterPlot
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:4307   .text.OLED_histogramPlot:00000000 $t
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:4313   .text.OLED_histogramPlot:00000000 OLED_histogramPlot
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:4493   .text.OLED_barPlot:00000000 $t
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:4499   .text.OLED_barPlot:00000000 OLED_barPlot
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:4685   .text.OLED_inflate:00000000 $t
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:4691   .text.OLED_inflate:00000000 OLED_inflate
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:4713   .text.OLED_clearScr:00000000 $t
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:4719   .text.OLED_clearScr:00000000 OLED_clearScr
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:4787   .text.OLED_printClear:00000000 $t
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:4793   .text.OLED_printClear:00000000 OLED_printClear
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:4834   .text.OLED_clearArea:00000000 $t
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:4840   .text.OLED_clearArea:00000000 OLED_clearArea
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:4950   .text.OLED_setBrightness:00000000 $t
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:4956   .text.OLED_setBrightness:00000000 OLED_setBrightness
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:5000   .text.OLED_setBrightness:00000028 $d
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:5005   .text.OLED_invertDisplay:00000000 $t
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:5011   .text.OLED_invertDisplay:00000000 OLED_invertDisplay
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:5056   .text.OLED_entireDisplayON:00000000 $t
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:5062   .text.OLED_entireDisplayON:00000000 OLED_entireDisplayON
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:5085   .text.OLED_entireDisplayOFF:00000000 $t
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:5091   .text.OLED_entireDisplayOFF:00000000 OLED_entireDisplayOFF
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:5114   .text.OLED_setPowerMode:00000000 $t
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:5120   .text.OLED_setPowerMode:00000000 OLED_setPowerMode
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:5183   .text.OLED_superBrightness:00000000 $t
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:5189   .text.OLED_superBrightness:00000000 OLED_superBrightness
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:5269   .text.OLED_turnOffOnClr:00000000 $t
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:5275   .text.OLED_turnOffOnClr:00000000 OLED_turnOffOnClr
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:5292   .text.OLED_invertPixelState:00000000 $t
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:5298   .text.OLED_invertPixelState:00000000 OLED_invertPixelState
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:5315   .text.OLED_setFont:00000000 $t
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:5321   .text.OLED_setFont:00000000 OLED_setFont
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:5342   .text.OLED_clearCustomFont:00000000 $t
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:5348   .text.OLED_clearCustomFont:00000000 OLED_clearCustomFont
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:5369   .text.OLED_clearCustomFont:00000010 $d
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:5374   .rodata.progressBarSet1:00000000 $d
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:5382   .rodata.progressBarSet:00000000 $d
+C:\Users\maree\AppData\Local\Temp\ccJ0IYUd.s:5453   .rodata.fonts:00000000 $d
 
 UNDEFINED SYMBOLS
 memset
