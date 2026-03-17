@@ -23,6 +23,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "controller.h"
+#include "usbd_cdc_if.h"
 #include "ssd1306.h"
 #include "ssd1306_fonts.h"
 #include "stdio.h"
@@ -106,12 +107,9 @@ int main(void)
 
   /* USER CODE BEGIN 1 */
 	HAL_GPIO_WritePin(STATUS_LED_GPIO_Port,STATUS_LED_Pin,GPIO_PIN_SET);
-	HAL_Delay(1000);
-	HAL_GPIO_WritePin(RELAY_FAN_GPIO_Port,RELAY_FAN_Pin,GPIO_PIN_SET);
-	HAL_Delay(2000);
-	HAL_GPIO_WritePin(RELAY_LAMP_GPIO_Port,RELAY_LAMP_Pin,GPIO_PIN_SET);
-	HAL_Delay(2000);
-	HAL_GPIO_WritePin(RELAY_FENCE_GPIO_Port,RELAY_FENCE_Pin,GPIO_PIN_SET);
+	HAL_GPIO_WritePin(RELAY_FAN_GPIO_Port,RELAY_FAN_Pin,GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(RELAY_LAMP_GPIO_Port,RELAY_LAMP_Pin,GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(RELAY_FENCE_GPIO_Port,RELAY_FENCE_Pin,GPIO_PIN_RESET);
 	//HAL_Delay(1000);
   /* USER CODE END 1 */
 
