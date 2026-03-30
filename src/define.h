@@ -1,10 +1,18 @@
 #ifndef DEFINE_H
 #define DEFINE_H
 
+#define FIRMWARE_VERSION 110
 // USART1 for GSM module (PA9=TX, PA10=RX)
 #define GSM_SERIAL Serial1
 #define OLED_ADDR 0x3C
-#define HRT_SENS_ADDR 0x57
+#define SCREEN_WIDTH 128
+#define SCREEN_HEIGHT 64
+
+//Define for TDS
+#define VREF 3.3          // STM32 ADC reference voltage
+#define ADC_RESOLUTION 4095.0  // 12-bit ADC
+//Define for TH
+#define DHTTYPE DHT22
 
 #define STATUS_LED_Pin PC13
 #define RELAY_FENCE_Pin PA5
