@@ -2,12 +2,14 @@
 #include "controller.h"
 
 // I2C address (try 0x3C if not worki
+HardwareSerial Serial2(USART2);  // PA2 = TX, PA3 = RX
 TwoWire i2c(MCU_SDA_Pin,MCU_SCL_Pin);
 U8GLIB_SSD1306_128X64 oled(U8G_I2C_OPT_NONE|U8G_I2C_OPT_DEV_0);
 DHT dht(TH_SENSOR_Pin, DHTTYPE);
 
-char gsm_rx_buffer[200]; // Buffer for receiving data from GSM module
+char gsm_rx_buffer[500]; // Buffer for receiving data from GSM module
 uint8_t receive_bytes = 0;
+uint8_t receive_req = 0;
 
 void setup() {
   // Initialize USB Serial (CDC) for USB debugging
@@ -41,8 +43,6 @@ void setup() {
   // graphic commands to redraw the complete screen should be placed here  
   oled.setFont(u8g_font_unifont);
   //u8g.setFont(u8g_font_osb21);
-  oled.drawStr( 2, 3, "Remote Livestock Monitoring");
-  oled.drawStr( 5, 3, "System");
   Serial.println("OLED Initialized!");
 
   // Serial.println("I2C Scanner");
@@ -59,7 +59,8 @@ void setup() {
   // }
   // Serial.printf("Scan completed...\n\r");
   
-
+  //Initialize T/H sensor
+  dht.begin();
   
 }
 
@@ -71,7 +72,7 @@ void loop() {
   /*Function for receiving data from GSM module*/
   gsm_receive_data();
 
-  if(millis() - gsm_sync_timeout > 2000) { // Check if 0.5 seconds have passed since the last GSM synchronization
+  if(millis() - gsm_sync_timeout > 3000) { // Check if 0.5 seconds have passed since the last GSM synchronization
     gsm_sync_timeout = millis(); // Update the last synchronization time
     // Toggle LED state using STM32 HAL
     digitalToggle(STATUS_LED_Pin);      // Push to OLED
@@ -83,21 +84,29 @@ void loop() {
     }
   }
   
-  if(millis() - sensor_read_timeout > 1000){
-    read_th_sensor();
-    read_tds_value();
+  // if(millis() - sensor_read_timeout > 3000){
+  //   sensor_read_timeout = millis();
+  //   read_th_sensor();
+  //   read_tds_value();
+  // }
+
+  
+
+
+  // put your main code here, to run repeatedly:
+  if (Serial.available()) {
+    char usbChar[200];
+    Serial.readBytes(usbChar, sizeof(usbChar));
+    Serial.print("USB received: ");
+    Serial.println(usbChar);
+    // Forward USB data to GSM
+    GSM_SERIAL.print(usbChar);
+    GSM_SERIAL.print("\r\n");
+    Serial.println("Sending AT command to GSM...");
   }
 
-
-  // // put your main code here, to run repeatedly:
-  // if (Serial.available()) {
-  //   char usbChar[200];
-  //   Serial.readBytes(usbChar, sizeof(usbChar));
-  //   Serial.print("USB received: ");
-  //   Serial.println(usbChar);
-  //   // Forward USB data to GSM
-  //   GSM_SERIAL.print(usbChar);
-  //   GSM_SERIAL.print("\r\n");
-  //   Serial.println("Sending AT command to GSM...");
-  // }
+  oled.firstPage();
+  do {
+    update_display();
+  } while (oled.nextPage());  // MCU stuck here for ~15ms
 }
