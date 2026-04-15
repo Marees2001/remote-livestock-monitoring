@@ -31,7 +31,7 @@ void setup() {
   init_controler();
 
   i2c.begin();  // SDA, SCL (VERY IMPORTANT)
-  i2c.setClock(100000);  // 100kHz
+  i2c.setClock(50000);  // 50kHz
 
   Serial.println("Initializing OLED...");
   // Initialize OLED
@@ -67,8 +67,13 @@ void setup() {
 void loop() {
  
   static unsigned long gsm_sync_timeout = 0; // Variable to track GSM synchronization timing
-  static unsigned long sensor_read_timeout = 0; // Variable to track sensor reading timing
+  static unsigned long th_sensor_timeout = 0; // Variable to track sensor reading timing
   static unsigned long display_update_timeout = 0; // Variable to track display update timing
+  static unsigned long init_pulse_sensor_timeout = 0; // Variable to track pulse sensor initialization timing
+  static unsigned long display_timout = 0; // Variable to track display update timing
+  static unsigned long gsm_call_timeout = 0; 
+  static unsigned long gsm_sms_timeout = 0;
+  static unsigned long gsm_clean_storage_timeout = 0;
   /*Function for receiving data from GSM module*/
   gsm_receive_data();
 
@@ -78,17 +83,65 @@ void loop() {
     digitalToggle(STATUS_LED_Pin);      // Push to OLED
     if(rlm.sta.init_gsm != 0xFF) { // Sync GSM every 0.1 seconds
       sync_gsm();
-    }else { // If GSM is fully initialized, perform main operations
-      // Main operations here (e.g., read sensors, update display, control actuators)
-      printf("GSM fully initialized\n\r");
+    }
+  }
+
+  if(millis() - gsm_clean_storage_timeout > 60000) { // Clean GSM storage every 60 seconds if GSM is fully initialized
+    gsm_clean_storage_timeout = millis(); // Update the last storage cleaning time
+    clean_sim_storage();
+    Serial.println("GSM storage cleaned");
+  }
+
+  if(rlm.opt.gsm_sms_ctrl && rlm.sta.init_gsm == 0xFF
+  && (millis() - gsm_sms_timeout > 5000L)) { // If GSM SMS control is active and 60 seconds have passed since the last SMS attempt
+    
+    Serial.println("Attempting to send GSM SMS... Timout: " + String(millis() - gsm_sms_timeout) + " ms");
+    Serial.println("GSM SMS control state: " + String(rlm.opt.gsm_sms_ctrl));
+    gsm_sms_timeout = millis(); // Update the last SMS attempt timem 
+    // Implement GSM SMS control logic here (e.g., send an SMS if not already sent)
+    if(rlm.opt.gsm_sms_ctrl==1) {
+      rlm.opt.gsm_sms_ctrl = 0; // Reset SMS control to allow future SMS messages
+      gsm_sms_timeout = millis() + 120000L; // Update the last SMS attempt time to avoid sending multiple SMS messages in quick succession  
+      if(strlen(rlm.conf.home_mob) > 8) { // If home mobile number is configured, send SMS to it first
+        char buff[30];
+        memset(buff,0,sizeof(buff));
+        sprintf(buff,"AT+CMGS=\"%s\"",rlm.conf.home_mob);
+        gsm_send_data(buff);
+        delay(500);
+        gsm_send_dashboard();
+        delay(500);
+        GSM_SERIAL.write(26); // Send Ctrl+Z to indicate end of SMS message
+      }
     }
   }
   
-  // if(millis() - sensor_read_timeout > 3000){
-  //   sensor_read_timeout = millis();
-  //   read_th_sensor();
-  //   read_tds_value();
-  // }
+  // Serial.println("GSM synchronization completed");
+  if(rlm.opt.gsm_call_ctrl && !rlm.opt.gsm_sms_ctrl && rlm.sta.init_gsm == 0xFF
+  && (millis() - gsm_call_timeout > 30000L)) { // If GSM call control is active and 30 seconds have passed since the last call attempt
+    
+    Serial.println("Attempting to make GSM call... Timout: " + String(millis() - gsm_call_timeout) + " ms");
+    Serial.println("GSM call control state: " + String(rlm.opt.gsm_call_ctrl));
+    gsm_call_timeout = millis(); // Update the last call attempt time
+    // Implement GSM call control logic here (e.g., make a call if not already in progress)
+    if(rlm.opt.gsm_call_ctrl == 1) {
+      rlm.opt.gsm_call_ctrl = 0; // Reset call control to allow future calls
+      gsm_call_timeout = millis() + 120000L; // Update the last call attempt time to avoid making multiple calls in quick succession
+      if(strlen(rlm.conf.home_mob) > 8) { // If home mobile number is configured, call it next
+        char buff[20];
+        memset(buff,0,sizeof(buff));
+        sprintf(buff,"ATD%s;",rlm.conf.home_mob);
+        gsm_send_data(buff);
+      }
+      
+    }
+    
+  }
+  
+  if(millis() - th_sensor_timeout > 2000){
+    th_sensor_timeout = millis();
+    read_th_sensor();
+  }
+
 
   
 
