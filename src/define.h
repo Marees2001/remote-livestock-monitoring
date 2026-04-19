@@ -4,7 +4,7 @@
 #define FIRMWARE_VERSION 110
 // USART1 for GSM module (PA2=TX, PA3=RX)
 #define GSM_SERIAL Serial2 
-#define OLED_ADDR 0x3C
+#define SCREEN_ADDR 0x3C
 #define SCREEN_WIDTH 128
 #define SCREEN_HEIGHT 64
 

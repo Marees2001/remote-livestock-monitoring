@@ -4,7 +4,7 @@
 // I2C address (try 0x3C if not worki
 HardwareSerial Serial2(USART2);  // PA2 = TX, PA3 = RX
 TwoWire i2c(MCU_SDA_Pin,MCU_SCL_Pin);
-U8GLIB_SSD1306_128X64 oled(U8G_I2C_OPT_NONE|U8G_I2C_OPT_DEV_0);
+Adafruit_SH1106G display = Adafruit_SH1106G(SCREEN_WIDTH, SCREEN_HEIGHT, &i2c, -1);
 DHT dht(TH_SENSOR_Pin, DHTTYPE);
 
 char gsm_rx_buffer[500]; // Buffer for receiving data from GSM module
@@ -13,7 +13,7 @@ uint8_t receive_req = 0;
 
 void setup() {
   // Initialize USB Serial (CDC) for USB debugging
-  Serial.begin(9600);
+  Serial.begin(115200);
   delay(2000); // Wait for USB enumeration
   
   // Initialize USART1 for GSM module
@@ -34,16 +34,19 @@ void setup() {
   i2c.setClock(50000);  // 50kHz
 
   Serial.println("Initializing OLED...");
-  // Initialize OLED
-  // assign default color value
-  if ( oled.getMode() == U8G_MODE_R3G3B2 ) oled.setColorIndex(255);     // white
-  else if ( oled.getMode() == U8G_MODE_GRAY2BIT ) oled.setColorIndex(3);         // max intensity
-  else if ( oled.getMode() == U8G_MODE_BW ) oled.setColorIndex(1);         // pixel on
-  else if ( oled.getMode() == U8G_MODE_HICOLOR )oled.setHiColorByRGB(255,255,255);
-  // graphic commands to redraw the complete screen should be placed here  
-  oled.setFont(u8g_font_unifont);
-  //u8g.setFont(u8g_font_osb21);
+  // SSD1306_SWITCHCAPVCC = generate display voltage from 3.3V internally
+  display.begin(SCREEN_ADDR, true); // Address 0x3C default
+
   Serial.println("OLED Initialized!");
+
+    // Clear the buffer
+  display.clearDisplay();
+  display.setTextSize(1);
+  display.setTextColor(SH110X_WHITE);
+  display.setCursor(0, 0);
+  // Display static text
+  display.println("Livestock Monitoring");
+  display.display(); 
 
   // Serial.println("I2C Scanner");
   // byte error, address;
@@ -86,14 +89,15 @@ void loop() {
     }
   }
 
-  if(millis() - gsm_clean_storage_timeout > 60000) { // Clean GSM storage every 60 seconds if GSM is fully initialized
+  if(rlm.opt.gsm_sms_ctrl && rlm.sta.init_gsm == 0xFF
+  && (millis() - gsm_clean_storage_timeout > 60000)) { // Clean GSM storage every 60 seconds if GSM is fully initialized
     gsm_clean_storage_timeout = millis(); // Update the last storage cleaning time
     clean_sim_storage();
     Serial.println("GSM storage cleaned");
   }
 
   if(rlm.opt.gsm_sms_ctrl && rlm.sta.init_gsm == 0xFF
-  && (millis() - gsm_sms_timeout > 5000L)) { // If GSM SMS control is active and 60 seconds have passed since the last SMS attempt
+  && (millis() > gsm_sms_timeout + 5000L)) { // If GSM SMS control is active and 60 seconds have passed since the last SMS attempt
     
     Serial.println("Attempting to send GSM SMS... Timout: " + String(millis() - gsm_sms_timeout) + " ms");
     Serial.println("GSM SMS control state: " + String(rlm.opt.gsm_sms_ctrl));
@@ -117,7 +121,7 @@ void loop() {
   
   // Serial.println("GSM synchronization completed");
   if(rlm.opt.gsm_call_ctrl && !rlm.opt.gsm_sms_ctrl && rlm.sta.init_gsm == 0xFF
-  && (millis() - gsm_call_timeout > 30000L)) { // If GSM call control is active and 30 seconds have passed since the last call attempt
+  && (millis() > gsm_call_timeout + 30000L)) { // If GSM call control is active and 30 seconds have passed since the last call attempt
     
     Serial.println("Attempting to make GSM call... Timout: " + String(millis() - gsm_call_timeout) + " ms");
     Serial.println("GSM call control state: " + String(rlm.opt.gsm_call_ctrl));
@@ -157,9 +161,4 @@ void loop() {
     GSM_SERIAL.print("\r\n");
     Serial.println("Sending AT command to GSM...");
   }
-
-  oled.firstPage();
-  do {
-    update_display();
-  } while (oled.nextPage());  // MCU stuck here for ~15ms
 }

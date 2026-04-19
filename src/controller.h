@@ -7,13 +7,12 @@
 #include <Arduino.h>
 #include "define.h"
 #include <Wire.h>
-#include "U8glib.h"
+#include <Adafruit_GFX.h>
+#include <Adafruit_SH110X.h>
 #include "flash.h"
 #include "DHT.h"
 
 extern DHT dht;
-extern U8GLIB_SSD1306_128X64 oled;
-
 extern char gsm_rx_buffer[500]; // Buffer for receiving data from GSM module
 extern uint8_t receive_bytes; // Number of bytes received from GSM module
 extern uint8_t receive_req;
@@ -35,8 +34,7 @@ struct CONTROLLER_STATUS {
     uint8_t lst_msg_idx;
     uint8_t temp_alarm; // 0: no alarm, 1: temperature out of range
     uint8_t hum_alarm; // 0: no alarm, 1: humidity out
-    uint8_t hrt_alarm; // 0: no alarm, 1: heart rate out of range
-    uint8_t spo_alarm; // 0: no alarm, 1: SpO2 out of range
+    uint8_t tds_alarm; // 0: no alarm, 1: TDS out of range
 };
 
 /*Structure for controller settings*/
@@ -160,7 +158,7 @@ void gsm_receive_data(){
     // Re-arm DMA reception for the next payload
     memset(gsm_rx_buffer, 0, sizeof(gsm_rx_buffer));
     // Check for GSM responses
-    if(GSM_SERIAL.available()) {
+    while(GSM_SERIAL.available()) {
         int size = GSM_SERIAL.readBytes(gsm_rx_buffer, sizeof(gsm_rx_buffer) - 1); // Read GSM response into buffer
         if (size >= sizeof(gsm_rx_buffer) - 1) {
             memset(gsm_rx_buffer, 0, sizeof(gsm_rx_buffer)); // Clear buffer if overflow
@@ -168,7 +166,7 @@ void gsm_receive_data(){
         }
          Serial.printf("GSM received: %s\n\r", gsm_rx_buffer); // Print the received GSM response for debu
     }
-
+    
     // Process the received data as needed
     if(!BITREAD(rlm.sta.init_gsm, 0) && strstr(gsm_rx_buffer, "OK")) {
         BITSET(rlm.sta.init_gsm, 0); // Basic command to check communication
@@ -188,7 +186,7 @@ void gsm_receive_data(){
         BITSET(rlm.sta.init_gsm, 7); // Mark end of SMS message set as done
     }else if(strstr(gsm_rx_buffer, "+CMTI:")) {
         int lst_sms_idx = 0;
-         char *cmti_ptr = strstr(gsm_rx_buffer, "+CMTI:");
+        char *cmti_ptr = strstr(gsm_rx_buffer, "+CMTI:");
         if(cmti_ptr) {
             sscanf(cmti_ptr, "+CMTI: %*[^,],%d", &lst_sms_idx);
         }
@@ -228,10 +226,10 @@ void gsm_receive_data(){
             sprintf(buff,"AT+CMGS=\"%s\"",rlm.opt.lst_mob_req);
             gsm_send_data(buff);
             delay(500);
-            gsm_send_data("Fill the value. 1.Owner:");
+            gsm_send_data("What you want to modify? 1.Owner:");
             delay(500);
             GSM_SERIAL.write(26);
-        }else if(strstr(gsm_rx_buffer, "Fill the value. 1.Owner:")) {
+        }else if(strstr(gsm_rx_buffer, "1.Owner:")) {
             char buff[100],num[15];
             memset(num,0,sizeof(num));
             char *owner_ptr = strstr(gsm_rx_buffer, "1.Owner:");
@@ -240,12 +238,14 @@ void gsm_receive_data(){
                 // trim any \r\n at end
                 num[strcspn(num, "\r\n")] = 0;
                 Serial.printf("Owner num: [%s]\n\r", num);
+                memccpy(rlm.conf.home_mob, num, '\0', sizeof(rlm.conf.home_mob)); // Store the new home mobile number in configuration
+                save_to_flash(&rlm.conf,sizeof(rlm.conf));
             }
 
-            memset(buff, 0, sizeof(buff));
-            sprintf(buff, "AT+CPBW=1,\"%s\",145,\"Owner\"", num);
-            gsm_send_data(buff);
-            delay(500);
+            // memset(buff, 0, sizeof(buff));
+            // sprintf(buff, "AT+CPBW=1,\"%s\",145,\"Owner\"", num);
+            // gsm_send_data(buff);
+            // delay(500);
             memset(buff,0,sizeof(buff));
             sprintf(buff,"AT+CMGS=\"%s\"",rlm.opt.lst_mob_req);
             gsm_send_data(buff);
@@ -253,6 +253,9 @@ void gsm_receive_data(){
             gsm_send_data("The modified successfully!!");
             delay(500);
             GSM_SERIAL.write(26);
+            BITCLEAR(rlm.sta.init_gsm, 5);
+            BITCLEAR(rlm.sta.init_gsm, 6);
+            BITCLEAR(rlm.sta.init_gsm, 7);
         }else if(strstr(gsm_rx_buffer, "2.Sensors")) {
             char buff[30];
             memset(buff,0,sizeof(buff));
@@ -298,14 +301,14 @@ void gsm_receive_data(){
             sprintf(buff,"AT+CMGS=\"%s\"",rlm.opt.lst_mob_req);
             gsm_send_data(buff);
             delay(500);
-            gsm_send_data("Fill the value. 1.TDSmax: 2.TDSmin: ");
+            gsm_send_data("Fill the value. 1.HRTmax: 2.HRTmin: 3.SPO2max: 4.SPO2min:");
             delay(500);
             GSM_SERIAL.write(26);
         }else if(strstr(gsm_rx_buffer, "Fill the value. 1.TDSmax:")) {
-            char *tds = strstr(gsm_rx_buffer, "Fill the value.");
-            if(tds) {
-                Serial.printf("RAW: [%s]\n\r", tds);
-                sscanf(tds, "Fill the value. 1.TDSmax:%d 2.TDSmin:%d",
+            char *hbt = strstr(gsm_rx_buffer, "Fill the value.");
+            if(hbt) {
+                Serial.printf("RAW: [%s]\n\r", hbt);
+                sscanf(hbt, "Fill the value. 1.TDSmax:%d 2.TDSmin:%d",
                 &rlm.conf.mx_tds,&rlm.conf.mn_tds);
             }
             char buff[30];
@@ -319,8 +322,6 @@ void gsm_receive_data(){
             Serial.println("1.TDSmax:" + String(rlm.conf.mx_tds) + " 2.TDSmin:" + String(rlm.conf.mn_tds));
             //Store the value
             save_to_flash(&rlm.conf,sizeof(rlm.conf));
-        }else if(strstr(gsm_rx_buffer, "1.Fan control:")) {
-            
         }
 
     }
@@ -372,11 +373,8 @@ void init_controler(){
         rlm.conf.mn_temp = 30;
         rlm.conf.mx_hum = 80;
         rlm.conf.mn_hum = 20;
-        rlm.conf.mx_hrt = 100;
-        rlm.conf.mn_hrt = 60;
-        rlm.conf.mx_spo = 100;
-        rlm.conf.mn_spo = 95;
-
+        rlm.conf.mx_tds = 100;
+        rlm.conf.mn_tds = 60;
         Serial.println("No valid configuration in flash. Loaded default configuration.");
         save_to_flash(&rlm.conf,sizeof(rlm.conf)); // Save default configuration to flash memory
     }
@@ -394,24 +392,13 @@ void init_controler(){
     Serial.printf("Home Mobile: %s\n\r", rlm.conf.home_mob);
     Serial.printf("Temperature Thresholds: Min=%d C, Max=%d C\n\r", rlm.conf.mn_temp, rlm.conf.mx_temp);
     Serial.printf("Humidity Thresholds: Min=%d %%, Max=%d %%\n\r", rlm.conf.mn_hum, rlm.conf.mx_hum);
-    Serial.printf("Heart Rate Thresholds: Min=%d bpm, Max=%d bpm\n\r", rlm.conf.mn_hrt, rlm.conf.mx_hrt);
-    Serial.printf("SpO2 Thresholds: Min=%d %%, Max=%d %%\n\r", rlm.conf.mn_spo, rlm.conf.mx_spo);
+    Serial.printf("TDS Thresholds: Min=%d %%, Max=%d %%\n\r", rlm.conf.mn_tds, rlm.conf.mx_tds);
     Serial.println("System initialized successfully");
 
     
 }
 
 void update_display(){
-    oled.setFont(u8g_font_unifont);
-
-    // Calculate center position
-    const char* title1 = "Remote Livestock";
-    const char* title2 = "Monitoring";
-
-    uint8_t w1 = oled.getStrWidth(title1);
-    uint8_t w2 = oled.getStrWidth(title2);
-
-    oled.drawStr((128 - w1) / 2, 30, title1);
-    oled.drawStr((128 - w2) / 2, 50, title2);
+    
 }
 #endif // CONTROLLER_H
