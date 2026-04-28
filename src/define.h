@@ -4,13 +4,14 @@
 #define FIRMWARE_VERSION 110
 // USART1 for GSM module (PA2=TX, PA3=RX)
 #define GSM_SERIAL Serial2 
+#define DEBUG Serial3 
+
 #define SCREEN_ADDR 0x3C
 #define SCREEN_WIDTH 128
 #define SCREEN_HEIGHT 64
 
 //Define for TDS
 #define VREF 3.3          // STM32 ADC reference voltage
-#define ADC_RESOLUTION 4095.0  // 12-bit ADC
 //Define for TH
 #define DHTTYPE DHT22
 
@@ -24,6 +25,8 @@
 #define GSM_TX_Pin PA2
 #define MCU_SCL_Pin PB6
 #define MCU_SDA_Pin PB7
+#define DEBUG_RX_Pin PB11
+#define DEBUG_TX_Pin PB10
 
 #define NONE 0
 #define DASHBOARD 1

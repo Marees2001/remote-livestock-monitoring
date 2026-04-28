@@ -76,9 +76,9 @@ void read_th_sensor(){
     rlm.sta.thi = (1.8 * rlm.sta.temp_value + 32) - ((0.55 - 0.0055 * rlm.sta.hum_value ) 
     * (1.8 * rlm.sta.temp_value - 26)); 
 
-    Serial.println("Tempratur : " + String(rlm.sta.temp_value) + "C");
-    Serial.println("Humitidy : " + String(rlm.sta.hum_value) + "%");
-    Serial.println("THI: " + String(rlm.sta.thi));
+    DEBUG.println("Tempratur : " + String(rlm.sta.temp_value) + "C");
+    DEBUG.println("Humitidy : " + String(rlm.sta.hum_value) + "%");
+    DEBUG.println("THI: " + String(rlm.sta.thi));
 
     if((rlm.sta.temp_value > rlm.conf.mx_temp || rlm.sta.temp_value < rlm.conf.mn_temp)
     && rlm.sta.temp_value != 0) {
@@ -86,14 +86,14 @@ void read_th_sensor(){
         if(!rlm.opt.gsm_call_ctrl) rlm.opt.gsm_call_ctrl = 1; // Activate GSM call control
         if(!rlm.opt.gsm_sms_ctrl)  rlm.opt.gsm_sms_ctrl = 1; // Activate GSM SMS control
         rlm.sta.temp_alarm = 1; // Set temperature alarm status
-        Serial.println("Temperature out of range! Alarm activated.");
+        DEBUG.println("Temperature out of range! Alarm activated.");
     } else if((rlm.sta.hum_value > rlm.conf.mx_hum || rlm.sta.hum_value < rlm.conf.mn_hum)
     && rlm.sta.hum_value != 0) {
         rlm.opt.alarm_ctrl = 1; // Activate alarm control if humidity is out of range
         rlm.sta.hum_alarm = 1; // Set humidity alarm status
         if(!rlm.opt.gsm_call_ctrl) rlm.opt.gsm_call_ctrl = 1; // Activate GSM call control
         if(!rlm.opt.gsm_sms_ctrl)  rlm.opt.gsm_sms_ctrl = 1; // Activate GSM SMS control
-        Serial.println("Humidity out of range! Alarm activated.");
+        DEBUG.println("Humidity out of range! Alarm activated.");
     } else {
         rlm.opt.alarm_ctrl = 0; // Clear alarm control if all readings are normal
         rlm.sta.temp_alarm = 0; // Clear temperature alarm status
@@ -106,7 +106,7 @@ void read_tds_value(){
     int adcValue = analogRead(TDS_SENSOR_Pin);
 
     // Convert ADC value to voltage
-    float voltage = adcValue * VREF / ADC_RESOLUTION;
+    float voltage = adcValue * VREF / 4095.0;
 
     // Temperature compensation
     float compensationCoefficient = 1.0 + 0.02 * (rlm.sta.temp_value - 25.0);
@@ -117,14 +117,14 @@ void read_tds_value(){
                     - 255.86 * compensatedVoltage * compensatedVoltage
                     + 857.39 * compensatedVoltage) * 0.5;
     
-    Serial.println("Voltage: " + String(voltage, 3) + " V");
-    Serial.println("TDS sensor reading:"+String(rlm.sta.tds_value)+" ppm"); 
+    DEBUG.println("Voltage: " + String(voltage, 3) + " V");
+    DEBUG.println("TDS sensor reading:"+String(rlm.sta.tds_value)+" ppm"); 
     if((rlm.sta.tds_value > rlm.conf.mx_tds || rlm.sta.tds_value < rlm.conf.mn_tds)    && rlm.sta.tds_value != 0) {
         rlm.opt.alarm_ctrl = 1; // Activate alarm control
         rlm.sta.tds_alarm = 1; // Set TDS alarm status
         if(!rlm.opt.gsm_call_ctrl) rlm.opt.gsm_call_ctrl = 1; // Activate GSM call control
         if(!rlm.opt.gsm_sms_ctrl)  rlm.opt.gsm_sms_ctrl = 1; // Activate GSM SMS control
-        Serial.println("TDS out of range! Alarm activated.");
+        DEBUG.println("TDS out of range! Alarm activated.");
     } else {
         rlm.sta.tds_alarm = 0; // Clear TDS alarm status
     }  
@@ -133,7 +133,7 @@ void read_tds_value(){
 // GSM function for send data via UART
 void gsm_send_data(const char* data){
     Serial.print(">> Sending: ");
-    Serial.println(data);
+    DEBUG.println(data);
     GSM_SERIAL.print(data);
     GSM_SERIAL.print("\r\n");
 }
@@ -141,7 +141,7 @@ void gsm_send_data(const char* data){
 void clean_sim_storage() {
     gsm_send_data("AT+CMGD=1,4"); // Delete all SMS messages from SIM storage
     GSM_SERIAL.print("\r\n");
-    Serial.println("Sent command to clean SIM storage");
+    DEBUG.println("Sent command to clean SIM storage");
 }
 
 
@@ -162,9 +162,9 @@ void gsm_receive_data(){
         int size = GSM_SERIAL.readBytes(gsm_rx_buffer, sizeof(gsm_rx_buffer) - 1); // Read GSM response into buffer
         if (size >= sizeof(gsm_rx_buffer) - 1) {
             memset(gsm_rx_buffer, 0, sizeof(gsm_rx_buffer)); // Clear buffer if overflow
-            Serial.println("GSM receive buffer overflow, clearing buffer");
+            DEBUG.println("GSM receive buffer overflow, clearing buffer");
         }
-         Serial.printf("GSM received: %s\n\r", gsm_rx_buffer); // Print the received GSM response for debu
+         DEBUG.printf("GSM received: %s\n\r", gsm_rx_buffer); // Print the received GSM response for debu
     }
     
     // Process the received data as needed
@@ -194,13 +194,13 @@ void gsm_receive_data(){
         memset(buff,0,sizeof(buff));
         sprintf(buff,"AT+CMGR=%d",lst_sms_idx);
         gsm_send_data(buff);
-        Serial.printf("lst_sms_idx->%d\n\r",lst_sms_idx);
+        DEBUG.printf("lst_sms_idx->%d\n\r",lst_sms_idx);
     }else if(strstr(gsm_rx_buffer, "+CMGR:")) {
         char *cmgr_ptr = strstr(gsm_rx_buffer, "+CMGR:");
-        Serial.printf("RAW: [%s]\n\r", cmgr_ptr);
+        DEBUG.printf("RAW: [%s]\n\r", cmgr_ptr);
         if(cmgr_ptr) {
             sscanf(cmgr_ptr, "+CMGR: %*[^,],\"%[^\"]\"", rlm.opt.lst_mob_req);
-            Serial.printf("Phone parsed: [%s]\n\r", rlm.opt.lst_mob_req);
+            DEBUG.printf("Phone parsed: [%s]\n\r", rlm.opt.lst_mob_req);
         }
         if(strstr(gsm_rx_buffer, "Dashboard")) {
             char buff[30];
@@ -237,7 +237,7 @@ void gsm_receive_data(){
                 sscanf(owner_ptr, "1.Owner: %s", num);  // num not &num
                 // trim any \r\n at end
                 num[strcspn(num, "\r\n")] = 0;
-                Serial.printf("Owner num: [%s]\n\r", num);
+                DEBUG.printf("Owner num: [%s]\n\r", num);
                 memccpy(rlm.conf.home_mob, num, '\0', sizeof(rlm.conf.home_mob)); // Store the new home mobile number in configuration
                 save_to_flash(&rlm.conf,sizeof(rlm.conf));
             }
@@ -277,7 +277,7 @@ void gsm_receive_data(){
         }else if(strstr(gsm_rx_buffer, "Fill the value. 1.Tmax:")) {
             char *th = strstr(gsm_rx_buffer, "Fill the value.");
             if(th) {
-                Serial.printf("RAW: [%s]\n\r", th);
+                DEBUG.printf("RAW: [%s]\n\r", th);
                 sscanf(th, "Fill the value. 1.Tmax:%d 2.Tmin:%d 3.Hmax:%d 4.Hmin:%d",
                 &rlm.conf.mx_temp,&rlm.conf.mn_temp,&rlm.conf.mx_hum,&rlm.conf.mn_hum);
             }
@@ -289,7 +289,7 @@ void gsm_receive_data(){
             gsm_send_data("The modified successfully!!");
             delay(500);
             GSM_SERIAL.write(26);
-            Serial.println("1.Tmax:" + String(rlm.conf.mx_temp) 
+            DEBUG.println("1.Tmax:" + String(rlm.conf.mx_temp) 
             + " 2.Tmin:" + String(rlm.conf.mn_temp) 
             + " 3.Hmax:" + String(rlm.conf.mx_hum) 
             + " 4.Hmin:" + String(rlm.conf.mn_hum));
@@ -319,7 +319,7 @@ void gsm_receive_data(){
             gsm_send_data("The modified successfully!!");
             delay(500);
             GSM_SERIAL.write(26);
-            Serial.println("1.TDSmax:" + String(rlm.conf.mx_tds) + " 2.TDSmin:" + String(rlm.conf.mn_tds));
+            DEBUG.println("1.TDSmax:" + String(rlm.conf.mx_tds) + " 2.TDSmin:" + String(rlm.conf.mn_tds));
             //Store the value
             save_to_flash(&rlm.conf,sizeof(rlm.conf));
         }
@@ -330,7 +330,7 @@ void gsm_receive_data(){
 // Send initialization commands to GSM module in sequence and update status bits accordingly
 void sync_gsm() {
     BITSET(rlm.sta.init_gsm, 2); // Mark UART configured as done
-	Serial.printf("GSM Send cmd -%x\n\r",rlm.sta.init_gsm);
+	DEBUG.printf("GSM Send cmd -%x\n\r",rlm.sta.init_gsm);
     if(!BITREAD(rlm.sta.init_gsm, 0)) gsm_send_data("ATE0"); // Basic command to check communication
     else if(!BITREAD(rlm.sta.init_gsm, 1)) gsm_send_data("AT+CSMINS?"); // Check SIM card status
     else if(!BITREAD(rlm.sta.init_gsm, 3)) gsm_send_data("AT+CSQ"); // Check signal quality
@@ -346,7 +346,7 @@ void sync_gsm() {
 }
 
 void init_controler(){
-    Serial.println("\n\n=== Remote Livestock Monitoring System ===");
+    DEBUG.println("\n\n=== Remote Livestock Monitoring System ===");
     // Initialize LED pin
     pinMode(STATUS_LED_Pin, OUTPUT);
     pinMode(RELAY_FENCE_Pin, OUTPUT);
@@ -375,7 +375,7 @@ void init_controler(){
         rlm.conf.mn_hum = 20;
         rlm.conf.mx_tds = 100;
         rlm.conf.mn_tds = 60;
-        Serial.println("No valid configuration in flash. Loaded default configuration.");
+        DEBUG.println("No valid configuration in flash. Loaded default configuration.");
         save_to_flash(&rlm.conf,sizeof(rlm.conf)); // Save default configuration to flash memory
     }
 
@@ -386,14 +386,14 @@ void init_controler(){
         BITSET(rlm.sta.init_gsm, 7);
        // rlm.sta.init_gsm |= 0xE0; // Set bits 5, 6, and 7 to indicate SMS setup is done
     }
-    Serial.printf("GSM Send cmd -%x\n\r",rlm.sta.init_gsm);
+    DEBUG.printf("GSM Send cmd -%x\n\r",rlm.sta.init_gsm);
 
-    Serial.println("Controller initialized with following configuration:");
-    Serial.printf("Home Mobile: %s\n\r", rlm.conf.home_mob);
-    Serial.printf("Temperature Thresholds: Min=%d C, Max=%d C\n\r", rlm.conf.mn_temp, rlm.conf.mx_temp);
-    Serial.printf("Humidity Thresholds: Min=%d %%, Max=%d %%\n\r", rlm.conf.mn_hum, rlm.conf.mx_hum);
-    Serial.printf("TDS Thresholds: Min=%d %%, Max=%d %%\n\r", rlm.conf.mn_tds, rlm.conf.mx_tds);
-    Serial.println("System initialized successfully");
+    DEBUG.println("Controller initialized with following configuration:");
+    DEBUG.printf("Home Mobile: %s\n\r", rlm.conf.home_mob);
+    DEBUG.printf("Temperature Thresholds: Min=%d C, Max= %d C\n\r", rlm.conf.mn_temp, rlm.conf.mx_temp);
+    DEBUG.printf("Humidity Thresholds: Min=%d %%, Max=%d %%\n\r", rlm.conf.mn_hum, rlm.conf.mx_hum);
+    DEBUG.printf("TDS Thresholds: Min=%d %%, Max=%d %%\n\r", rlm.conf.mn_tds, rlm.conf.mx_tds);
+    DEBUG.println("System initialized successfully");
 
     
 }

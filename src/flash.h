@@ -36,7 +36,7 @@ bool erase_flash_page(uint32_t pageAddress) {
 
     if (status != HAL_OK) {
         Serial.print("ERROR: Flash erase failed at 0x");
-        Serial.println(pageAddress, HEX);
+        DEBUG.println(pageAddress, HEX);
         return false;
     }
     return true;
@@ -62,7 +62,7 @@ bool write_to_flash(const void* data, size_t size, uint32_t address = FLASH_STOR
                               halfWord) != HAL_OK) {
             HAL_FLASH_Lock();
             Serial.print("ERROR: Flash write failed at 0x");
-            Serial.println(address + i, HEX);
+            DEBUG.println(address + i, HEX);
             return false;
         }
     }
@@ -77,7 +77,7 @@ bool read_from_flash(void* out, size_t size, uint32_t address = FLASH_STORAGE_AD
 
     // Validate magic (must be first field of struct)
     if (*(uint32_t*)out != FLASH_MAGIC) {
-        Serial.println("WARN: No valid data in flash.");
+        DEBUG.println("WARN: No valid data in flash.");
         return false;
     }
 
@@ -91,11 +91,11 @@ bool save_to_flash(const void* data, size_t size, uint32_t address = FLASH_STORA
     if (!erase_flash_page(pageAddress)) return false;
 
     if (!write_to_flash(data, size, address)) {
-        Serial.println("ERROR: Flash write failed!");
+        DEBUG.println("ERROR: Flash write failed!");
         return false;
     }
 
-    Serial.println("Flash: data saved OK.");
+    DEBUG.println("Flash: data saved OK.");
     return true;
 }
 
