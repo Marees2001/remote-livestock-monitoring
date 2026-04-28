@@ -15,6 +15,8 @@
 //Define for TH
 #define DHTTYPE DHT22
 
+#define SAMPLE_COUNT 100
+
 #define STATUS_LED_Pin PC13
 #define RELAY_FENCE_Pin PA5
 #define RELAY_LAMP_Pin PA6

@@ -13,15 +13,17 @@
 #include "DHT.h"
 
 extern DHT dht;
+extern Adafruit_SH1106G display;
 extern char gsm_rx_buffer[500]; // Buffer for receiving data from GSM module
 extern uint8_t receive_bytes; // Number of bytes received from GSM module
 extern uint8_t receive_req;
+
 
 /*Structure for controller status*/
 struct CONTROLLER_STATUS {
     uint8_t init_gsm; // GSM initialization status by bitread operations: 0: GSM module initialized,
     //1: SIM card ready, 2: UART configured, 3: RSSI received,4: set SMS mode, 5: set SMS recipient
-    float tds_value; // TDS sensor value
+    int tds_value; // TDS sensor value
     float temp_value; // Temperature sensor value
     uint8_t hum_value; // Humidity sensor value
     uint8_t thi;
@@ -41,8 +43,8 @@ struct CONTROLLER_STATUS {
 struct CONTROLLER_SETTINGS {
     uint32_t magic;
     char home_mob[15]; // Home mobile number for GSM communication
-    float mx_temp; // Max threshold for temperature
-    float mn_temp; // Min threshold for temperature
+    uint8_t mx_temp; // Max threshold for temperature
+    uint8_t mn_temp; // Min threshold for temperature
     uint8_t mx_hum; // Max threshold for humidity
     uint8_t mn_hum; // Min threshold for humidity
     int mx_tds; // Max threshold for TDS; 
@@ -86,24 +88,41 @@ void read_th_sensor(){
         if(!rlm.opt.gsm_call_ctrl) rlm.opt.gsm_call_ctrl = 1; // Activate GSM call control
         if(!rlm.opt.gsm_sms_ctrl)  rlm.opt.gsm_sms_ctrl = 1; // Activate GSM SMS control
         rlm.sta.temp_alarm = 1; // Set temperature alarm status
+        rlm.opt.fan_ctrl = 1;
         DEBUG.println("Temperature out of range! Alarm activated.");
     } else if((rlm.sta.hum_value > rlm.conf.mx_hum || rlm.sta.hum_value < rlm.conf.mn_hum)
     && rlm.sta.hum_value != 0) {
         rlm.opt.alarm_ctrl = 1; // Activate alarm control if humidity is out of range
         rlm.sta.hum_alarm = 1; // Set humidity alarm status
+        rlm.opt.lamp_ctrl = 1;
         if(!rlm.opt.gsm_call_ctrl) rlm.opt.gsm_call_ctrl = 1; // Activate GSM call control
         if(!rlm.opt.gsm_sms_ctrl)  rlm.opt.gsm_sms_ctrl = 1; // Activate GSM SMS control
         DEBUG.println("Humidity out of range! Alarm activated.");
-    } else {
+    } else if(rlm.sta.hum_alarm || rlm.sta.temp_alarm){
         rlm.opt.alarm_ctrl = 0; // Clear alarm control if all readings are normal
         rlm.sta.temp_alarm = 0; // Clear temperature alarm status
         rlm.sta.hum_alarm = 0; // Clear humidity alarm status
+        rlm.opt.fan_ctrl = 0;
+        rlm.opt.lamp_ctrl = 0;
     }
 
 }
 
 void read_tds_value(){
-    int adcValue = analogRead(TDS_SENSOR_Pin);
+
+    int samples[SAMPLE_COUNT];
+
+    for (int i = 0; i < SAMPLE_COUNT; i++) {
+        samples[i] = analogRead(TDS_SENSOR_Pin);
+        delay(10);
+    }
+
+    // simple average
+    int sum = 0;
+    for (int i = 0; i < SAMPLE_COUNT; i++) {
+        sum += samples[i];
+    }
+    int adcValue = sum / SAMPLE_COUNT;
 
     // Convert ADC value to voltage
     float voltage = adcValue * VREF / 4095.0;
@@ -113,9 +132,13 @@ void read_tds_value(){
     float compensatedVoltage = voltage / compensationCoefficient;
 
     // TDS calculation
-    rlm.sta.tds_value = (133.42 * compensatedVoltage * compensatedVoltage * compensatedVoltage
-                    - 255.86 * compensatedVoltage * compensatedVoltage
-                    + 857.39 * compensatedVoltage) * 0.5;
+   float calibrationFactor = 1.0; // adjust this
+
+    rlm.sta.tds_value = (int) ((
+        133.42 * compensatedVoltage * compensatedVoltage * compensatedVoltage
+    - 255.86 * compensatedVoltage * compensatedVoltage
+    + 857.39 * compensatedVoltage
+    ) * 0.5 * calibrationFactor);
     
     DEBUG.println("Voltage: " + String(voltage, 3) + " V");
     DEBUG.println("TDS sensor reading:"+String(rlm.sta.tds_value)+" ppm"); 
@@ -148,8 +171,8 @@ void clean_sim_storage() {
 void gsm_send_dashboard(){
     char buff[200];
     memset(buff,0,sizeof(buff));
-    sprintf(buff,"1.Temprature:%.2f C  2.Humidity:%d%% 3.TDS: %d bpm 4.THI: %d",
-        rlm.sta.temp_value,rlm.sta.hum_value,rlm.sta.tds_value,rlm.sta.thi);
+    sprintf(buff,"1.Temprature:%d C  2.Humidity:%d 3.TDS: %d bpm 4.THI: %d",
+       (int) rlm.sta.temp_value,rlm.sta.hum_value,(int)rlm.sta.tds_value,rlm.sta.thi);
     gsm_send_data(buff);
 }
 
@@ -253,9 +276,9 @@ void gsm_receive_data(){
             gsm_send_data("The modified successfully!!");
             delay(500);
             GSM_SERIAL.write(26);
-            BITCLEAR(rlm.sta.init_gsm, 5);
-            BITCLEAR(rlm.sta.init_gsm, 6);
-            BITCLEAR(rlm.sta.init_gsm, 7);
+            // BITCLEAR(rlm.sta.init_gsm, 5);
+            // BITCLEAR(rlm.sta.init_gsm, 6);
+            // BITCLEAR(rlm.sta.init_gsm, 7);
         }else if(strstr(gsm_rx_buffer, "2.Sensors")) {
             char buff[30];
             memset(buff,0,sizeof(buff));
@@ -301,7 +324,7 @@ void gsm_receive_data(){
             sprintf(buff,"AT+CMGS=\"%s\"",rlm.opt.lst_mob_req);
             gsm_send_data(buff);
             delay(500);
-            gsm_send_data("Fill the value. 1.HRTmax: 2.HRTmin: 3.SPO2max: 4.SPO2min:");
+            gsm_send_data("Fill the value. 1.TDSmax: 2.TDSmin:");
             delay(500);
             GSM_SERIAL.write(26);
         }else if(strstr(gsm_rx_buffer, "Fill the value. 1.TDSmax:")) {
@@ -322,6 +345,67 @@ void gsm_receive_data(){
             DEBUG.println("1.TDSmax:" + String(rlm.conf.mx_tds) + " 2.TDSmin:" + String(rlm.conf.mn_tds));
             //Store the value
             save_to_flash(&rlm.conf,sizeof(rlm.conf));
+        }else if(strstr(gsm_rx_buffer, "Lamp:")){
+            char opt[5];
+            memset(opt,0,sizeof(opt));
+            char *lmp = strstr(gsm_rx_buffer, "Lamp:");
+            if(lmp) {
+                DEBUG.printf("RAW: [%s]\n\r", lmp);
+                sscanf(lmp, "Lamp:%s",&opt);
+            }
+            rlm.opt.lamp_ctrl = (strcmp(opt, "on") == 0) ? 1 : 0;
+
+            char buff[30];
+            memset(buff,0,sizeof(buff));
+            sprintf(buff,"AT+CMGS=\"%s\"",rlm.opt.lst_mob_req);
+            gsm_send_data(buff);
+            delay(500);
+            gsm_send_data("The modified successfully!!");
+            delay(500);
+            GSM_SERIAL.write(26);
+
+
+            DEBUG.println("Lamp control:"+String(rlm.opt.lamp_ctrl));
+        }else if(strstr(gsm_rx_buffer, "Fan:")){
+            char opt[5];
+            memset(opt,0,sizeof(opt));
+            char *fn = strstr(gsm_rx_buffer, "Fan:");
+            if(fn) {
+                DEBUG.printf("RAW: [%s]\n\r", fn);
+                sscanf(fn, "Fan:%s",&opt);
+            }
+            rlm.opt.fan_ctrl = (strcmp(opt, "on") == 0) ? 1 : 0;
+
+            char buff[30];
+            memset(buff,0,sizeof(buff));
+            sprintf(buff,"AT+CMGS=\"%s\"",rlm.opt.lst_mob_req);
+            gsm_send_data(buff);
+            delay(500);
+            gsm_send_data("The modified successfully!!");
+            delay(500);
+            GSM_SERIAL.write(26);
+
+            DEBUG.println("Fan control:"+String(rlm.opt.fan_ctrl));
+        }else if(strstr(gsm_rx_buffer, "Fence:")){
+            char opt[5];
+            memset(opt,0,sizeof(opt));
+            char *fen = strstr(gsm_rx_buffer, "Fence:");
+            if(fen) {
+                DEBUG.printf("RAW: [%s]\n\r", fen);
+                sscanf(fen, "Fence:%s",&opt);
+            }
+            rlm.opt.fence_ctrl = (strcmp(opt, "on") == 0) ? 1 : 0;
+
+            char buff[30];
+            memset(buff,0,sizeof(buff));
+            sprintf(buff,"AT+CMGS=\"%s\"",rlm.opt.lst_mob_req);
+            gsm_send_data(buff);
+            delay(500);
+            gsm_send_data("The modified successfully!!");
+            delay(500);
+            GSM_SERIAL.write(26);
+
+            DEBUG.println("Fence control:"+String(rlm.opt.fence_ctrl));
         }
 
     }
@@ -344,6 +428,21 @@ void sync_gsm() {
     else if(!BITREAD(rlm.sta.init_gsm, 6)) gsm_send_data("Hi Boss I am alive!"); // Sent test SMS
     else if(!BITREAD(rlm.sta.init_gsm, 7)) GSM_SERIAL.write(26); // set end of SMS message (Ctrl+Z)
 }
+
+
+void init_display() {
+    DEBUG.println("Initializing OLED...");
+    display.begin(SCREEN_ADDR, true); // Address 0x3C default
+    display.clearDisplay();
+    display.setTextColor(SH110X_WHITE);
+    display.setCursor(5, 20);
+    display.print("LIVESTOCK MONITORING");
+    display.setCursor(40, 35);
+    display.print("SYSTEM");
+    display.display();
+    delay(2000);
+}
+
 
 void init_controler(){
     DEBUG.println("\n\n=== Remote Livestock Monitoring System ===");
@@ -399,6 +498,32 @@ void init_controler(){
 }
 
 void update_display(){
+    char buff[10];
     
+    display.clearDisplay();
+    display.setTextColor(SH110X_WHITE);
+    display.setTextSize(1);
+
+    display.setCursor(5, 10);
+    memset(buff,0,sizeof(buff));
+    sprintf(buff,"THI:%d%%",rlm.sta.thi);
+    display.print(buff);
+
+    display.setCursor(5, 40);
+    memset(buff,0,sizeof(buff));
+    sprintf(buff,"T:.2fC",rlm.sta.temp_value);
+    display.print(buff);
+
+    display.setCursor(55, 10);
+    memset(buff,0,sizeof(buff));
+    sprintf(buff,"TDS:%d Ppm",rlm.sta.tds_value);
+    display.print(buff);
+
+    display.setCursor(60, 40);
+    memset(buff,0,sizeof(buff));
+    sprintf(buff,"H:%d%%",rlm.sta.hum_value);
+    display.print(buff);
+    display.print("");
+    display.display();
 }
 #endif // CONTROLLER_H

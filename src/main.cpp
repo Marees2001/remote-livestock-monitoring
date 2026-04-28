@@ -23,10 +23,6 @@ void setup() {
   GSM_SERIAL.begin(9600);
   delay(500);
 
-  // Initialize LED pin
-  pinMode(STATUS_LED_Pin, OUTPUT);
-  digitalWrite(STATUS_LED_Pin, HIGH); // LED off (inverted logic on Blue Pill)
-
   // put your setup code here, to run once:
   // delay(5000);
   init_controler();
@@ -34,20 +30,7 @@ void setup() {
   i2c.begin();  // SDA, SCL (VERY IMPORTANT)
   i2c.setClock(50000);  // 50kHz
 
-  DEBUG.println("Initializing OLED...");
-  // SSD1306_SWITCHCAPVCC = generate display voltage from 3.3V internally
-  display.begin(SCREEN_ADDR, true); // Address 0x3C default
-
-  DEBUG.println("OLED Initialized!");
-
-    // Clear the buffer
-  display.clearDisplay();
-  display.setTextSize(1);
-  display.setTextColor(SH110X_WHITE);
-  display.setCursor(0, 0);
-  // Display static text
-  display.println("Livestock Monitoring");
-  display.display(); 
+  init_display();
 
   // DEBUG.println("I2C Scanner");
   // byte error, address;
@@ -141,14 +124,24 @@ void loop() {
     }
     
   }
+
+  rlm.opt.lamp_ctrl? digitalWrite(RELAY_LAMP_Pin, LOW):digitalWrite(RELAY_LAMP_Pin, HIGH);
+
+  rlm.opt.fan_ctrl? digitalWrite(RELAY_FAN_Pin, LOW):digitalWrite(RELAY_FAN_Pin, HIGH);
+
+  rlm.opt.fence_ctrl? digitalWrite(RELAY_FENCE_Pin, LOW):digitalWrite(RELAY_FENCE_Pin, HIGH);
   
   if(millis() - th_sensor_timeout > 2000){
     th_sensor_timeout = millis();
     read_th_sensor();
+    read_tds_value();
   }
 
 
-  
+  if(millis() > display_update_timeout + 2000){
+    display_update_timeout = millis();
+    update_display();
+  }
 
 
   // put your main code here, to run repeatedly:
