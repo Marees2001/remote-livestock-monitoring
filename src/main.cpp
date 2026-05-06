@@ -126,10 +126,9 @@ void loop() {
   }
 
   rlm.opt.lamp_ctrl? digitalWrite(RELAY_LAMP_Pin, LOW):digitalWrite(RELAY_LAMP_Pin, HIGH);
-
   rlm.opt.fan_ctrl? digitalWrite(RELAY_FAN_Pin, LOW):digitalWrite(RELAY_FAN_Pin, HIGH);
-
   rlm.opt.fence_ctrl? digitalWrite(RELAY_FENCE_Pin, LOW):digitalWrite(RELAY_FENCE_Pin, HIGH);
+  rlm.opt.valve_ctrl? digitalWrite(RELAY_VALVE_Pin, LOW):digitalWrite(RELAY_VALVE_Pin, HIGH);
   
   if(millis() - th_sensor_timeout > 2000){
     th_sensor_timeout = millis();
@@ -138,7 +137,7 @@ void loop() {
   }
 
 
-  if(millis() > display_update_timeout + 2000){
+  if(millis() > display_update_timeout + 3000){
     display_update_timeout = millis();
     update_display();
   }

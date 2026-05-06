@@ -21,6 +21,7 @@
 #define RELAY_FENCE_Pin PA5
 #define RELAY_LAMP_Pin PA6
 #define RELAY_FAN_Pin PA7
+#define RELAY_VALVE_Pin PA8
 #define TDS_SENSOR_Pin PB0
 #define TH_SENSOR_Pin PB1
 #define GSM_RX_Pin PA3

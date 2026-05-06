@@ -33,6 +33,7 @@ struct CONTROLLER_STATUS {
     uint8_t lam_status; // Lamp status (0 or 1)
     uint8_t fan_status; // Fan status (0 or 1)
     uint8_t fence_status; // Fence status (0 or 1)
+    uint8_t valve_status; // Valve status (0 or 1)
     uint8_t lst_msg_idx;
     uint8_t temp_alarm; // 0: no alarm, 1: temperature out of range
     uint8_t hum_alarm; // 0: no alarm, 1: humidity out
@@ -50,6 +51,8 @@ struct CONTROLLER_SETTINGS {
     int mx_tds; // Max threshold for TDS; 
     //range 0-1000 ppm, where 0-300 ppm is considered good, 300-600 ppm is fair, and above 600 ppm is poor water quality
     int mn_tds; // Min threshold for TDS
+    int mx_thi; // Max threshold for THI
+    int mn_thi; // Min threshold for THI
 };
 
 /*Structure for controller operation*/
@@ -82,16 +85,14 @@ void read_th_sensor(){
     DEBUG.println("Humitidy : " + String(rlm.sta.hum_value) + "%");
     DEBUG.println("THI: " + String(rlm.sta.thi));
 
-    if((rlm.sta.temp_value > rlm.conf.mx_temp || rlm.sta.temp_value < rlm.conf.mn_temp)
-    && rlm.sta.temp_value != 0) {
+    if((rlm.sta.thi > rlm.conf.mx_thi) && rlm.sta.thi != 0) {
         rlm.opt.alarm_ctrl = 1; // Activate alarm control
         if(!rlm.opt.gsm_call_ctrl) rlm.opt.gsm_call_ctrl = 1; // Activate GSM call control
         if(!rlm.opt.gsm_sms_ctrl)  rlm.opt.gsm_sms_ctrl = 1; // Activate GSM SMS control
         rlm.sta.temp_alarm = 1; // Set temperature alarm status
         rlm.opt.fan_ctrl = 1;
         DEBUG.println("Temperature out of range! Alarm activated.");
-    } else if((rlm.sta.hum_value > rlm.conf.mx_hum || rlm.sta.hum_value < rlm.conf.mn_hum)
-    && rlm.sta.hum_value != 0) {
+    } else if((rlm.sta.thi < rlm.conf.mn_thi) && rlm.sta.thi != 0) {
         rlm.opt.alarm_ctrl = 1; // Activate alarm control if humidity is out of range
         rlm.sta.hum_alarm = 1; // Set humidity alarm status
         rlm.opt.lamp_ctrl = 1;
@@ -145,11 +146,14 @@ void read_tds_value(){
     if((rlm.sta.tds_value > rlm.conf.mx_tds || rlm.sta.tds_value < rlm.conf.mn_tds)    && rlm.sta.tds_value != 0) {
         rlm.opt.alarm_ctrl = 1; // Activate alarm control
         rlm.sta.tds_alarm = 1; // Set TDS alarm status
+        rlm.opt.valve_ctrl = 1;
         if(!rlm.opt.gsm_call_ctrl) rlm.opt.gsm_call_ctrl = 1; // Activate GSM call control
         if(!rlm.opt.gsm_sms_ctrl)  rlm.opt.gsm_sms_ctrl = 1; // Activate GSM SMS control
         DEBUG.println("TDS out of range! Alarm activated.");
-    } else {
+    } else if (rlm.sta.tds_alarm){
         rlm.sta.tds_alarm = 0; // Clear TDS alarm status
+        rlm.opt.alarm_ctrl = 0; // Clear alarm control if all readings are normal
+        rlm.opt.valve_ctrl = 0;
     }  
 }
 
@@ -171,8 +175,14 @@ void clean_sim_storage() {
 void gsm_send_dashboard(){
     char buff[200];
     memset(buff,0,sizeof(buff));
-    sprintf(buff,"1.Temprature:%d C  2.Humidity:%d 3.TDS: %d bpm 4.THI: %d",
-       (int) rlm.sta.temp_value,rlm.sta.hum_value,(int)rlm.sta.tds_value,rlm.sta.thi);
+    sprintf(buff,
+        "Sensor: 1.Temprature:%d C  2.Humidity:%d 3.TDS: %d bpm 4.THI: %d OUTPUT: Fence:%s Lamp:%s Fan:%s Valve:%s",
+       (int) rlm.sta.temp_value,rlm.sta.hum_value,(int)rlm.sta.tds_value,rlm.sta.thi,
+       (rlm.sta.fence_status ? "on" : "off"),
+       (rlm.sta.lam_status ? "on" : "off"),
+       (rlm.sta.fan_status ? "on" : "off"),
+       (rlm.sta.valve_status ? "on" : "off")
+        );
     gsm_send_data(buff);
 }
 
@@ -294,15 +304,14 @@ void gsm_receive_data(){
             sprintf(buff,"AT+CMGS=\"%s\"",rlm.opt.lst_mob_req);
             gsm_send_data(buff);
             delay(500);
-            gsm_send_data("Fill the value. 1.Tmax: 2.Tmin: 3.Hmax: 4.Hmin:");
+            gsm_send_data("Fill the value. 1.THmax: 2.THmin: ");
             delay(500);
             GSM_SERIAL.write(26);
-        }else if(strstr(gsm_rx_buffer, "Fill the value. 1.Tmax:")) {
+        }else if(strstr(gsm_rx_buffer, "Fill the value. 1.THmax:")) {
             char *th = strstr(gsm_rx_buffer, "Fill the value.");
             if(th) {
                 DEBUG.printf("RAW: [%s]\n\r", th);
-                sscanf(th, "Fill the value. 1.Tmax:%d 2.Tmin:%d 3.Hmax:%d 4.Hmin:%d",
-                &rlm.conf.mx_temp,&rlm.conf.mn_temp,&rlm.conf.mx_hum,&rlm.conf.mn_hum);
+                sscanf(th, "Fill the value. 1.THmax:%d 2.THmin:%d",&rlm.conf.mx_thi,&rlm.conf.mn_thi);
             }
             char buff[30];
             memset(buff,0,sizeof(buff));
@@ -312,10 +321,8 @@ void gsm_receive_data(){
             gsm_send_data("The modified successfully!!");
             delay(500);
             GSM_SERIAL.write(26);
-            DEBUG.println("1.Tmax:" + String(rlm.conf.mx_temp) 
-            + " 2.Tmin:" + String(rlm.conf.mn_temp) 
-            + " 3.Hmax:" + String(rlm.conf.mx_hum) 
-            + " 4.Hmin:" + String(rlm.conf.mn_hum));
+            DEBUG.println("1.THmax:" + String(rlm.conf.mx_thi) 
+            + " 2.THmin:" + String(rlm.conf.mn_thi));
             //Store the value
             save_to_flash(&rlm.conf,sizeof(rlm.conf));
         }else if(strstr(gsm_rx_buffer, "2.Set TDS")){
@@ -406,6 +413,26 @@ void gsm_receive_data(){
             GSM_SERIAL.write(26);
 
             DEBUG.println("Fence control:"+String(rlm.opt.fence_ctrl));
+        }else if(strstr(gsm_rx_buffer, "Valve:")){
+            char opt[5];
+            memset(opt,0,sizeof(opt));
+            char *val = strstr(gsm_rx_buffer, "Valve:");
+            if(val) {
+                DEBUG.printf("RAW: [%s]\n\r", val);
+                sscanf(val, "Valve:%s",&opt);
+            }
+            rlm.opt.valve_ctrl = (strcmp(opt, "on") == 0) ? 1 : 0;
+
+            char buff[30];
+            memset(buff,0,sizeof(buff));
+            sprintf(buff,"AT+CMGS=\"%s\"",rlm.opt.lst_mob_req);
+            gsm_send_data(buff);
+            delay(500);
+            gsm_send_data("The modified successfully!!");
+            delay(500);
+            GSM_SERIAL.write(26);
+
+            DEBUG.println("Valve control:"+String(rlm.opt.valve_ctrl));
         }
 
     }
@@ -451,11 +478,13 @@ void init_controler(){
     pinMode(RELAY_FENCE_Pin, OUTPUT);
     pinMode(RELAY_LAMP_Pin, OUTPUT);
     pinMode(RELAY_FAN_Pin, OUTPUT);
+    pinMode(RELAY_VALVE_Pin, OUTPUT);
 
     digitalWrite(STATUS_LED_Pin, LOW); // LED off (inverted logic on Blue Pill)
     digitalWrite(RELAY_FENCE_Pin, HIGH); 
     digitalWrite(RELAY_LAMP_Pin, HIGH); 
     digitalWrite(RELAY_FAN_Pin, HIGH); 
+    digitalWrite(RELAY_VALVE_Pin, HIGH);
 
     pinMode(TH_SENSOR_Pin,INPUT_PULLUP);
 
@@ -474,6 +503,8 @@ void init_controler(){
         rlm.conf.mn_hum = 20;
         rlm.conf.mx_tds = 100;
         rlm.conf.mn_tds = 60;
+        rlm.conf.mx_thi = 70;   //Fan ON
+        rlm.conf.mn_thi = 60;  //LAMP ON
         DEBUG.println("No valid configuration in flash. Loaded default configuration.");
         save_to_flash(&rlm.conf,sizeof(rlm.conf)); // Save default configuration to flash memory
     }
@@ -506,12 +537,12 @@ void update_display(){
 
     display.setCursor(5, 10);
     memset(buff,0,sizeof(buff));
-    sprintf(buff,"THI:%d%%",rlm.sta.thi);
+    sprintf(buff,"THI:%d%",rlm.sta.thi);
     display.print(buff);
 
     display.setCursor(5, 40);
     memset(buff,0,sizeof(buff));
-    sprintf(buff,"T:.2fC",rlm.sta.temp_value);
+    sprintf(buff,"T:%.2fC",rlm.sta.temp_value);
     display.print(buff);
 
     display.setCursor(55, 10);
@@ -521,7 +552,7 @@ void update_display(){
 
     display.setCursor(60, 40);
     memset(buff,0,sizeof(buff));
-    sprintf(buff,"H:%d%%",rlm.sta.hum_value);
+    sprintf(buff,"H:%d%",rlm.sta.hum_value);
     display.print(buff);
     display.print("");
     display.display();
