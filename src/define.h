@@ -1,23 +1,43 @@
 #ifndef DEFINE_H
 #define DEFINE_H
 
-// USART1 for GSM module (PA9=TX, PA10=RX)
-#define GSM_SERIAL Serial1
-#define OLED_ADDR 0x3C
-#define HRT_SENS_ADDR 0x57
+#define FIRMWARE_VERSION 110
+// USART1 for GSM module (PA2=TX, PA3=RX)
+#define GSM_SERIAL Serial2 
+#define DEBUG Serial3 
+
+#define SCREEN_ADDR 0x3C
+#define SCREEN_WIDTH 128
+#define SCREEN_HEIGHT 64
+
+//Define for TDS
+#define VREF 3.3          // STM32 ADC reference voltage
+//Define for TH
+#define DHTTYPE DHT22
+
+#define SAMPLE_COUNT 100
 
 #define STATUS_LED_Pin PC13
 #define RELAY_FENCE_Pin PA5
 #define RELAY_LAMP_Pin PA6
 #define RELAY_FAN_Pin PA7
+#define RELAY_VALVE_Pin PA8
 #define TDS_SENSOR_Pin PB0
 #define TH_SENSOR_Pin PB1
-#define GSM_RX_Pin PA9
-#define GSM_TX_Pin PA10
+#define GSM_RX_Pin PA3
+#define GSM_TX_Pin PA2
 #define MCU_SCL_Pin PB6
 #define MCU_SDA_Pin PB7
+#define DEBUG_RX_Pin PB11
+#define DEBUG_TX_Pin PB10
 
-
+#define NONE 0
+#define DASHBOARD 1
+#define SETINGS 1
+#define ADD_CONTACT 3
+#define SET_SENSOR 4
+#define SET_TH 5
+#define SET_TDS 6
 
 
 // Bit manipulation macros
