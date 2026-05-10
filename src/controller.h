@@ -18,7 +18,6 @@ extern char gsm_rx_buffer[500]; // Buffer for receiving data from GSM module
 extern uint8_t receive_bytes; // Number of bytes received from GSM module
 extern uint8_t receive_req;
 
-uint8_t wait_sim_ready = 1; // Flag to track if we're waiting for SIM card to be ready
 
 /*Structure for controller status*/
 struct CONTROLLER_STATUS {
@@ -160,10 +159,6 @@ void read_tds_value(){
 
 // GSM function for send data via UART
 void gsm_send_data(const char* data){
-    if(!wait_sim_ready) {
-        Serial.println("Waiting for SIM card to be ready before sending GSM data...");
-        return; // Don't send data if we're still waiting for the SIM card to be ready
-    }
     Serial.print(">> Sending: ");
     DEBUG.println(data);
     GSM_SERIAL.print(data);
@@ -208,17 +203,7 @@ void gsm_receive_data(){
     // Process the received data as needed
     if(!BITREAD(rlm.sta.init_gsm, 0) && strstr(gsm_rx_buffer, "OK")) {
         BITSET(rlm.sta.init_gsm, 0); // Basic command to check communication
-    } else if(strstr(gsm_rx_buffer, "+CPIN:")) {
-        if(strstr(gsm_rx_buffer, "+CPIN: READY")) {
-            BITSET(rlm.sta.init_gsm, 1); // Mark SIM card status as received
-            wait_sim_ready = 1; // Set flag to indicate we're waiting for SIM card to be ready
-            Serial.println("SIM card is ready");
-        } else {
-            wait_sim_ready = 0; // Set flag to indicate we're waiting for SIM card to be ready
-            BITCLEAR(rlm.sta.init_gsm, 1); // Clear SIM card status bit
-            Serial.println("SIM card not ready or not detected,Reboot mcu to retry");
-        }
-    }else if(!BITREAD(rlm.sta.init_gsm, 1) && strstr(gsm_rx_buffer, "+CSMINS:")) {
+    } else if(!BITREAD(rlm.sta.init_gsm, 1) && strstr(gsm_rx_buffer, "+CSMINS:")) {
         sscanf(gsm_rx_buffer, "+CSMINS: %*d,%d", &rlm.sta.sim_status);
         BITSET(rlm.sta.init_gsm, 1); // Mark SIM card status as received
     } else if(!BITREAD(rlm.sta.init_gsm, 3) && strstr(gsm_rx_buffer, "+CSQ:")) {
@@ -458,7 +443,7 @@ void sync_gsm() {
     BITSET(rlm.sta.init_gsm, 2); // Mark UART configured as done
 	DEBUG.printf("GSM Send cmd -%x\n\r",rlm.sta.init_gsm);
     if(!BITREAD(rlm.sta.init_gsm, 0)) gsm_send_data("ATE0"); // Basic command to check communication
-    else if(!BITREAD(rlm.sta.init_gsm, 1)) gsm_send_data("AT+CPIN?"); // Check SIM card status
+    else if(!BITREAD(rlm.sta.init_gsm, 1)) gsm_send_data("AT+CSMINS?"); // Check SIM card status
     else if(!BITREAD(rlm.sta.init_gsm, 3)) gsm_send_data("AT+CSQ"); // Check signal quality
     else if(!BITREAD(rlm.sta.init_gsm, 4)) gsm_send_data("AT+CMGF=1"); // Set SMS mode is string mode
     else if(!BITREAD(rlm.sta.init_gsm, 5)) {
