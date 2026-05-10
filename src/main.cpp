@@ -125,6 +125,9 @@ void loop() {
     
   }
 
+  rlm.opt.alarm_ctrl? digitalWrite(ALARM_BUZZER_Pin, HIGH) 
+  : digitalWrite(ALARM_BUZZER_Pin, LOW); // Set LED state based on alarm control
+
   rlm.opt.lamp_ctrl? digitalWrite(RELAY_LAMP_Pin, LOW):digitalWrite(RELAY_LAMP_Pin, HIGH);
   rlm.opt.fan_ctrl? digitalWrite(RELAY_FAN_Pin, LOW):digitalWrite(RELAY_FAN_Pin, HIGH);
   rlm.opt.fence_ctrl? digitalWrite(RELAY_FENCE_Pin, LOW):digitalWrite(RELAY_FENCE_Pin, HIGH);

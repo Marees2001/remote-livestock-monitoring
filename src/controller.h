@@ -496,15 +496,17 @@ void init_controler(){
     pinMode(RELAY_LAMP_Pin, OUTPUT);
     pinMode(RELAY_FAN_Pin, OUTPUT);
     pinMode(RELAY_VALVE_Pin, OUTPUT);
+    pinMode(ALARM_BUZZER_Pin, OUTPUT);
+    pinMode(TH_SENSOR_Pin,INPUT_PULLUP);
+
 
     digitalWrite(STATUS_LED_Pin, LOW); // LED off (inverted logic on Blue Pill)
     digitalWrite(RELAY_FENCE_Pin, HIGH); 
     digitalWrite(RELAY_LAMP_Pin, HIGH); 
     digitalWrite(RELAY_FAN_Pin, HIGH); 
     digitalWrite(RELAY_VALVE_Pin, HIGH);
-
-    pinMode(TH_SENSOR_Pin,INPUT_PULLUP);
-
+    digitalWrite(ALARM_BUZZER_Pin, LOW);
+    
     memset(&rlm.conf, 0, sizeof(rlm.conf)); // Clear the entire rlm structure
     memset(&rlm.sta, 0, sizeof(rlm.sta)); // Clear status structure
     memset(&rlm.opt, 0, sizeof(rlm.opt)); // Clear operation structure
