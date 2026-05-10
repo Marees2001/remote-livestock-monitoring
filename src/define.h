@@ -24,6 +24,7 @@
 #define RELAY_VALVE_Pin PA8
 #define TDS_SENSOR_Pin PB0
 #define TH_SENSOR_Pin PB1
+#define ALARM_BUZZER_Pin PB12
 #define GSM_RX_Pin PA3
 #define GSM_TX_Pin PA2
 #define MCU_SCL_Pin PB6
