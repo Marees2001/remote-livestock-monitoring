@@ -506,7 +506,7 @@ void init_controler(){
     digitalWrite(RELAY_FAN_Pin, HIGH); 
     digitalWrite(RELAY_VALVE_Pin, HIGH);
     digitalWrite(ALARM_BUZZER_Pin, LOW);
-    
+
     memset(&rlm.conf, 0, sizeof(rlm.conf)); // Clear the entire rlm structure
     memset(&rlm.sta, 0, sizeof(rlm.sta)); // Clear status structure
     memset(&rlm.opt, 0, sizeof(rlm.opt)); // Clear operation structure
@@ -561,7 +561,7 @@ void update_display(){
 
     display.setCursor(5, 40);
     memset(buff,0,sizeof(buff));
-    sprintf(buff,"T:%.2fC",rlm.sta.temp_value);
+    sprintf(buff,"T:%0.2fC",rlm.sta.temp_value);
     display.print(buff);
 
     display.setCursor(55, 10);
